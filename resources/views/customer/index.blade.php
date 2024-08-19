@@ -1,0 +1,1 @@
+<p class="">Hi from customer index!</p>

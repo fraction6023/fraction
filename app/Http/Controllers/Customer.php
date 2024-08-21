@@ -9,4 +9,8 @@ class Customer extends Controller
     public function index(){
         return view('customer.index');
     }
+
+    public function dashboard(){
+        return view('customer.dashboard');
+    }
 }

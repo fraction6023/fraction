@@ -13,7 +13,7 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
+                    <div class="testRed">TESTING...H2</div>
                     {{ __('تم تسجيل الدخول!') }}
                 </div>
             </div>

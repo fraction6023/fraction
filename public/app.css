@@ -1,3 +1,13 @@
 .testRed{
     color: red;
 }
+.fractionLogo{
+    width: 120px;
+    border: 0px;
+}
+.l2r{
+    direction: ltr;
+}
+.centerText{
+    text-align: center;
+}

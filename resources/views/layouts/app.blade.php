@@ -19,13 +19,14 @@
 </head>
 <body >
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm l2r">
+            <button onclick="displaySong(0)"><img src="{{ asset('images/fractionLogo.png') }}" class="fractionLogo"></button>
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
+                    <span class="navbar-toggler-icon">rrr</span>
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -88,7 +89,7 @@
             </div>
         </nav>
 
-        <main class="py-4">
+        <main class="py-4 centerText">
             @yield('content')
         </main>
     </div>

@@ -13,7 +13,19 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    <p class="">Hi from customer index!</p>
+
+                    <form action="/">
+                        <label> الاسم</label>
+                        <input type="text" value="{{ Auth::user()->name }}">
+                        <br>
+                        <label> الجوال</label>
+                        <input type="text" value="{{ Auth::user()->name }}">
+                        <br>
+                        <label> المدينة</label>
+                        <input type="text" value="{{ Auth::user()->name }}">
+                        <br>
+                        <input type="submit" value="حفظ">
+                    </form>
                 </div>
             </div>
         </div>

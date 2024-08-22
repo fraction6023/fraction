@@ -13,11 +13,13 @@ return new class extends Migration
     {
         Schema::create('customerInfo', function (Blueprint $table) {
             $table->id();
-            $table->string('value')->index();
-        
-            $table->unsignedInteger('reserved_at')->nullable();
-            $table->unsignedInteger('available_at');
-            $table->unsignedInteger('created_at');
+            $table->string('userID')->nullable();
+            $table->string('gender')->nullable();
+            $table->string('mobile')->nullable();
+            $table->string('city')->nullable();
+            $table->string('image')->default('noImage.jpg');
+            $table->string('note')->nullable();
+            $table->timestamps();          
         });
     }
 

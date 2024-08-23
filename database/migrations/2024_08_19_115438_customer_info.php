@@ -11,11 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('customerInfo', function (Blueprint $table) {
+        Schema::create('customers', function (Blueprint $table) {
             $table->id();
             $table->string('userID')->nullable();
             $table->string('gender')->nullable();
             $table->string('mobile')->nullable();
+            $table->integer('funds')->default(0);
             $table->string('city')->nullable();
             $table->string('image')->default('noImage.jpg');
             $table->string('note')->nullable();
@@ -28,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('customerInfo');
+        Schema::dropIfExists('customers');
     }
 };

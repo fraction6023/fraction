@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('لوحة التحكم') }}</div>
+                <div class="card-header">{{ __('اشتراكي') }}</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -14,18 +14,8 @@
                         </div>
                     @endif
 
-                    <form action="/">
-                        <label> الاسم</label>
-                        <input type="text" value="{{ Auth::user()->name }}">
-                        <br>
-                        <label> الجوال</label>
-                        <input type="text" value="{{ Auth::user()->name }}">
-                        <br>
-                        <label> المدينة</label>
-                        <input type="text" value="{{ Auth::user()->name }}">
-                        <br>
-                        <input type="submit" value="حفظ">
-                    </form>
+                        <label> الرصيد المتوفر: <span>{{$funds}}</span> ريال</label>
+                   
                 </div>
             </div>
         </div>

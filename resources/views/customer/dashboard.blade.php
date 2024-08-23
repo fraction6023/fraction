@@ -13,7 +13,69 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    <p class="">Hi from customer dashboard!</p>
+                    <form action="{{ url('dashboardUpdate') }}" method="POST">
+                        @csrf
+                        @method('PUT')
+
+                        <div class="row mb-3">
+                            <label for="email" class="col-md-4 col-form-label text-md-end">الجنس</label>
+
+                            <div class="col-md-6">
+                                <input type="input" class="form-control" name="gender" value="{{ $customer->gender }}">
+
+                                @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="" class="col-md-4 col-form-label text-md-end">الجوال</label>
+
+                            <div class="col-md-6">
+                                <input type="input" class="form-control" name="mobile" value="{{ $customer->mobile }}">
+
+                                @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="" class="col-md-4 col-form-label text-md-end">المدينة</label>
+
+                            <div class="col-md-6">
+                                <input type="input" class="form-control" name="city" value="{{ $customer->city }}">
+
+                                @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="email" class="col-md-4 col-form-label text-md-end">صورة العرض</label>
+
+                            <div class="col-md-6">
+                                <input type="input" class="form-control" name="image" value="{{ $customer->image }}">
+
+                                @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+
+                        <input type="submit" value="حفظ" class="btn btn-primary">
+                    </form>                
                 </div>
             </div>
         </div>

@@ -25,6 +25,7 @@ class CustomerController extends Controller
         
         $customer = Customer::find(Auth::id());
 
+        $customer->user_id= Auth::id();
         $customer->gender= $req->input('gender');
         $customer->mobile= $req->input('mobile');
         $customer->city= $req->input('city');

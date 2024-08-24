@@ -12,8 +12,13 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/customer', [App\Http\Controllers\CustomerController::class, 'index'])->name(8);
+Route::get('/customer', [App\Http\Controllers\CustomerController::class, 'index']);
+
+Route::get('/booking', [App\Http\Controllers\CustomerController::class, 'booking']);
+Route::put('/bookGym', [App\Http\Controllers\CustomerController::class, 'bookGym']);
+
 
 Route::get('/dashboard', [App\Http\Controllers\CustomerController::class, 'dashboard']);
-
 Route::put('/dashboardUpdate', [App\Http\Controllers\CustomerController::class, 'dashboardUpdate']);
+
+Route::get('/visits', [App\Http\Controllers\CustomerController::class, 'visits']);

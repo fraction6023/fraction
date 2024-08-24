@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('اشتراكي') }}</div>
+                <div class="card-header">سجل الاشتراكات</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -14,8 +14,16 @@
                         </div>
                     @endif
                     
-                    @if($customer)
-                        <label> الرصيد المتوفر: <span>{{$customer->funds}}</span> ريال</label>
+                    @if($visits)
+                        @foreach($visits as $visit)
+                        <div class="card">
+                            <div class="card-body">
+                                <h1>{{$visit->id}}</h1>
+                                <h1>{{$visit->rate}}</h1>
+                            </div>
+                        </div>
+                        @endforeach
+                    
                     @endif
                 </div>
             </div>

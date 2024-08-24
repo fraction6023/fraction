@@ -13,8 +13,28 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    <div class="testRed">TESTING...H2</div>
-                    {{ __('تم تسجيل الدخول!') }}
+                    <!-- <div class="testRed">TESTING...H2</div> -->
+                    <div class="row mb-3">
+                        <a href="\booking">
+                            <input type="button" value="حجز تمرين اليوم" class="btn btn-success" >
+                        </a>
+                    </div>
+                    <div class="row mb-3">
+                        <a href="\dashboard">
+                            <input type="button" value="استعراض بياناتي" class="btn btn-success" >
+                        </a>
+                    </div>
+                    <div class="row mb-3">
+                        <a href="\customer">
+                            <input type="button" value="استعراض اشتراكي" class="btn btn-success" >
+                        </a>
+                    </div>
+                    <div class="row mb-3">
+                        <a href="\visits">
+                            <input type="button" value="اشتراكاتي السابقة" class="btn btn-success" >
+                        </a>
+                    </div>
+                    <!-- {{ __('تم تسجيل الدخول!') }} -->
                 </div>
             </div>
         </div>

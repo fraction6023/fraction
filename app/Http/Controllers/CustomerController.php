@@ -29,8 +29,9 @@ class CustomerController extends Controller
 
 
     public function visits(){
-        //$visits = Visit::where('user_id',Auth::id());
-        $visits = DB::table('visits')->where('user_id',Auth::id())->get();
+        //$visits = Visit::all()->where('user_id',Auth::id());
+        $visits = Visit::where('user_id',Auth::id())->get();
+        //$visits = DB::table('visits')->where('user_id',Auth::id())->get();
         return view('customer.visits',['visits'=>$visits]);
     }
     
@@ -64,9 +65,13 @@ class CustomerController extends Controller
         $visit->save();
 
         //$visits = Visit::where('user_id',Auth::id());
-        $visits = DB::table('visits')->where('user_id',Auth::id())->get();
+        //$visits = DB::table('visits')->where('user_id',Auth::id())->get();
+        $visits = Visit::where('user_id',Auth::id())->get();
 
-        return view('customer.visits',['visits'=>$visits]);    }
+
+        //return view('customer.visits',['visits'=>$visits]);
+        return redirect('visits');
+    }
 
 
 }

@@ -17,6 +17,7 @@
                     @if($visits)
                         @foreach($visits as $visit)
                         <div class="card">
+                            <div class="card-header">{{$visit->gym->name}}</div>
                             <div class="card-body">
                                 <h1>{{$visit->id}}</h1>
                                 <h1>{{$visit->rate}}</h1>

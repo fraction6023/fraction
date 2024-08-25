@@ -30,15 +30,17 @@
                                             <label class="form-control" name="gym_id">{{ $gym->comment }}</label>
                                             <input type="hidden" class="form-control" name="gym_id" value="{{ $gym->id }}">
 
-                                            <label class="form-control" name="gym_id">تكلفة التمرين اليوم <span style="font-weight: bolder;">( {{ $gym->cpd }} )</span> ريال</label>
+                                            <label class="form-control" name="gym_id">اسمتع باستخدم جميع خدمات النادي فقط بـ <span style="font-weight:900;"> {{ $gym->cpd }}</span> ريال</label>
                                             <label class="form-control" name="gym_id">{{ $gym->rate }}</label>
                                             
-                                            <span class="fa fa-star checked"></span>
-                                            <span class="fa fa-star checked"></span>
-                                            <span class="fa fa-star checked"></span>
-                                            <span class="fa fa-star"></span>
-                                            <span class="fa fa-star"></span>
                                             
+                                            @if( $gym->rate -1 >=0 ) <span class="fa fa-star checked"></span> @else <span class="fa fa-star"></span> @endif
+                                            @if( $gym->rate -2 >=0 ) <span class="fa fa-star checked"></span> @else <span class="fa fa-star"></span> @endif
+                                            @if( $gym->rate -3 >=0 ) <span class="fa fa-star checked"></span> @else <span class="fa fa-star"></span> @endif
+                                            @if( $gym->rate -4 >=0 ) <span class="fa fa-star checked"></span> @else <span class="fa fa-star"></span> @endif
+                                            @if( $gym->rate -5 >=0 ) <span class="fa fa-star checked"></span> @else <span class="fa fa-star"></span> @endif
+                                                                                
+                                        
                                         </div>
                                         <div class="gymCardLeft">
                                             <img src="{{ $gym->image }}" alt="" width="100%" height="">

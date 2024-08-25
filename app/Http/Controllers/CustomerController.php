@@ -30,7 +30,7 @@ class CustomerController extends Controller
 
     public function visits(){
         //$visits = Visit::all()->where('user_id',Auth::id());
-        $visits = Visit::where('user_id',Auth::id())->get();
+        $visits = Visit::where('user_id',Auth::id())->orderBy('id', 'DESC')->get();
         //$visits = DB::table('visits')->where('user_id',Auth::id())->get();
         return view('customer.visits',['visits'=>$visits]);
     }

@@ -34,3 +34,18 @@
 .checked {
     color: orange;
   }
+  
+  .pending{
+    background-color: cornflowerblue;
+    font-weight: bold;
+    padding-left: 100px;
+    padding-right: 100px;
+  }
+  
+  
+  .approved{
+    background-color: #49a949;
+    font-weight: bold;
+    padding-left: 100px;
+    padding-right: 100px;
+  }

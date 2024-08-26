@@ -28,6 +28,12 @@ class CustomerController extends Controller
     }
 
 
+    public function visit(){
+        //$visits = Visit::all()->where('user_id',Auth::id());
+        $visit = Visit::where('user_id',Auth::id())->orderBy('id', 'DESC')->get();
+        //$visits = DB::table('visits')->where('user_id',Auth::id())->get();
+        return view('customer.visit',['visit'=>$visit[0]]);
+    }
     public function visits(){
         //$visits = Visit::all()->where('user_id',Auth::id());
         $visits = Visit::where('user_id',Auth::id())->orderBy('id', 'DESC')->get();
@@ -62,6 +68,7 @@ class CustomerController extends Controller
         $visit = new Visit;
         $visit->gym_id = $req->input('gym_id');
         $visit->user_id = Auth::id();
+        $visit->status = 'pending';
         $visit->save();
 
         //$visits = Visit::where('user_id',Auth::id());
@@ -70,7 +77,7 @@ class CustomerController extends Controller
 
 
         //return view('customer.visits',['visits'=>$visits]);
-        return redirect('visits');
+        return redirect('visit');
     }
 
 

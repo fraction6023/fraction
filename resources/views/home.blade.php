@@ -30,8 +30,8 @@
                         </a>
                     </div>
                     <div class="row mb-3">
-                        <a href="\visits">
-                            <input type="button" value="اشتراكاتي السابقة" class="btn btn-success" >
+                        <a href="\visit">
+                            <input type="button" value="اشتراكي الحالي" class="btn btn-success" >
                         </a>
                     </div>
                     <!-- {{ __('تم تسجيل الدخول!') }} -->

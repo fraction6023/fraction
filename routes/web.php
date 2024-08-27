@@ -14,9 +14,13 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('ho
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/customer', [App\Http\Controllers\CustomerController::class, 'index']);
+Route::put('/purchase', [App\Http\Controllers\CustomerController::class, 'purchase']);
+
 
 Route::get('/booking', [App\Http\Controllers\CustomerController::class, 'booking']);
 Route::put('/bookGym', [App\Http\Controllers\CustomerController::class, 'bookGym']);
+Route::put('/approveVisit', [App\Http\Controllers\CustomerController::class, 'approveVisit']);
+Route::put('/cancelBookGym', [App\Http\Controllers\CustomerController::class, 'cancelBookGym']);
 
 
 Route::get('/dashboard', [App\Http\Controllers\CustomerController::class, 'dashboard']);
@@ -24,3 +28,5 @@ Route::put('/dashboardUpdate', [App\Http\Controllers\CustomerController::class, 
 
 Route::get('/visit', [App\Http\Controllers\CustomerController::class, 'visit']);
 Route::get('/visits', [App\Http\Controllers\CustomerController::class, 'visits']);
+Route::put('/feedbackVisit', [App\Http\Controllers\CustomerController::class, 'feedbackVisit']);
+

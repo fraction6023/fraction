@@ -14,9 +14,10 @@ return new class extends Migration
         Schema::create('customers', function (Blueprint $table) {
             $table->id();
             $table->string('user_id')->nullable();
+            $table->string('user_kind')->default('customer');
             $table->string('gender')->nullable();
             $table->string('mobile')->nullable();
-            $table->integer('funds')->default(0);
+            $table->integer('funds')->default(30);
             $table->string('city')->nullable();
             $table->string('image')->default('noImage.jpg');
             $table->string('note')->nullable();

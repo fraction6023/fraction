@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('status')->nullable();
             $table->integer('cost')->default(0);
             $table->string('rate')->nullable();
+            $table->string('approveCode')->nullable();
             $table->string('comment')->nullable();
             $table->timestamps();          
         });

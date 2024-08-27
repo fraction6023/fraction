@@ -17,6 +17,17 @@
                     @if($customer)
                         <label> الرصيد المتوفر: <span>{{$customer->funds}}</span> ريال</label>
                     @endif
+
+                    <form action="{{ url('purchase') }}" method="POST">
+                        @csrf
+                        @method('PUT')
+                        <div class="card">
+                            <div class="gymCardContainer">
+                                <input type="text" class="form-control" name="funds">
+                                <input type="submit" class="btn btn-success" name="" value="حفظ">
+                            </div>
+                            </div>
+                        </div>
                 </div>
             </div>
         </div>

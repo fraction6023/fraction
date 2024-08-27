@@ -13,54 +13,69 @@
                             {{ session('status') }}
                         </div>
                     @endif
+                    @if(count($visit))
+                        <form action="{{ url('bookGym') }}" method="POST">
+                            @csrf
+                            @method('PUT')
+                            <div class="card">
+                                <div class="gymCardContainer">
+                                    <div class="gymCardRight">
+                                        <div class="card-header" name="gym_name">{{ $visit[0]->gym->name }}</div>
 
-                    <form action="{{ url('bookGym') }}" method="POST">
-                        @csrf
-                        @method('PUT')
-                        <div class="card">
-                            <div class="gymCardContainer">
-                                <div class="gymCardRight">
-                                    <div class="card-header" name="gym_name">{{ $visit->gym->name }}</div>
+                                        <input type="hidden" class="form-control" name="gym_id" value="{{ $visit[0]->gym->id }}">
+                                        
+                                        <label class="form-control" name="gym_comment">{{  $visit[0]->gym->comment }}</label>
+                                        <input type="hidden" class="form-control" name="gym_id" value="{{  $visit[0]->gym->id }}">
 
-                                    <input type="hidden" class="form-control" name="gym_id" value="{{ $visit->gym->id }}">
+                                        <label class="form-control" name="gym_id">استمتع باستخدم جميع خدمات النادي فقط بـ <span style="font-weight:900;"> {{ $visit[0]->gym->cpd }}</span> ريال</label>
+                                        <?php
+                                            if($visit[0]->status == 'pending'){
+                                                $statusMsg = 'تحت الدراسة';
+                                                }elseif($visit[0]->status == 'approved'){
+                                                    $statusMsg = 'معتمد';
+                                                }elseif($visit[0]->status == 'canceled'){
+                                                    $statusMsg = 'ملغى';
+                                                }else{
+                                                    $statusMsg = '';
+                                                    $string = '';
+                                                }
+                                        ?>
+                                        <label class="form-control_ {{ $visit[0]->status }}" name="visit_status">{{ $statusMsg }}</label>
+                                        <br>
+                                        
+                                        @if( $visit[0]->gym->rate -1 >=0 ) <span class="fa fa-star checked"></span> @else <span class="fa fa-star"></span> @endif
+                                        @if( $visit[0]->gym->rate -2 >=0 ) <span class="fa fa-star checked"></span> @else <span class="fa fa-star"></span> @endif
+                                        @if( $visit[0]->gym->rate -3 >=0 ) <span class="fa fa-star checked"></span> @else <span class="fa fa-star"></span> @endif
+                                        @if( $visit[0]->gym->rate -4 >=0 ) <span class="fa fa-star checked"></span> @else <span class="fa fa-star"></span> @endif
+                                        @if( $visit[0]->gym->rate -5 >=0 ) <span class="fa fa-star checked"></span> @else <span class="fa fa-star"></span> @endif
+                                                                            
                                     
-                                    <label class="form-control" name="gym_comment">{{  $visit->gym->comment }}</label>
-                                    <input type="hidden" class="form-control" name="gym_id" value="{{  $visit->gym->id }}">
-
-                                    <label class="form-control" name="gym_id">اسمتع باستخدم جميع خدمات النادي فقط بـ <span style="font-weight:900;"> {{ $visit->gym->cpd }}</span> ريال</label>
-                                    <?php
-                                        if($visit->status == 'pending'){
-                                            $statusMsg = 'تحت الدراسة';
-                                            }elseif($visit->status == 'approved'){
-                                                $statusMsg = 'معتمد';
-                                            }
-                                    ?>
-                                    <label class="form-control_ {{ $visit->status }}" name="visit_status">{{ $statusMsg }}</label>
-                                    <br>
-                                    
-                                    @if( $visit->gym->rate -1 >=0 ) <span class="fa fa-star checked"></span> @else <span class="fa fa-star"></span> @endif
-                                    @if( $visit->gym->rate -2 >=0 ) <span class="fa fa-star checked"></span> @else <span class="fa fa-star"></span> @endif
-                                    @if( $visit->gym->rate -3 >=0 ) <span class="fa fa-star checked"></span> @else <span class="fa fa-star"></span> @endif
-                                    @if( $visit->gym->rate -4 >=0 ) <span class="fa fa-star checked"></span> @else <span class="fa fa-star"></span> @endif
-                                    @if( $visit->gym->rate -5 >=0 ) <span class="fa fa-star checked"></span> @else <span class="fa fa-star"></span> @endif
-                                                                        
-                                
+                                    </div>
+                                    <div class="gymCardLeft">
+                                        <img src="{{ $visit[0]->gym->image }}" alt="" width="100%" height="">
+                                    </div>
                                 </div>
-                                <div class="gymCardLeft">
-                                    <img src="{{ $visit->gym->image }}" alt="" width="100%" height="">
-                                </div>
+                                <!-- <input type="submit" value="احجز" class="btn btn-primary"> -->
                             </div>
-                            <!-- <input type="submit" value="احجز" class="btn btn-primary"> -->
+                        </form>
+                   
+                    @if( $visit[0]->status == 'pending')
+                    <form action="{{ url('cancelBookGym') }}" method="POST">
+                    @csrf
+                    @method('PUT')
+                        <div class="card">
+                            <input type="submit" value="الغاء" class="btn btn-danger" >
+                            <input type="hidden" class="form-control" name="visit_id" value="{{ $visit[0]->id }}">
+                            <input type="hidden" class="form-control" name="visit_cost" value="{{ $visit[0]->cost }}">
                         </div>
                     </form>
-                    
+                    @endif
+                    @endif
                     <form action="visits" class="">
                         <div class="card">
-                            <!-- <a href="\visits"> -->
-                                <input type="submit" value="اشتراكاتي السابقة" class="btn btn-success" >
-                            <!-- </a> -->
+                            <input type="submit" value="اشتراكاتي السابقة" class="btn btn-success" >
                         </div>
-                </form>
+                    </form>
                 </div>
             </div>
         </div>

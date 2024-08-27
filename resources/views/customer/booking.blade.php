@@ -15,7 +15,7 @@
                     @endif
                     
                     @if($gyms)
-
+                    <p>رصيدك الحالي {{$fund->funds}} ريال</p>
                         @foreach($gyms as $gym)
                             <form action="{{ url('bookGym') }}" method="POST">
                                 @csrf
@@ -29,16 +29,28 @@
                                             
                                             <label class="form-control" name="gym_id">{{ $gym->comment }}</label>
                                             <input type="hidden" class="form-control" name="gym_id" value="{{ $gym->id }}">
+                                            <input type="hidden" class="form-control" name="cpd" value="{{ $gym->cpd }}">
 
                                             <label class="form-control" name="gym_id">اسمتع باستخدم جميع خدمات النادي فقط بـ <span style="font-weight:900;"> {{ $gym->cpd }}</span> ريال</label>
                                             <label class="form-control" name="gym_id">{{ $gym->rate }}</label>
                                             
-                                            
-                                            @if( $gym->rate -1 >=0 ) <span class="fa fa-star checked"></span> @else <span class="fa fa-star"></span> @endif
-                                            @if( $gym->rate -2 >=0 ) <span class="fa fa-star checked"></span> @else <span class="fa fa-star"></span> @endif
-                                            @if( $gym->rate -3 >=0 ) <span class="fa fa-star checked"></span> @else <span class="fa fa-star"></span> @endif
-                                            @if( $gym->rate -4 >=0 ) <span class="fa fa-star checked"></span> @else <span class="fa fa-star"></span> @endif
-                                            @if( $gym->rate -5 >=0 ) <span class="fa fa-star checked"></span> @else <span class="fa fa-star"></span> @endif
+                                            {{$i = 0;}}
+
+                                            @foreach($allVisits as $visit)
+                                                @if($visit->rate)
+                                                    @if($visit->gym_id == $gym->id)
+                                                        {{$i = $i + $visit->rate}}
+                                                    @endif
+                                                @endif
+                                            @endforeach
+                                            <p>{{($i / count($allVisits)) * 5}}</p>
+                                            {{$j=($i / count($allVisits)) * 5}}
+
+                                            @if( $j -1 >=0 ) <span class="fa fa-star checked"></span> @else <span class="fa fa-star"></span> @endif
+                                            @if( $j -2 >=0 ) <span class="fa fa-star checked"></span> @else <span class="fa fa-star"></span> @endif
+                                            @if( $j -3 >=0 ) <span class="fa fa-star checked"></span> @else <span class="fa fa-star"></span> @endif
+                                            @if( $j -4 >=0 ) <span class="fa fa-star checked"></span> @else <span class="fa fa-star"></span> @endif
+                                            @if( $j -5 >=0 ) <span class="fa fa-star checked"></span> @else <span class="fa fa-star"></span> @endif
                                                                                 
                                         
                                         </div>
@@ -46,9 +58,32 @@
                                             <img src="{{ $gym->image }}" alt="" width="100%" height="">
                                         </div>
                                     </div>
-                                    <input type="submit" value="احجز" class="btn btn-primary">
+                                    @if(count($visits) > 0)
+                                        @if($visits[0]->status == 'pending')
+                                        <input type="button" onclick="location.href='visit';" value="لديك حجز نشط حالياً" class="btn btn-primary">
+                                        @elseif($fund->funds - $gym->cpd >= 0 )
+                                            <input type="submit" value="احجز" class="btn btn-primary">
+                                        @elseif($fund->funds - $gym->cpd < 0 )
+                                            <input type="button" onclick="location.href='customer';" value="اشحن رصيدك لتتمكن من الحجز" class="btn btn-primary">
+                                        @endif
+                                    @endif
+
+                                    @if(count($visits) == 0)
+                                        @if($fund->funds - $gym->cpd >= 0 )
+                                            <input type="submit" value="احجز" class="btn btn-primary">
+                                        @elseif($fund->funds - $gym->cpd < 0 )
+                                            <input type="button" onclick="location.href='customer';" value="اشحن رصيدك لتتمكن من الحجز" class="btn btn-primary">
+                                        @endif
+                                    @endif
+
                                 </div>
                             </form>
+                            <!-- <form action="" class="">
+                                @if($fund->funds - $gym->cpd < 0)
+                                    <input type="submit" value="اشحن رصيدك لتتمكن من الحجز" class="btn btn-primary">
+                                @endif
+                                </div>
+                            </form> -->
                             <br>
                         @endforeach
                     @endif                

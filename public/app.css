@@ -42,10 +42,34 @@
     padding-right: 100px;
   }
   
-  
   .approved{
-    background-color: #49a949;
+    background-color: #49a949c4;
     font-weight: bold;
     padding-left: 100px;
     padding-right: 100px;
+    margin-bottom: 10px;
+  }
+
+  .canceled{
+    background-color: #e925498d;
+    font-weight: bold;
+    padding-left: 100px;
+    padding-right: 100px;
+    margin-bottom: 10px;
+  }
+  .finish{
+    background-color: #8bf0ca;
+    font-weight: bold;
+    padding-left: 100px;
+    padding-right: 100px;
+    margin-bottom: 10px;
+  }
+  
+  
+  .visited{
+    background-color: #eaf12991;
+    font-weight: bold;
+    padding-left: 100px;
+    padding-right: 100px;
+    margin-bottom: 10px;
   }

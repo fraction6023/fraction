@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('class')->nullable();
             $table->string('status')->nullable();
             $table->integer('capacity')->default(0); // capacity per hour
+            $table->string('location')->nullable(); // google maps gym location
             $table->integer('cpd')->default(0); // cost per day
             $table->integer('cpw')->default(0); // cost per week
             $table->integer('cpm')->default(0); // cost per month

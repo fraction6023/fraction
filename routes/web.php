@@ -29,4 +29,6 @@ Route::put('/dashboardUpdate', [App\Http\Controllers\CustomerController::class, 
 Route::get('/visit', [App\Http\Controllers\CustomerController::class, 'visit']);
 Route::get('/visits', [App\Http\Controllers\CustomerController::class, 'visits']);
 Route::put('/feedbackVisit', [App\Http\Controllers\CustomerController::class, 'feedbackVisit']);
+Route::put('/feedbackfinish', [App\Http\Controllers\CustomerController::class, 'feedbackfinish']);
+
 

@@ -159,5 +159,15 @@ class CustomerController extends Controller
 
         return redirect('visits');
     }
+    public function feedbackfinish(Request $req){
+        $visit = Visit::find($req->input('visit_id'));
+     
+        $visit->status = 'visited';
+
+        $visit->save();
+
+        return redirect('visits');
+    }
+
 
 }

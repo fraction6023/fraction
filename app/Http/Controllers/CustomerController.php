@@ -15,7 +15,13 @@ class CustomerController extends Controller
     public function index(){
         if(Auth::id()){
         $customer =  Customer::find(Auth::id());
-        return view('customer.index')->with('customer',$customer);
+        if( $customer->user_kind == 'customer' ){
+            return view('customer.home')->with('customer',$customer);
+        }elseif( $customer->user_kind == 'gym' ){
+            return view('gym.home')->with('customer',$customer);
+        }else{
+            return view('welcome')->with('customer',$customer);
+        }
         }else{
             $customer =  Customer::find(Auth::id());
         return view('welcome');
@@ -151,9 +157,13 @@ class CustomerController extends Controller
 
     public function feedbackVisit(Request $req){
         $visit = Visit::find($req->input('visit_id'));
-        $visit->comment = $req->input('comment');
-        $visit->rate = $req->input('rate');
-        $visit->status = 'finish';
+        $visit->gym_comment = $req->input('comment');
+        $visit->gym_rate = $req->input('rate');
+
+        if($visit->status == 'visited')
+            $visit->status = 'finish_customer';
+        else
+            $visit->status = 'finish';
 
         $visit->save();
 

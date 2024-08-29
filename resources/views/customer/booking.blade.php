@@ -23,7 +23,7 @@
                     @foreach($allVisits as $visit)
                         @if($visit->customer_rate)
                             @if($visit->user_id ==  Auth::user()->id )
-                                {{$i = $i + $visit->gym_rate}}
+                                {{$i = $i + $visit->customer_rate}}
                                 {{$j++;}}
                             @endif
                         @endif

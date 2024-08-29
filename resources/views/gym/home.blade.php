@@ -18,22 +18,22 @@
                     <!-- <div class="testRed">TESTING...H2</div> -->
                     
                         <!-- <a href="\booking"> -->
-                            <input type="button" value="حجز تمرين اليوم" onclick="location.href='booking';" class="btn btn-success mb-3" >
+                            <input type="button" value="حجوزات بانتظار الاعتماد" onclick="location.href='waitingOrders';" class="btn btn-success mb-3" >
                         <!-- </a> -->
                     
                     <!-- <div class="row mb-3">
                         <a href="\dashboard"> -->
-                            <input type="button" value="استعراض بياناتي" onclick="location.href='dashboard';" class="btn btn-success mb-3" >
+                            <input type="button" value="بيانات النادي" onclick="location.href='dashboard';" class="btn btn-success mb-3" >
                         <!-- </a>
                     </div> -->
                     <!-- <div class="row mb-3">
                         <a href="\customer"> -->
-                            <input type="button" value="استعراض اشتراكي" onclick="location.href='customer';" class="btn btn-success mb-3" >
+                            <input type="button" value="سجل العملاء" onclick="location.href='customer';" class="btn btn-success mb-3" >
                         <!-- </a>
                     </div> -->
                     <!-- <div class="row mb-3">
                         <a href="\visit"> -->
-                            <input type="button" value="اشتراكي الحالي" onclick="location.href='visit';" class="btn btn-success mb-3" >
+                            <!-- <input type="button" value="اشتراكي الحالي" onclick="location.href='visit';" class="btn btn-success mb-3" > -->
                         <!-- </a>
                     </div> -->
                     <!-- {{ __('تم تسجيل الدخول!') }} -->

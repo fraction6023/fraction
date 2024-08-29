@@ -10,8 +10,10 @@ use Illuminate\Support\Facades\Auth;
 
 Auth::routes();
 
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [App\Http\Controllers\CustomerController::class, 'index']);
+Route::get('/home', [App\Http\Controllers\CustomerController::class, 'index']);
 
 Route::get('/customer', [App\Http\Controllers\CustomerController::class, 'index']);
 Route::put('/purchase', [App\Http\Controllers\CustomerController::class, 'purchase']);
@@ -32,3 +34,15 @@ Route::put('/feedbackVisit', [App\Http\Controllers\CustomerController::class, 'f
 Route::put('/feedbackfinish', [App\Http\Controllers\CustomerController::class, 'feedbackfinish']);
 
 
+//***** Gym routing *******//
+
+Route::get('/waitingOrders', [App\Http\Controllers\GymController::class, 'waitingOrders']);
+Route::put('/gymfeedbackVisit', [App\Http\Controllers\GymController::class, 'gymfeedbackVisit']);
+
+
+
+
+//***** Gym routing *******//
+
+Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index']);
+Route::put('/matchUserGym', [App\Http\Controllers\AdminController::class, 'matchUserGym']);

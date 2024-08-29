@@ -16,6 +16,38 @@
                     
                     @if($gyms)
                     <p>رصيدك الحالي {{$fund->funds}} ريال</p>
+
+                    {{$i = 0;}}
+                    {{$j = 0;}}
+
+                    @foreach($allVisits as $visit)
+                        @if($visit->customer_rate)
+                            @if($visit->user_id ==  Auth::user()->id )
+                                {{$i = $i + $visit->gym_rate}}
+                                {{$j++;}}
+                            @endif
+                        @endif
+                    @endforeach
+                    
+                    @if($i >0 )
+                    <p>{{($i / $j) }}</p>
+                    {{$j=($i / $j) }}
+                    
+                    @if( $j -1 >=0 ) <span class="fa fa-star checked"></span> @else <span class="fa fa-star"></span> @endif
+                    @if( $j -2 >=0 ) <span class="fa fa-star checked"></span> @else <span class="fa fa-star"></span> @endif
+                    @if( $j -3 >=0 ) <span class="fa fa-star checked"></span> @else <span class="fa fa-star"></span> @endif
+                    @if( $j -4 >=0 ) <span class="fa fa-star checked"></span> @else <span class="fa fa-star"></span> @endif
+                    @if( $j -5 >=0 ) <span class="fa fa-star checked"></span> @else <span class="fa fa-star"></span> @endif
+
+                    @endif
+
+
+
+
+
+
+
+
                         @foreach($gyms as $gym)
                             <form action="{{ url('bookGym') }}" method="POST">
                                 @csrf
@@ -35,23 +67,28 @@
                                             <label class="form-control" name="gym_id">{{ $gym->rate }}</label>
                                             
                                             {{$i = 0;}}
+                                            {{$j = 0;}}
 
                                             @foreach($allVisits as $visit)
-                                                @if($visit->rate)
+                                                @if($visit->gym_rate)
                                                     @if($visit->gym_id == $gym->id)
-                                                        {{$i = $i + $visit->rate}}
+                                                        {{$i = $i + $visit->gym_rate}}
+                                                        {{$j++;}}
                                                     @endif
                                                 @endif
                                             @endforeach
-                                            <p>{{($i / count($allVisits)) * 5}}</p>
-                                            {{$j=($i / count($allVisits)) * 5}}
-
+                                            
+                                            @if($i >0 )
+                                            <p>{{($i / $j) }}</p>
+                                            {{$j=($i / $j) }}
+                                           
                                             @if( $j -1 >=0 ) <span class="fa fa-star checked"></span> @else <span class="fa fa-star"></span> @endif
                                             @if( $j -2 >=0 ) <span class="fa fa-star checked"></span> @else <span class="fa fa-star"></span> @endif
                                             @if( $j -3 >=0 ) <span class="fa fa-star checked"></span> @else <span class="fa fa-star"></span> @endif
                                             @if( $j -4 >=0 ) <span class="fa fa-star checked"></span> @else <span class="fa fa-star"></span> @endif
                                             @if( $j -5 >=0 ) <span class="fa fa-star checked"></span> @else <span class="fa fa-star"></span> @endif
-                                                                                
+
+                                            @endif
                                         
                                         </div>
                                         <div class="gymCardLeft">

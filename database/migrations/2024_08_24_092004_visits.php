@@ -17,9 +17,12 @@ return new class extends Migration
             $table->unsignedInteger('gym_id')->nullable();
             $table->string('status')->nullable();
             $table->integer('cost')->default(0);
-            $table->string('rate')->nullable();
             $table->string('approveCode')->nullable();
-            $table->string('comment')->nullable();
+            $table->string('gym_rate')->nullable();
+            $table->string('gym_comment')->nullable();
+            $table->string('customer_rate')->nullable();
+            $table->string('customer_comment')->nullable();
+
             $table->timestamps();          
         });
     }

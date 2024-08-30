@@ -25,7 +25,7 @@
                         @if($visit->customer_rate)
                             @if($visit->user_id ==  Auth::user()->id )
                                 {{$i = $i + $visit->customer_rate}}
-                                {{$j++;}}
+                                {{$j++}}
                             @endif
                         @endif
                     @endforeach
@@ -72,7 +72,7 @@
                                             <input type="hidden" class="form-control" name="cpd" value="{{ $gym->cpd }}">
 
                                             <label class="form-control" name="gym_id">اسمتع باستخدم جميع خدمات النادي فقط بـ <span style="font-weight:900;"> {{ $gym->cpd }}</span> ريال</label>
-                                            <label class="form-control" name="gym_id">{{ $gym->rate }}</label>
+                                            <!-- <label class="form-control" name="gym_id">{{ $gym->rate }}</label> -->
                                             @php
                                             {{$i = 0;}}
                                             {{$j = 0;}}

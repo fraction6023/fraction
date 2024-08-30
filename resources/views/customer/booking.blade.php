@@ -16,9 +16,10 @@
                     
                     @if($gyms)
                     <p>رصيدك الحالي {{$fund->funds}} ريال</p>
-
+                    @php
                     {{$i = 0;}}
                     {{$j = 0;}}
+                    @endphp
 
                     @foreach($allVisits as $visit)
                         @if($visit->customer_rate)
@@ -30,8 +31,15 @@
                     @endforeach
                     
                     @if($i >0 )
-                    <p>{{($i / $j) }}</p>
-                    {{$j=($i / $j) }}
+                    <p>
+                    @php
+                    ($i / $j) 
+                    @endphp
+                    </p>
+
+                    @php
+                    $j=($i / $j)
+                    @endphp
                     
                     @if( $j -1 >=0 ) <span class="fa fa-star checked"></span> @else <span class="fa fa-star"></span> @endif
                     @if( $j -2 >=0 ) <span class="fa fa-star checked"></span> @else <span class="fa fa-star"></span> @endif
@@ -65,10 +73,10 @@
 
                                             <label class="form-control" name="gym_id">اسمتع باستخدم جميع خدمات النادي فقط بـ <span style="font-weight:900;"> {{ $gym->cpd }}</span> ريال</label>
                                             <label class="form-control" name="gym_id">{{ $gym->rate }}</label>
-                                            
+                                            @php
                                             {{$i = 0;}}
                                             {{$j = 0;}}
-
+                                            @endphp 
                                             @foreach($allVisits as $visit)
                                                 @if($visit->gym_rate)
                                                     @if($visit->gym_id == $gym->id)

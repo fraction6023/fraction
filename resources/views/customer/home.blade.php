@@ -41,4 +41,21 @@
         </div>
     </div>
 </div>
+<div class="card">
+    <!-- <div class="card-header">
+        <p class="">header</p>
+    </div> -->
+    <div class="card-body">
+        <p class="">body</p>
+
+        <div class="scroll-container">
+            <img src="https://www.w3schools.com/howto/img_5terre.jpg" alt="Cinque Terre" width="600" height="400">
+            <img src="https://www.w3schools.com/howto/img_5terre.jpg" alt="Forest" width="600" height="400">
+            <img src="https://www.w3schools.com/howto/img_5terre.jpg" alt="Northern Lights" width="600" height="400">
+            <img src="https://www.w3schools.com/howto/img_5terre.jpg" alt="Mountains" width="600" height="400">
+        </div>
+    </div>
+
+    </div>
+</div>
 @endsection

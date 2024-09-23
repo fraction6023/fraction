@@ -75,12 +75,42 @@
   }
 
   div.scroll-container {
+    display: flex;
+    background-color: #333;
+    overflow: auto;
+    white-space: nowrap;
+    padding: 10px;
+  }
+
+  div.scroll-container_ {
+    display: flex;
+    width: 100%;
     background-color: #333;
     overflow: auto;
     white-space: nowrap;
     padding: 10px;
   }
   
-  div.scroll-container img {
+  /* div.scroll-container img {
     padding: 10px;
+  } */
+
+  div.scroll-container div {
+    display: inline;
+    padding: 10px;
+    height: 250px;
+    width: 500px;
+    background-color: #f8fbfa;
+    border: 2px solid #8bf0ca;
+  }
+  
+  .current-booked-gym{
+    width:50%;
+    margin-right: 25%;
+  }
+
+  .visit-container{
+    width: 100%;
+    margin-right: 15%;
+    margin-bottom: 5px;
   }

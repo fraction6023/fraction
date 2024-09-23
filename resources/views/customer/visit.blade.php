@@ -61,17 +61,17 @@
                             </div>
                         </form>
                    
-                    @if( $visit[0]->status == 'pending')
-                    <form action="{{ url('cancelBookGym') }}" method="POST">
-                    @csrf
-                    @method('PUT')
-                        <div class="card">
-                            <input type="submit" value="الغاء" class="btn btn-danger" >
-                            <input type="hidden" class="form-control" name="visit_id" value="{{ $visit[0]->id }}">
-                            <input type="hidden" class="form-control" name="visit_cost" value="{{ $visit[0]->cost }}">
-                        </div>
-                    </form>
-                    @endif
+                        @if( $visit[0]->status == 'pending')
+                            <form action="{{ url('cancelBookGym') }}" method="POST">
+                            @csrf
+                            @method('PUT')
+                                <div class="card">
+                                    <input type="submit" value="الغاء" class="btn btn-danger" >
+                                    <input type="hidden" class="form-control" name="visit_id" value="{{ $visit[0]->id }}">
+                                    <input type="hidden" class="form-control" name="visit_cost" value="{{ $visit[0]->cost }}">
+                                </div>
+                            </form>
+                        @endif
                     @endif
                     <form action="visits" class="">
                         <div class="card">

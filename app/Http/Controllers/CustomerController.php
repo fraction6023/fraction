@@ -16,7 +16,14 @@ class CustomerController extends Controller
         if(Auth::id()){
         $customer =  Customer::find(Auth::id());
         if( $customer->user_kind == 'customer' ){
-            return view('customer.home')->with('customer',$customer);
+            $visit = Visit::where('user_id',Auth::id())->where('status','pending')->orderBy('id', 'DESC')->get();
+
+            $visits = Visit::where('user_id',Auth::id())->orderBy('id', 'DESC')->get();
+            // return view('customer.home',['visit'=>$visit]);
+
+
+            return view('customer.home',['visits'=>$visits,'visit'=>$visit,'customer'=>$customer]);
+            //return view('customer.home1')->with('customer',$customer);
         }elseif( $customer->user_kind == 'gym' ){
             return view('gym.home')->with('customer',$customer);
         }else{

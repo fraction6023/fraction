@@ -106,12 +106,43 @@
   }
   
   .current-booked-gym{
-    width:50%;
-    margin-right: 25%;
+    width:96%;
+    margin-right: 2%;
   }
 
   .visit-container{
     width: 100%;
     margin-right: 15%;
     margin-bottom: 5px;
+  }
+
+  /* .scrollingDiv{
+    width: 96%;
+    margin: 2%;
+    border: 1px solid #999;
+    
+  }
+  .scrollingItem{
+    width: 50px;
+    height: 100px;
+    border: 1px solid #abc;
+
+  } */
+
+  .scrollingDiv{
+    width: 1000px;
+    height: 190px;
+    overflow: auto;
+    overflow-y: hidden;
+    margin: 0 auto;
+    white-space: nowrap;
+    background-color: #3333;
+  }
+  .scrollingItem{
+    width: 30000px;
+    height: 150px;
+    margin: 20px 10px;
+    display: inline;
+    border: 1px solid #abc;
+
   }

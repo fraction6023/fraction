@@ -77,12 +77,12 @@
 
 
 <div class="card">
-    <div class="card-body scroll-container_">
+    <div class="card-body_ scroll-container_ scrollingDiv">
             <div class="">
 
                 @if($visits)
                     @foreach($visits as $visit)
-                    <div class="visit-container">
+                    <div class="scrollingItem">
                         @if( $visit->status == 'approved' )
                         <form action="{{ url('feedbackfinish') }}" method="POST">
                                 @csrf
@@ -361,6 +361,54 @@
 
                 @endif
             </div>
+        </div>
+    </div>
+</div>
+<br>
+<div class="card">
+    <div class="card-header">test</div>
+        <div class="scrollingDiv">
+            <div class="scrollingItem">1</div>
+            <div class="scrollingItem">2</div>
+            <div class="scrollingItem">3</div>
+            <div class="scrollingItem">4</div>    
+            <div class="scrollingItem">1</div>
+            <div class="scrollingItem">2</div>
+            <div class="scrollingItem">3</div>
+            <div class="scrollingItem">4</div>    
+            <div class="scrollingItem">1</div>
+            <div class="scrollingItem">2</div>
+            <div class="scrollingItem">3</div>
+            <div class="scrollingItem">4</div>    
+            <div class="scrollingItem">1</div>
+            <div class="scrollingItem">2</div>
+            <div class="scrollingItem">3</div>
+            <div class="scrollingItem">4</div>    
+            <div class="scrollingItem">1</div>
+            <div class="scrollingItem">2</div>
+            <div class="scrollingItem">3</div>
+            <div class="scrollingItem">4</div>    
+            <div class="scrollingItem">1</div>
+            <div class="scrollingItem">2</div>
+            <div class="scrollingItem">3</div>
+            <div class="scrollingItem">4</div>    
+            <div class="scrollingItem">1</div>
+            <div class="scrollingItem">2</div>
+            <div class="scrollingItem">3</div>
+            <div class="scrollingItem">4</div>    
+            <div class="scrollingItem">1</div>
+            <div class="scrollingItem">2</div>
+            <div class="scrollingItem">3</div>
+            <div class="scrollingItem">4</div>    
+            <div class="scrollingItem">1</div>
+            <div class="scrollingItem">2</div>
+            <div class="scrollingItem">3</div>
+            <div class="scrollingItem">4</div>    
+            <div class="scrollingItem">1</div>
+            <div class="scrollingItem">2</div>
+            <div class="scrollingItem">3</div>
+            <div class="scrollingItem">4</div>    
+            
         </div>
     </div>
 </div>

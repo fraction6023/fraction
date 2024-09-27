@@ -124,7 +124,8 @@ class CustomerController extends Controller
 
 
         //return view('customer.visits',['visits'=>$visits]);
-        return redirect('visit');
+        //return redirect('visit');
+        return redirect('/');
     }
 
     public function approveVisit(Request $req){

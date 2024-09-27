@@ -82,7 +82,7 @@
                                 </div>
                             </div>
                                 
-                                <input type="submit" value="تم الدخوول" class="btn btn-primary">
+                                <!-- <input type="submit" value="تم الدخوول" class="btn btn-primary"> //will show here and hide from gym->visits -->
                                 
                               
                         </div>
@@ -126,7 +126,7 @@
 
                                     <label class="form-control_ {{ $visit->status }}" name="visit_status">{{ $statusMsg }}</label>
                                     <br>
-                                    <label class="form-control_ " name="visit_status">{{ $visit->approveCode }}</label>
+                                    <!-- <label class="form-control_ " name="visit_status">{{ $visit->approveCode }}</label>  //will show here and hide from gym->visits -->
                                     
                                     <br>
                                     @if( $visit->status == 'visited' || $visit->status == 'finish_gym')

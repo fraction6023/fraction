@@ -20,7 +20,7 @@
 .gymCardLeft{
     display: inline;
     border: 1px solid #3333;
-    width: 30%;
+    width: 20%;
     /* height: 150px; */
     text-align: center;
 }
@@ -36,10 +36,11 @@
   }
   
   .pending{
+    width: 100%;
     background-color: cornflowerblue;
     font-weight: bold;
-    padding-left: 100px;
-    padding-right: 100px;
+    /* padding-left: 100px;
+    padding-right: 100px; */
   }
   
   .approved{

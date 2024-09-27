@@ -21,7 +21,7 @@ class CustomerController extends Controller
             $visits = Visit::where('user_id',Auth::id())->orderBy('id', 'DESC')->get();
             // return view('customer.home',['visit'=>$visit]);
 
-
+            //return view('app.your_view',compact('object'));
             return view('customer.home',['visits'=>$visits,'visit'=>$visit,'customer'=>$customer]);
             //return view('customer.home1')->with('customer',$customer);
         }elseif( $customer->user_kind == 'gym' ){
@@ -106,7 +106,7 @@ class CustomerController extends Controller
 
 
         //return view('customer.visits',['visits'=>$visits]);
-        return redirect('visit');
+        return redirect('/');
     }
     public function cancelBookGym(Request $req){
 

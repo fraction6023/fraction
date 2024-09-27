@@ -60,8 +60,13 @@
                     </div>
                 </form>
             @endif
-        @endif
-        @if($visits[0]->status != 'pending')
+        
+            @if($visits[0]->status != 'pending')
+            <div class="card">
+                <input type="button" value="حجز تمرين اليوم" onclick="location.href='booking';" class="btn btn-success mb-3" >
+            </div>
+            @endif
+        @else
         <div class="card">
             <input type="button" value="حجز تمرين اليوم" onclick="location.href='booking';" class="btn btn-success mb-3" >
         </div>

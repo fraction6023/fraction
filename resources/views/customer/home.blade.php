@@ -365,7 +365,7 @@
     </div>
 </div>
 <br>
-<div class="card">
+<!-- <div class="card">
     <div class="card-header">test</div>
         <div class="scrollingDiv">
             <div class="scrollingItem">1</div>
@@ -384,32 +384,8 @@
             <div class="scrollingItem">2</div>
             <div class="scrollingItem">3</div>
             <div class="scrollingItem">4</div>    
-            <div class="scrollingItem">1</div>
-            <div class="scrollingItem">2</div>
-            <div class="scrollingItem">3</div>
-            <div class="scrollingItem">4</div>    
-            <div class="scrollingItem">1</div>
-            <div class="scrollingItem">2</div>
-            <div class="scrollingItem">3</div>
-            <div class="scrollingItem">4</div>    
-            <div class="scrollingItem">1</div>
-            <div class="scrollingItem">2</div>
-            <div class="scrollingItem">3</div>
-            <div class="scrollingItem">4</div>    
-            <div class="scrollingItem">1</div>
-            <div class="scrollingItem">2</div>
-            <div class="scrollingItem">3</div>
-            <div class="scrollingItem">4</div>    
-            <div class="scrollingItem">1</div>
-            <div class="scrollingItem">2</div>
-            <div class="scrollingItem">3</div>
-            <div class="scrollingItem">4</div>    
-            <div class="scrollingItem">1</div>
-            <div class="scrollingItem">2</div>
-            <div class="scrollingItem">3</div>
-            <div class="scrollingItem">4</div>    
-            
+            <div class="scrollingItem">1</div>            
         </div>
     </div>
-</div>
+</div> -->
 @endsection

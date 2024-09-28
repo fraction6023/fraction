@@ -28,7 +28,7 @@
                                     <input type="hidden" class="form-control" name="visit_id" value="{{ $visit->gym->id }}">
                                     <input type="hidden" class="form-control" name="visit_id" value="{{ $visit->id }}">
 
-                                    <!-- <label class="form-control" name="gym_comment">{{  $visit->gym->comment }}</label> -->
+                                    <!-- <label class="form-control" name="customer_comment">{{  $visit->gym->comment }}</label> -->
                                     <input type="hidden" class="form-control" name="gym_id" value="{{  $visit->gym->id }}">
 
                                     <!-- <label class="form-control" name="gym_id">اسمتع باستخدم جميع خدمات النادي فقط بـ <span style="font-weight:900;"> {{ $visit->gym->cpd }}</span> ريال</label> -->
@@ -52,7 +52,9 @@
 
                                             
                                     ?>
-
+                                    
+                                    <label class="form-control_ {{ $visit->status_ }}" name="orderId">رقم الطلب: {{ $visit->id }}</label>
+                                    <br>
                                     <label class="form-control_ {{ $visit->status }}" name="visit_status">{{ $statusMsg }}</label>
                                     <br>
                                     <!-- <label class="form-control_ " name="visit_status">{{ $visit->approveCode }}</label> -->
@@ -74,7 +76,8 @@
                                     @if( $visit->rate -3 >=0 ) <span class="fa fa-star checked"></span> @else <span class="fa fa-star"></span> @endif
                                     @if( $visit->rate -4 >=0 ) <span class="fa fa-star checked"></span> @else <span class="fa fa-star"></span> @endif
                                     @if( $visit->rate -5 >=0 ) <span class="fa fa-star checked"></span> @else <span class="fa fa-star"></span> @endif
-                                    <label style="padding-left: 10px;"> {{ $visit->comment }}</label>
+                                    <br>
+                                    <label style="padding-left: 10px;"> {{ $visit->customer_comment }}</label>
                                     @endif
                                 </div>
                                 <div class="gymCardLeft">
@@ -98,7 +101,7 @@
                                     <input type="hidden" class="form-control" name="visit_id" value="{{ $visit->gym->id }}">
                                     <input type="hidden" class="form-control" name="visit_id" value="{{ $visit->id }}">
 
-                                    <!-- <label class="form-control" name="gym_comment">{{  $visit->gym->comment }}</label> -->
+                                    <!-- <label class="form-control" name="customer_comment">{{  $visit->gym->comment }}</label> -->
                                     <input type="hidden" class="form-control" name="gym_id" value="{{  $visit->gym->id }}">
 
                                     <!-- <label class="form-control" name="gym_id">اسمتع باستخدم جميع خدمات النادي فقط بـ <span style="font-weight:900;"> {{ $visit->gym->cpd }}</span> ريال</label> -->
@@ -122,19 +125,21 @@
 
                                             
                                     ?>
-
+                                    
+                                    <label class="form-control_ {{ $visit->status_ }}" name="orderId">رقم الطلب: {{ $visit->id }}</label>
+                                    <br>
                                     <label class="form-control_ {{ $visit->status }}" name="visit_status">{{ $statusMsg }}</label>
                                     <br>
                                     <label class="form-control_ " name="visit_status">{{ $visit->approveCode }}</label>
                                     
                                     <br>
                                     @if( $visit->status == 'visited' ||  $visit->status == 'finish_customer' )
-                                    <label style="padding-left: 10px;"> قيم العمبل</label>
+                                    <label style="padding-left: 10px;"> قيم العميل</label>
                                     <input type="text" name="rate" >
                                     @endif
                                     <br>
                                     @if( $visit->status == 'visited' ||  $visit->status == 'finish_customer' )
-                                    <label style="padding-left: 10px;">ملاحظات على العميل</label>
+                                    <label style="padding-left: 10px;">اترك تعليق</label>
                                     <input type="textarea" name="comment"/>
                                     @endif
                                     <br>
@@ -144,7 +149,8 @@
                                     @if( $visit->rate -3 >=0 ) <span class="fa fa-star checked"></span> @else <span class="fa fa-star"></span> @endif
                                     @if( $visit->rate -4 >=0 ) <span class="fa fa-star checked"></span> @else <span class="fa fa-star"></span> @endif
                                     @if( $visit->rate -5 >=0 ) <span class="fa fa-star checked"></span> @else <span class="fa fa-star"></span> @endif
-                                    <label style="padding-left: 10px;"> {{ $visit->comment }}</label>
+                                    <br>
+                                    <label style="padding-left: 10px;"> {{ $visit->customer_comment }}</label>
                                     @endif
                                 </div>
                                 <div class="gymCardLeft">
@@ -166,23 +172,31 @@
                             <div class="gymCardContainer">
                                 <div class="gymCardRight">
                                     <div class="card-header" name="gym_name">{{ $visit->gym->name }}</div>
+                                    <label class="form-control_ {{ $visit->status_ }}" name="orderId">رقم الطلب: {{ $visit->id }}</label>
+                                    <br>
                             
-                                    {{$i = 0;}}
-                                    {{$j = 0;}}
+                                    @php 
+                                        $i = 0;
+                                        $j = 0;
+                                    @endphp
 
                                     @foreach($visitsStar as $visitRate)
                                         @if($visitRate->customer_rate)
                                             @if($visit->user_id ==  $visitRate->user_id )
-                                                {{$i = $i + $visitRate->customer_rate}}
-                                                {{$j++;}}
-                                                <h1 class="">{{$i}}</h1>
+                                                @php
+                                                    $i = $i + $visitRate->customer_rate;
+                                                    $j++;
+                                                @endphp
+                                                <!-- <h1 class="">{{$i}}</h1> -->
                                             @endif
                                         @endif
                                     @endforeach
                                     
                                     @if($i >0 )
-                                    <p>{{($i / $j) }}</p>
-                                    {{$j=($i / $j) }}
+                                    
+                                    @php
+                                        $j=($i / $j);
+                                    @endphp
                                     
                                     @if( $j -1 >=0 ) <span class="fa fa-star checked"></span> @else <span class="fa fa-star"></span> @endif
                                     @if( $j -2 >=0 ) <span class="fa fa-star checked"></span> @else <span class="fa fa-star"></span> @endif
@@ -197,7 +211,7 @@
                                     <input type="hidden" class="form-control" name="visit_id" value="{{ $visit->gym->id }}">
                                     <input type="hidden" class="form-control" name="visit_id" value="{{ $visit->id }}">
 
-                                    <!-- <label class="form-control" name="gym_comment">{{  $visit->gym->comment }}</label> -->
+                                    <!-- <label class="form-control" name="customer_comment">{{  $visit->gym->comment }}</label> -->
                                     <input type="hidden" class="form-control" name="gym_id" value="{{  $visit->gym->id }}">
 
                                     <!-- <label class="form-control" name="gym_id">اسمتع باستخدم جميع خدمات النادي فقط بـ <span style="font-weight:900;"> {{ $visit->gym->cpd }}</span> ريال</label> -->
@@ -221,7 +235,8 @@
 
                                             
                                     ?>
-
+                                    
+                                    
                                     <label class="form-control_ {{ $visit->status }}" name="visit_status">{{ $statusMsg }}</label>
                                     <br>
                                     <label class="form-control_ " name="visit_status">{{ $visit->approveCode }}</label>
@@ -243,7 +258,8 @@
                                     @if( $visit->rate -3 >=0 ) <span class="fa fa-star checked"></span> @else <span class="fa fa-star"></span> @endif
                                     @if( $visit->rate -4 >=0 ) <span class="fa fa-star checked"></span> @else <span class="fa fa-star"></span> @endif
                                     @if( $visit->rate -5 >=0 ) <span class="fa fa-star checked"></span> @else <span class="fa fa-star"></span> @endif
-                                    <label style="padding-left: 10px;"> {{ $visit->comment }}</label>
+                                    <br>
+                                    <label style="padding-left: 10px;"> {{ $visit->customer_comment }}</label>
                                     @endif
                                 </div>
                                 <div class="gymCardLeft">
@@ -266,7 +282,7 @@
                                     <input type="hidden" class="form-control" name="visit_id" value="{{ $visit->gym->id }}">
                                     <input type="hidden" class="form-control" name="visit_id" value="{{ $visit->id }}">
 
-                                    <!-- <label class="form-control" name="gym_comment">{{  $visit->gym->comment }}</label> -->
+                                    <!-- <label class="form-control" name="customer_comment">{{  $visit->gym->comment }}</label> -->
                                     <input type="hidden" class="form-control" name="gym_id" value="{{  $visit->gym->id }}">
 
                                     <!-- <label class="form-control" name="gym_id">اسمتع باستخدم جميع خدمات النادي فقط بـ <span style="font-weight:900;"> {{ $visit->gym->cpd }}</span> ريال</label> -->
@@ -290,7 +306,9 @@
 
                                             
                                     ?>
-
+                                    
+                                    <label class="form-control_ {{ $visit->status_ }}" name="orderId">رقم الطلب: {{ $visit->id }}</label>
+                                    <br>
                                     <label class="form-control_ {{ $visit->status }}" name="visit_status">{{ $statusMsg }}</label>
                                     <br>
                                     <label class="form-control_ " name="visit_status">{{ $visit->approveCode }}</label>
@@ -312,7 +330,8 @@
                                     @if( $visit->gym_rate -3 >=0 ) <span class="fa fa-star checked"></span> @else <span class="fa fa-star"></span> @endif
                                     @if( $visit->gym_rate -4 >=0 ) <span class="fa fa-star checked"></span> @else <span class="fa fa-star"></span> @endif
                                     @if( $visit->gym_rate -5 >=0 ) <span class="fa fa-star checked"></span> @else <span class="fa fa-star"></span> @endif
-                                    <label style="padding-left: 10px;"> {{ $visit->gym_comment }}</label>
+                                    <br>
+                                    <label style="padding-left: 10px;"> {{ $visit->customer_comment }}</label>
                                     @endif
                                 </div>
                                 <div class="gymCardLeft">

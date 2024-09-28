@@ -28,6 +28,8 @@
                                         $string = '';
                                     }
                             ?>
+                            <label class="form-control_ {{ $visit[0]->status_ }}" name="orderId">رقم الطلب: {{ $visit[0]->id }}</label>
+                            <br>
                             <label class="form-control_ {{ $visit[0]->status }}" name="visit_status">{{ $statusMsg }}</label>
                             <br>
                             <label class="form-control_ " name="visit_status">{{ $visit[0]->approveCode }}</label>
@@ -56,6 +58,7 @@
                     <div class="card">
                         <input type="submit" value="الغاء" class="btn btn-danger" >
                         <input type="hidden" class="form-control" name="visit_id" value="{{ $visit[0]->id }}">
+                        <input type="hidden" class="form-control" name="visit_status" value="{{ $visit[0]->status }}">
                         <input type="hidden" class="form-control" name="visit_cost" value="{{ $visit[0]->cost }}">
                     </div>
                 </form>
@@ -114,6 +117,8 @@
                                                     
                                             ?>
 
+                                            <label class="form-control_ {{ $visit->status_ }}" name="orderId">رقم الطلب: {{ $visit->id }}</label>
+                                            <br>
                                             <label class="form-control_ {{ $visit->status }}" name="visit_status">{{ $statusMsg }}</label>
                                             <br>
                                             <label class="form-control_ " name="visit_status">{{ $visit->approveCode }}</label>
@@ -135,7 +140,8 @@
                                             @if( $visit->rate -3 >=0 ) <span class="fa fa-star checked"></span> @else <span class="fa fa-star"></span> @endif
                                             @if( $visit->rate -4 >=0 ) <span class="fa fa-star checked"></span> @else <span class="fa fa-star"></span> @endif
                                             @if( $visit->rate -5 >=0 ) <span class="fa fa-star checked"></span> @else <span class="fa fa-star"></span> @endif
-                                            <label style="padding-left: 10px;"> {{ $visit->comment }}</label>
+                                            <br>
+                                            <label style="padding-left: 10px;"> {{ $visit->gym_comment }}</label>
                                             @endif
                                         </div>
                                         <div class="gymCardLeft">
@@ -182,9 +188,9 @@
                                                     $string = '';
                                                 }
 
-                                                    
                                             ?>
-
+                                            <label class="form-control_ {{ $visit->status_ }}" name="orderId">رقم الطلب: {{ $visit->id }}</label>
+                                            <br>
                                             <label class="form-control_ {{ $visit->status }}" name="visit_status">{{ $statusMsg }}</label>
                                             <br>
                                             <label class="form-control_ " name="visit_status">{{ $visit->approveCode }}</label>
@@ -206,6 +212,7 @@
                                             @if( $visit->gym_rate -3 >=0 ) <span class="fa fa-star checked"></span> @else <span class="fa fa-star"></span> @endif
                                             @if( $visit->gym_rate -4 >=0 ) <span class="fa fa-star checked"></span> @else <span class="fa fa-star"></span> @endif
                                             @if( $visit->gym_rate -5 >=0 ) <span class="fa fa-star checked"></span> @else <span class="fa fa-star"></span> @endif
+                                            <br>
                                             <label style="padding-left: 10px;"> {{ $visit->gym_comment }}</label>
                                             @endif
                                         </div>
@@ -254,7 +261,9 @@
 
                                                 
                                         ?>
-
+                                        
+                                        <label class="form-control_ {{ $visit->status_ }}" name="orderId">رقم الطلب: {{ $visit->id }}</label>
+                                        <br>
                                         <label class="form-control_ {{ $visit->status }}" name="visit_status">{{ $statusMsg }}</label>
                                         <br>
                                         <label class="form-control_ " name="visit_status">{{ $visit->approveCode }}</label>
@@ -276,7 +285,8 @@
                                         @if( $visit->rate -3 >=0 ) <span class="fa fa-star checked"></span> @else <span class="fa fa-star"></span> @endif
                                         @if( $visit->rate -4 >=0 ) <span class="fa fa-star checked"></span> @else <span class="fa fa-star"></span> @endif
                                         @if( $visit->rate -5 >=0 ) <span class="fa fa-star checked"></span> @else <span class="fa fa-star"></span> @endif
-                                        <label style="padding-left: 10px;"> {{ $visit->comment }}</label>
+                                        <br>
+                                        <label style="padding-left: 10px;"> {{ $visit->gym_comment }}</label>
                                         @endif
                                     </div>
                                     <div class="gymCardLeft">
@@ -323,7 +333,8 @@
 
                                                     
                                             ?>
-
+                                            <label class="form-control_ {{ $visit->status_ }}" name="orderId">رقم الطلب: {{ $visit->id }}</label>
+                                            <br>
                                             <label class="form-control_ {{ $visit->status }}" name="visit_status">{{ $statusMsg }}</label>
                                             <br>
                                             <label class="form-control_ " name="visit_status">{{ $visit->approveCode }}</label>
@@ -345,7 +356,8 @@
                                             @if( $visit->gym_rate -3 >=0 ) <span class="fa fa-star checked"></span> @else <span class="fa fa-star"></span> @endif
                                             @if( $visit->gym_rate -4 >=0 ) <span class="fa fa-star checked"></span> @else <span class="fa fa-star"></span> @endif
                                             @if( $visit->gym_rate -5 >=0 ) <span class="fa fa-star checked"></span> @else <span class="fa fa-star"></span> @endif
-                                            <label style="padding-left: 10px;"> {{ $visit->comment }}</label>
+                                            <br>
+                                            <label style="padding-left: 10px;"> {{ $visit->gym_comment }}</label>
                                             @endif
                                         </div>
                                         <div class="gymCardLeft">

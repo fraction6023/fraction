@@ -109,14 +109,16 @@ class CustomerController extends Controller
         return redirect('/');
     }
     public function cancelBookGym(Request $req){
+        $visit_status = Visit::find($req->input('visit_id'));
+        if($visit_status->status=='pending'){
+            $fund = Customer::find(Auth::id());
+            $fund->funds = $fund->funds + $req->input('visit_cost');
+            $fund->save();
 
-        $fund = Customer::find(Auth::id());
-        $fund->funds = $fund->funds + $req->input('visit_cost');
-        $fund->save();
-
-        $visit = Visit::find($req->input('visit_id'));
-        $visit->status = 'canceled';
-        $visit->save();
+            $visit = Visit::find($req->input('visit_id'));
+            $visit->status = 'canceled';
+            $visit->save();
+        }
 
         //$visits = Visit::where('user_id',Auth::id());
         //$visits = DB::table('visits')->where('user_id',Auth::id())->get();
@@ -130,6 +132,9 @@ class CustomerController extends Controller
 
     public function approveVisit(Request $req){
         
+        $visit_status = Visit::find($req->input('visit_id'));
+        if($visit_status->status=='pending'){
+
         $visit = Visit::find($req->input('visit_id'));
        
         // if($visit->status = 'approved'){
@@ -156,8 +161,8 @@ class CustomerController extends Controller
         $visit->approveCode = $string;
         
         $visit->save();
-
-        return redirect('visits');
+        }
+        return redirect('/');
 
         
         

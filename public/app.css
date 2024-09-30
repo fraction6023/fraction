@@ -131,7 +131,7 @@
   } */
 
   .scrollingDiv{
-      background-color: #333;
+      background-color: #eeed;
     overflow: auto;
     white-space: nowrap;
     }

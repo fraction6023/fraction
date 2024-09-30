@@ -91,7 +91,7 @@
                         </div>
                     </form>
                     @elseif( $visit->status == 'visited' || $visit->status == 'finish_gym') <!-- gym finish feedback -->
-                            <form action="{{ url('feedbackVisit') }}" method="POST">
+                            <form action="{{ url('gymfeedbackVisit') }}" method="POST">
                             @csrf
                             @method('PUT')
                                 <div class="card">
@@ -175,7 +175,7 @@
                                 </div>
                             </form>
                         @elseif( $visit->status == 'visited' || $visit->status == 'finish_customer') <!-- customer finish feedback -->
-                            <form action="{{ url('gymfeedbackVisit') }}" method="POST">
+                            <form action="{{ url('feedbackVisit') }}" method="POST">
                             @csrf
                             @method('PUT')
                                 <div class="card">
@@ -371,7 +371,7 @@
                     <form action="{{ url('approveVisit') }}" method="POST">
                         @csrf
                         @method('PUT')
-                        <div class="card" id="id{{ $visit->id }}">
+                        <div class="card"> <!--  id="id{{ $visit->id }}"> just for css testing -->
                             <div class="gymCardContainer">
                                 <div class="gymCardRight">
                                     <div class="card-header" name="gym_name">{{ $visit->gym->name }}</div>

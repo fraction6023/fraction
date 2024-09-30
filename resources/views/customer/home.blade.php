@@ -79,9 +79,10 @@
 
 
 
+
 <div class="card">
     <div class="card-body_ scroll-container_ scrollingDiv">
-            <div class="">
+            
 
                 @if($visits)
                     @foreach($visits as $visit)
@@ -113,8 +114,6 @@
                                                     $statusMsg = '';
                                                     $string = '';
                                                 }
-
-                                                    
                                             ?>
 
                                             <label class="form-control_ {{ $visit->status_ }}" name="orderId">رقم الطلب: {{ $visit->id }}</label>
@@ -127,19 +126,18 @@
                                             @if( $visit->status == 'visited')
                                             <label style="padding-left: 10px;"> قيم زيارتك</label>
                                             <div class="rating">
-                                            <!-- Notice that the stars are in reverse order -->
-
-                                            <input type="radio" id="star5" name="rate" value="5">
-                                            <label for="star5">&#9733;</label>
-                                            <input type="radio" id="star4" name="rate" value="4">
-                                            <label for="star4">&#9733;</label>
-                                            <input type="radio" id="star3" name="rate" value="3">
-                                            <label for="star3">&#9733;</label>
-                                            <input type="radio" id="star2" name="rate" value="2">
-                                            <label for="star2">&#9733;</label>
-                                            <input type="radio" id="star1" name="rate" value="1">
-                                            <label for="star1">&#9733;</label>
-                                        </div>
+                                                <!-- Notice that the stars are in reverse order -->
+                                                <input type="radio" id="star5" name="rate" value="5">
+                                                <label for="star5">&#9733;</label>
+                                                <input type="radio" id="star4" name="rate" value="4">
+                                                <label for="star4">&#9733;</label>
+                                                <input type="radio" id="star3" name="rate" value="3">
+                                                <label for="star3">&#9733;</label>
+                                                <input type="radio" id="star2" name="rate" value="2">
+                                                <label for="star2">&#9733;</label>
+                                                <input type="radio" id="star1" name="rate" value="1">
+                                                <label for="star1">&#9733;</label>
+                                            </div>
                                             @endif
                                             <br>
                                             @if( $visit->status == 'visited')
@@ -513,7 +511,6 @@
             </div>
         </div>
     </div>
-</div>
 <br>
 <!-- <div class="card">
     <div class="card-header">test</div>

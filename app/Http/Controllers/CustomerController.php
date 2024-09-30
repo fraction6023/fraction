@@ -180,7 +180,7 @@ class CustomerController extends Controller
 
         $visit->save();
 
-        return redirect('visits');
+        return redirect('/');
     }
     public function feedbackfinish(Request $req){
         $visit = Visit::find($req->input('visit_id'));
@@ -189,7 +189,7 @@ class CustomerController extends Controller
 
         $visit->save();
 
-        return redirect('visits');
+        return redirect('/');
     }
 
 

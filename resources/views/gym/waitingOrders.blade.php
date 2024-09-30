@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">سجل الزيارات</div>
+                <div class="card-header">طلبات بانتظار الرد</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -21,6 +21,7 @@
                         @csrf
                         @method('PUT')
                         <div class="card">
+                        <label class="form-control_ {{ $visit->status_ }}" name="orderId">رقم الطلب: {{ $visit->id }}</label>
                             <div class="gymCardContainer">
                                 <div class="gymCardRight">
                                     <div class="card-header" name="gym_name">{{ $visit->gym->name }}</div>
@@ -370,7 +371,7 @@
                     <form action="{{ url('approveVisit') }}" method="POST">
                         @csrf
                         @method('PUT')
-                        <div class="card">
+                        <div class="card" id="id{{ $visit->id }}">
                             <div class="gymCardContainer">
                                 <div class="gymCardRight">
                                     <div class="card-header" name="gym_name">{{ $visit->gym->name }}</div>

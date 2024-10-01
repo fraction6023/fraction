@@ -36,29 +36,46 @@ class CustomerController extends Controller
     }
 
     public function dashboard(){
-        $customer = Customer::find(Auth::id());
-        return view('customer.dashboard',['customer'=>$customer]);
+    if(Auth::id()){
+    $customer = Customer::find(Auth::id());
+    return view('customer.dashboard',['customer'=>$customer]);
+    }else{
+            return view('welcome');
+        }
+
     }
     public function purchase(Request $req){
-
+        
         $fund = Customer::find(Auth::id());
         $fund->funds = $fund->funds + $req->input('funds');
         $fund->save();
 
-        return redirect('booking');
+        return redirect('booking'); 
+        
+
     }
 
     public function visit(){
-        //$visits = Visit::all()->where('user_id',Auth::id());
+        if(Auth::id()){
+             //$visits = Visit::all()->where('user_id',Auth::id());
         $visit = Visit::where('user_id',Auth::id())->orderBy('id', 'DESC')->get();
         //$visits = DB::table('visits')->where('user_id',Auth::id())->get();
         return view('customer.visit',['visit'=>$visit]);
+        }else{
+            return view('welcome');
+        }
+       
     }
     public function visits(){
+        if(Auth::id()){
         //$visits = Visit::all()->where('user_id',Auth::id());
         $visits = Visit::where('user_id',Auth::id())->orderBy('id', 'DESC')->get();
         //$visits = DB::table('visits')->where('user_id',Auth::id())->get();
         return view('customer.visits',['visits'=>$visits]);
+        }else{
+            return view('welcome');
+        }
+        
     }
     
     public function dashboardUpdate(Request $req){
@@ -80,11 +97,16 @@ class CustomerController extends Controller
     }
 
     public function booking(){
+        if(Auth::id()){
         $gyms = Gym::all();
         $fund = Customer::find(Auth::id());
         $visits = Visit::where('user_id',Auth::id())->orderBy('id', 'DESC')->get();
         $allVisits = Visit::all();
-        return view('customer.booking',['gyms'=>$gyms,'fund'=>$fund,'visits'=>$visits,'allVisits'=>$allVisits]);
+        return view('customer.booking',['gyms'=>$gyms,'fund'=>$fund,'visits'=>$visits,'allVisits'=>$allVisits]);   
+        }else{
+            return view('welcome');
+        }
+       
     }
     
     public function bookGym(Request $req){

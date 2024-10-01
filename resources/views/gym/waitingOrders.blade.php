@@ -43,16 +43,19 @@
                                         }elseif($visit->status == 'canceled'){
                                             $statusMsg = 'ملغى';
                                         }elseif($visit->status == 'visited'){
-                                            $statusMsg = 'تمت الدخول';
+                                            $statusMsg = 'تم الدخول';
+                                        }elseif($visit->status == 'finish_customer'){
+                                            $statusMsg = 'قام العميل بالتقييم';
+                                        }elseif($visit->status == 'finish_gym'){
+                                            $statusMsg = 'قام النادي بالتقييم';
                                         }elseif($visit->status == 'finish'){
                                             $statusMsg = 'تم';
                                         }else{
                                             $statusMsg = '';
                                             $string = '';
                                         }
-
-                                            
                                     ?>
+
                                     
                                     <label class="form-control_ {{ $visit->status_ }}" name="orderId">رقم الطلب: {{ $visit->id }}</label>
                                     <br>
@@ -116,15 +119,19 @@
                                                 }elseif($visit->status == 'canceled'){
                                                     $statusMsg = 'ملغى';
                                                 }elseif($visit->status == 'visited'){
-                                                    $statusMsg = 'تمت الدخول';
+                                                    $statusMsg = 'تم الدخول';
+                                                }elseif($visit->status == 'finish_customer'){
+                                                    $statusMsg = 'قام العميل بالتقييم';
+                                                }elseif($visit->status == 'finish_gym'){
+                                                    $statusMsg = 'قام النادي بالتقييم';
                                                 }elseif($visit->status == 'finish'){
                                                     $statusMsg = 'تم';
                                                 }else{
                                                     $statusMsg = '';
                                                     $string = '';
                                                 }
-
                                             ?>
+
                                             <label class="form-control_ {{ $visit->status_ }}" name="orderId">رقم الطلب: {{ $visit->id }}</label>
                                             <br>
                                             <label class="form-control_ {{ $visit->status }}" name="visit_status">{{ $statusMsg }}</label>
@@ -190,7 +197,6 @@
                                             <input type="hidden" class="form-control" name="gym_id" value="{{  $visit->gym->id }}">
 
                                             <!-- <label class="form-control" name="gym_id">اسمتع باستخدم جميع خدمات النادي فقط بـ <span style="font-weight:900;"> {{ $visit->gym->cpd }}</span> ريال</label> -->
-
                                             <?php
                                                 if($visit->status == 'pending'){
                                                     $statusMsg = 'تحت الدراسة';
@@ -200,15 +206,19 @@
                                                 }elseif($visit->status == 'canceled'){
                                                     $statusMsg = 'ملغى';
                                                 }elseif($visit->status == 'visited'){
-                                                    $statusMsg = 'تمت الدخول';
+                                                    $statusMsg = 'تم الدخول';
+                                                }elseif($visit->status == 'finish_customer'){
+                                                    $statusMsg = 'قام العميل بالتقييم';
+                                                }elseif($visit->status == 'finish_gym'){
+                                                    $statusMsg = 'قام النادي بالتقييم';
                                                 }elseif($visit->status == 'finish'){
                                                     $statusMsg = 'تم';
                                                 }else{
                                                     $statusMsg = '';
                                                     $string = '';
                                                 }
-
                                             ?>
+
                                             <label class="form-control_ {{ $visit->status_ }}" name="orderId">رقم الطلب: {{ $visit->id }}</label>
                                             <br>
                                             <label class="form-control_ {{ $visit->status }}" name="visit_status">{{ $statusMsg }}</label>
@@ -287,15 +297,19 @@
                                                 }elseif($visit->status == 'canceled'){
                                                     $statusMsg = 'ملغى';
                                                 }elseif($visit->status == 'visited'){
-                                                    $statusMsg = 'تمت الدخول';
+                                                    $statusMsg = 'تم الدخول';
+                                                }elseif($visit->status == 'finish_customer'){
+                                                    $statusMsg = 'قام العميل بالتقييم';
+                                                }elseif($visit->status == 'finish_gym'){
+                                                    $statusMsg = 'قام النادي بالتقييم';
                                                 }elseif($visit->status == 'finish'){
                                                     $statusMsg = 'تم';
                                                 }else{
                                                     $statusMsg = '';
                                                     $string = '';
                                                 }
-
                                             ?>
+
                                             <label class="form-control_ {{ $visit->status_ }}" name="orderId">رقم الطلب: {{ $visit->id }}</label>
                                             <br>
                                             <label class="form-control_ {{ $visit->status }}" name="visit_status">{{ $statusMsg }}</label>
@@ -379,9 +393,11 @@
                                     
                                     @if($i >0 )
                                     
-                                    @php
-                                        $j=($i / $j);
-                                    @endphp
+                                    @php 
+                                    $rating_count = $j;
+                                    $j=($i / $j) 
+                                @endphp
+                                <p class="">عدد مرات التقييم {{$rating_count}}</p>
                                     
                                     @if( $j -1 >=0 ) <span class="fa fa-star checked"></span> @else <span class="fa fa-star"></span> @endif
                                     @if( $j -2 >=0 ) <span class="fa fa-star checked"></span> @else <span class="fa fa-star"></span> @endif
@@ -410,16 +426,19 @@
                                         }elseif($visit->status == 'canceled'){
                                             $statusMsg = 'ملغى';
                                         }elseif($visit->status == 'visited'){
-                                            $statusMsg = 'تمت الدخول';
+                                            $statusMsg = 'تم الدخول';
+                                        }elseif($visit->status == 'finish_customer'){
+                                            $statusMsg = 'قام العميل بالتقييم';
+                                        }elseif($visit->status == 'finish_gym'){
+                                            $statusMsg = 'قام النادي بالتقييم';
                                         }elseif($visit->status == 'finish'){
                                             $statusMsg = 'تم';
                                         }else{
                                             $statusMsg = '';
                                             $string = '';
                                         }
-
-                                            
                                     ?>
+
                                     
                                     
                                     <label class="form-control_ {{ $visit->status }}" name="visit_status">{{ $statusMsg }}</label>
@@ -481,16 +500,19 @@
                                         }elseif($visit->status == 'canceled'){
                                             $statusMsg = 'ملغى';
                                         }elseif($visit->status == 'visited'){
-                                            $statusMsg = 'تمت الدخول';
+                                            $statusMsg = 'تم الدخول';
+                                        }elseif($visit->status == 'finish_customer'){
+                                            $statusMsg = 'قام العميل بالتقييم';
+                                        }elseif($visit->status == 'finish_gym'){
+                                            $statusMsg = 'قام النادي بالتقييم';
                                         }elseif($visit->status == 'finish'){
                                             $statusMsg = 'تم';
                                         }else{
                                             $statusMsg = '';
                                             $string = '';
                                         }
-
-                                            
                                     ?>
+
                                     
                                     <label class="form-control_ {{ $visit->status_ }}" name="orderId">رقم الطلب: {{ $visit->id }}</label>
                                     <br>

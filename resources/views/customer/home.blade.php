@@ -107,7 +107,11 @@
                                                 }elseif($visit->status == 'canceled'){
                                                     $statusMsg = 'ملغى';
                                                 }elseif($visit->status == 'visited'){
-                                                    $statusMsg = 'تمت الدخول';
+                                                    $statusMsg = 'تم الدخول';
+                                                }elseif($visit->status == 'finish_customer'){
+                                                    $statusMsg = 'قام العميل بالتقييم';
+                                                }elseif($visit->status == 'finish_gym'){
+                                                    $statusMsg = 'قام النادي بالتقييم';
                                                 }elseif($visit->status == 'finish'){
                                                     $statusMsg = 'تم';
                                                 }else{
@@ -191,7 +195,11 @@
                                                 }elseif($visit->status == 'canceled'){
                                                     $statusMsg = 'ملغى';
                                                 }elseif($visit->status == 'visited'){
-                                                    $statusMsg = 'تمت الدخول';
+                                                    $statusMsg = 'تم الدخول';
+                                                }elseif($visit->status == 'finish_customer'){
+                                                    $statusMsg = 'قام العميل بالتقييم';
+                                                }elseif($visit->status == 'finish_gym'){
+                                                    $statusMsg = 'قام النادي بالتقييم';
                                                 }elseif($visit->status == 'finish'){
                                                     $statusMsg = 'تم';
                                                 }else{
@@ -277,7 +285,11 @@
                                             }elseif($visit->status == 'canceled'){
                                                 $statusMsg = 'ملغى';
                                             }elseif($visit->status == 'visited'){
-                                                $statusMsg = 'تمت الدخول';
+                                                $statusMsg = 'تم الدخول';
+                                            }elseif($visit->status == 'finish_customer'){
+                                                $statusMsg = 'قام العميل بالتقييم';
+                                            }elseif($visit->status == 'finish_gym'){
+                                                $statusMsg = 'قام النادي بالتقييم';
                                             }elseif($visit->status == 'finish'){
                                                 $statusMsg = 'تم';
                                             }else{
@@ -362,7 +374,11 @@
                                                 }elseif($visit->status == 'canceled'){
                                                     $statusMsg = 'ملغى';
                                                 }elseif($visit->status == 'visited'){
-                                                    $statusMsg = 'تمت الدخول';
+                                                    $statusMsg = 'تم الدخول';
+                                                }elseif($visit->status == 'finish_customer'){
+                                                    $statusMsg = 'قام العميل بالتقييم';
+                                                }elseif($visit->status == 'finish_gym'){
+                                                    $statusMsg = 'قام النادي بالتقييم';
                                                 }elseif($visit->status == 'finish'){
                                                     $statusMsg = 'تم';
                                                 }else{

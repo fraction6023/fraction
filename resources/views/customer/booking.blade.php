@@ -93,9 +93,10 @@
                                             @if($i >0 )
 
                                             @php 
+                                                $rating_count = $j;
                                                 $j=($i / $j) 
                                             @endphp
-                                           
+                                           <p class="">عدد مرات التقييم {{$rating_count}}</p>
                                             @if( $j -1 >=0 ) <span class="fa fa-star checked"></span> @else <span class="fa fa-star"></span> @endif
                                             @if( $j -2 >=0 ) <span class="fa fa-star checked"></span> @else <span class="fa fa-star"></span> @endif
                                             @if( $j -3 >=0 ) <span class="fa fa-star checked"></span> @else <span class="fa fa-star"></span> @endif

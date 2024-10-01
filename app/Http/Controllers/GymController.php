@@ -12,10 +12,14 @@ use Illuminate\Support\Facades\Auth;
 class GymController extends Controller
 {
     public function waitingOrders(){
+    if(Auth::id()){
     $customer = Customer::find(Auth::id());
     $visits = Visit::where('gym_id',$customer->gym_id)->orderBy('id', 'DESC')->get();
     $visitsStar = Visit::all();
     return view('gym.waitingOrders',['visits'=>$visits,'visitsStar'=>$visitsStar]);
+    }else{
+        return view('welcome');
+    }
     }
 
     public function gymfeedbackVisit(Request $req){

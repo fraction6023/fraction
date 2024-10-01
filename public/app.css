@@ -1,3 +1,11 @@
+div#app_{
+border-right:10px solid #FFE263;border-left:10px solid #FFE263;background-color: #FFE26388;
+}
+
+body {
+  background-color: red;
+}
+
 .testRed{
     color: red;
 }
@@ -74,6 +82,15 @@
     padding-right: 100px;
     margin-bottom: 10px;
   }
+
+  .finish_customer , .finish_gym{
+    background-color: #f0f3b391;
+    font-weight: bold;
+    padding-left: 100px;
+    padding-right: 100px;
+    margin-bottom: 10px;
+  }
+
 
   div.scroll-container {
     display: flex;

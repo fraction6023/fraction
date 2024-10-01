@@ -377,12 +377,14 @@
                                     @php 
                                         $i = 0;
                                         $j = 0;
+                                        $allComments=array();
                                     @endphp
 
                                     @foreach($visitsStar as $visitRate)
                                         @if($visitRate->customer_rate)
                                             @if($visit->user_id ==  $visitRate->user_id )
                                                 @php
+                                                    $allComments[] = $visit->customer_comment;
                                                     $i = $i + $visitRate->customer_rate;
                                                     $j++;
                                                 @endphp
@@ -398,7 +400,11 @@
                                     $j=($i / $j) 
                                 @endphp
                                 <p class="">عدد مرات التقييم {{$rating_count}}</p>
-                                    
+                                <p>
+                                @for($commentsCounter=0 ; $commentsCounter <= $rating_count-1 ; $commentsCounter = $commentsCounter + 1)
+                                <span class="comment_container">{{$allComments[$commentsCounter]}}</span>
+                                @endfor
+                                </p>
                                     @if( $j -1 >=0 ) <span class="fa fa-star checked"></span> @else <span class="fa fa-star"></span> @endif
                                     @if( $j -2 >=0 ) <span class="fa fa-star checked"></span> @else <span class="fa fa-star"></span> @endif
                                     @if( $j -3 >=0 ) <span class="fa fa-star checked"></span> @else <span class="fa fa-star"></span> @endif
@@ -464,6 +470,11 @@
                                     @if( $visit->rate -5 >=0 ) <span class="fa fa-star checked"></span> @else <span class="fa fa-star"></span> @endif
                                     <br>
                                     <label style="padding-left: 10px;"> {{ $visit->customer_comment }}</label>
+                                    <p>
+                                    @for($commentsCounter=0 ; $commentsCounter <= $rating_count-1 ; $commentsCounter = $commentsCounter + 1)
+                                    <span class="comment_container">{{$allComments[$commentsCounter]}}</span>
+                                    @endfor
+                                    </p>
                                     @endif
                                 </div>
                                 <div class="gymCardLeft">

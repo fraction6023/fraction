@@ -236,3 +236,7 @@ body {
   div#id16_{/* just for testing */
     background-color: red;
   }
+  .comment_container{
+    background-color: #007bff33;
+    margin-right: 5px;
+  }

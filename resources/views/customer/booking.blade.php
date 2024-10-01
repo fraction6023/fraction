@@ -78,11 +78,17 @@
                                             @php
                                             $i = 0;
                                             $j = 0;
+                                            $allComments=array();
+
+                                          
+
+
                                             @endphp 
                                             @foreach($allVisits as $visit)
                                                 @if($visit->gym_rate)
                                                     @if($visit->gym_id == $gym->id)
-                                                        @php 
+                                                        @php
+                                                            $allComments[] = $visit->gym_comment;
                                                             $i = $i + $visit->gym_rate;
                                                             $j++;
                                                         @endphp
@@ -97,6 +103,11 @@
                                                 $j=($i / $j) 
                                             @endphp
                                            <p class="">عدد مرات التقييم {{$rating_count}}</p>
+                                           <p>
+                                           @for($commentsCounter=0 ; $commentsCounter <= $rating_count-1 ; $commentsCounter = $commentsCounter + 1)
+                                           <span class="comment_container">{{$allComments[$commentsCounter]}}</span>
+                                           @endfor
+                                            </p>
                                             @if( $j -1 >=0 ) <span class="fa fa-star checked"></span> @else <span class="fa fa-star"></span> @endif
                                             @if( $j -2 >=0 ) <span class="fa fa-star checked"></span> @else <span class="fa fa-star"></span> @endif
                                             @if( $j -3 >=0 ) <span class="fa fa-star checked"></span> @else <span class="fa fa-star"></span> @endif

@@ -25,9 +25,9 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm l2r">
             <a href="{{ url('/') }}"><img src="{{ asset('images/fractionLogo.png') }}" class="fractionLogo"></a>
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
+                <!-- <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
-                </a>
+                </a> -->
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>

@@ -25,6 +25,13 @@ body {
     width: 100%;
     /* height: 150px; */
 }
+.gymCardContainer2{
+  display: inline;
+  border: 2px solid #3333;
+  width: 250px;
+  height: 460px;
+}
+
 .gymCardLeft{
     display: inline;
     border: 1px solid #3333;
@@ -86,8 +93,9 @@ body {
   .finish_customer , .finish_gym{
     background-color: #f0f3b391;
     font-weight: bold;
-    padding-left: 100px;
-    padding-right: 100px;
+    /* padding-left: 100px;
+    padding-right: 100px; */
+    width: 100%;
     margin-bottom: 10px;
   }
 
@@ -239,4 +247,29 @@ body {
   .comment_container{
     background-color: #007bff33;
     margin-right: 5px;
+  }
+  
+  .gymCardBelow{
+    text-align: center;
+    width: 100%;
+    border: 1px solid #aaa3;
+    margin-right: 0px;
+  }
+  .gymCardTop{
+    text-align: center;
+    width: 100%;
+    border: 1px solid #aaa3;
+    margin-right: 0px;
+  }
+
+  .card-container{
+    display: inline;
+    width: 100%;
+    border: 1px solid #3333;
+    background-color: #007bff33;
+  }
+  .card-visit{
+    display: flex;
+    width: 100%;
+    margin: 10px;
   }

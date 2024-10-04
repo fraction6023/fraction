@@ -33,6 +33,7 @@
                             <label class="form-control_ {{ $visit[0]->status }}" name="visit_status">{{ $statusMsg }}</label>
                             <br>
                             <label class="form-control_ " name="visit_status">{{ $visit[0]->approveCode }}</label>
+                            {!! QrCode::size(300)->generate('Embed this content into the QR Code') !!}
                             <br>
                             
                             @if( $visit[0]->gym->rate -1 >=0 ) <span class="fa fa-star checked"></span> @else <span class="fa fa-star"></span> @endif
@@ -127,7 +128,10 @@
                                             <br>
                                             <label class="form-control_ {{ $visit->status }}" name="visit_status">{{ $statusMsg }}</label>
                                             <br>
+                                            <label class="form-control_ " name="visit_status">{!! QrCode::size(130)->generate($visit->approveCode) !!}</label>
+                                            <br>
                                             <label class="form-control_ " name="visit_status">{{ $visit->approveCode }}</label>
+                                            
                                             
                                             <br>
                                             @if( $visit->status == 'visited')
@@ -161,11 +165,11 @@
                                             <br>
                                             <label style="padding-left: 10px;"> {{ $visit->gym_comment }}</label>
                                             @endif
+                                        <input style="width: 100%;margin-top:5px;" value="تم الدخوول" class="btn btn-primary">
                                         </div>
-
                                     </div>
                                         
-                                        <input type="submit" value="تم الدخوول" class="btn btn-primary">
+                                        
                                         
                                     
                                 </div>

@@ -265,7 +265,7 @@
                                                 @if( $visit->customer_rate -4 >=0 ) <span class="fa fa-star checked"></span> @else <span class="fa fa-star"></span> @endif
                                                 @if( $visit->customer_rate -5 >=0 ) <span class="fa fa-star checked"></span> @else <span class="fa fa-star"></span> @endif
                                                 <br>
-                                                <p class="">Ok</p>
+                                                <p class="">testing issue no 45</p>
                                                 <label style="padding-left: 10px;"> {{ $visit->customer_comment }}</label>
                                             @endif
                                         </div>
@@ -274,7 +274,7 @@
                                         </div> -->
                                     </div>
                                     
-                                    <input type="submit" value="حفظ" class="btn btn-primary">
+                                    <input style="width: 100%;margin-top:20px;" type="submit" value="حفظ" class="btn btn-primary">
                                     
                                     
                                 </div>
@@ -294,7 +294,8 @@
                                 <div class="gymCardBelow">
                                     <label class="form-control_ {{ $visit->status_ }}" name="orderId">رقم الطلب: {{ $visit->id }}</label>
                                     <br>
-                            
+                                    <label class="form-control_ {{ $visit->status }}" name="visit_status">{{ $statusMsg }}</label>
+
                                     @php 
                                         $i = 0;
                                         $j = 0;
@@ -340,7 +341,6 @@
                                     <input type="hidden" class="form-control" name="visit_id" value="{{ $visit->id }}">
                                     <input type="hidden" class="form-control" name="gym_id" value="{{  $visit->gym->id }}">
 
-                                    <label class="form-control_ {{ $visit->status }}" name="visit_status">{{ $statusMsg }}</label>
                                     <br>
                                     <label class="form-control_ " name="visit_status">{{ $visit->approveCode }}</label>
                                     
@@ -373,8 +373,9 @@
                                 <!-- <div class="gymCardLeft">
                                     <img src="{{ $visit->gym->image }}" alt="" width="100%" height="">
                                 </div> -->
+                                <input style="width: 100%;margin-top:0px;" type="submit" value="قبول" class="btn btn-warning">
                             </div>
-                            <input type="submit" value="قبول" class="btn btn-warning">
+                          
                                 
                         </div>
                     </form>

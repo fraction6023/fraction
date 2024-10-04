@@ -10,7 +10,7 @@
                 @method('PUT')
                 <div class="card">
                     <div class="gymCardContainer">
-                        <div class="gymCardRight">
+                        <div class="gymCardTop">
                             <div class="card-header" name="gym_name">{{ $visit[0]->gym->name }}</div>
                             <input type="hidden" class="form-control" name="gym_id" value="{{ $visit[0]->gym->id }}">
                             <label class="form-control" name="gym_comment">{{  $visit[0]->gym->comment }}</label>
@@ -43,7 +43,7 @@
                                                                 
                         
                         </div>
-                        <div class="gymCardLeft">
+                        <div class="gymCardBelow">
                             <img src="{{ $visit[0]->gym->image }}" alt="" width="100%" height="">
                         </div>
                     </div>
@@ -87,39 +87,42 @@
                 @if($visits)
                     @foreach($visits as $visit)
                     <div class="scrollingItem">
+                    <?php
+                        if($visit->status == 'pending'){
+                            $statusMsg = 'تحت الدراسة';
+                            $string = '';
+                        }elseif($visit->status == 'approved'){
+                            $statusMsg = 'معتمد';
+                        }elseif($visit->status == 'canceled'){
+                            $statusMsg = 'ملغى';
+                        }elseif($visit->status == 'visited'){
+                            $statusMsg = 'تم الدخول';
+                        }elseif($visit->status == 'finish_customer'){
+                            $statusMsg = 'قام العميل بالتقييم';
+                        }elseif($visit->status == 'finish_gym'){
+                            $statusMsg = 'قام النادي بالتقييم';
+                        }elseif($visit->status == 'finish'){
+                            $statusMsg = 'تم';
+                        }else{
+                            $statusMsg = '';
+                            $string = '';
+                        }
+                    ?>
                         @if( $visit->status == 'approved' )
                         <form action="{{ url('feedbackfinish') }}" method="POST">
                                 @csrf
                                 @method('PUT')
                                 <div class="card">
-                                    <div class="gymCardContainer">
-                                        <div class="gymCardRight">
+                                    <div class="gymCardContainer2">
+                                        <div class="gymCardTop">
                                             <div class="card-header" name="gym_name">{{ $visit->gym->name }}</div>
+                                            <img src="{{ $visit->gym->image }}" alt="" width="100%" height="">
+                                        </div>
+                                        <div class="gymCardBelow">
                                             <input type="hidden" class="form-control" name="visit_id" value="{{ $visit->gym->id }}">
                                             <input type="hidden" class="form-control" name="visit_id" value="{{ $visit->id }}">
                                             <input type="hidden" class="form-control" name="gym_id" value="{{  $visit->gym->id }}">
-                                            <?php
-                                                if($visit->status == 'pending'){
-                                                    $statusMsg = 'تحت الدراسة';
-                                                    $string = '';
-                                                }elseif($visit->status == 'approved'){
-                                                    $statusMsg = 'معتمد';
-                                                }elseif($visit->status == 'canceled'){
-                                                    $statusMsg = 'ملغى';
-                                                }elseif($visit->status == 'visited'){
-                                                    $statusMsg = 'تم الدخول';
-                                                }elseif($visit->status == 'finish_customer'){
-                                                    $statusMsg = 'قام العميل بالتقييم';
-                                                }elseif($visit->status == 'finish_gym'){
-                                                    $statusMsg = 'قام النادي بالتقييم';
-                                                }elseif($visit->status == 'finish'){
-                                                    $statusMsg = 'تم';
-                                                }else{
-                                                    $statusMsg = '';
-                                                    $string = '';
-                                                }
-                                            ?>
-
+                                       
                                             <label class="form-control_ {{ $visit->status_ }}" name="orderId">رقم الطلب: {{ $visit->id }}</label>
                                             <br>
                                             <label class="form-control_ {{ $visit->status }}" name="visit_status">{{ $statusMsg }}</label>
@@ -159,9 +162,7 @@
                                             <label style="padding-left: 10px;"> {{ $visit->gym_comment }}</label>
                                             @endif
                                         </div>
-                                        <div class="gymCardLeft">
-                                            <img src="{{ $visit->gym->image }}" alt="" width="100%" height="">
-                                        </div>
+
                                     </div>
                                         
                                         <input type="submit" value="تم الدخوول" class="btn btn-primary">
@@ -174,10 +175,12 @@
                             @csrf
                             @method('PUT')
                                 <div class="card">
-                                    <div class="gymCardContainer">
-                                        <div class="gymCardRight">
+                                    <div class="gymCardContainer2">
+                                        <div class="gymCardTop">
                                             <div class="card-header" name="gym_name">{{ $visit->gym->name }}</div>
-
+                                            <img src="{{ $visit->gym->image }}" alt="" width="100%" height="">
+                                        </div>
+                                        <div class="gymCardBelow">
                                             <input type="hidden" class="form-control" name="visit_id" value="{{ $visit->gym->id }}">
                                             <input type="hidden" class="form-control" name="visit_id" value="{{ $visit->id }}">
 
@@ -186,28 +189,6 @@
 
                                             <!-- <label class="form-control" name="gym_id">اسمتع باستخدم جميع خدمات النادي فقط بـ <span style="font-weight:900;"> {{ $visit->gym->cpd }}</span> ريال</label> -->
 
-                                            <?php
-                                                if($visit->status == 'pending'){
-                                                    $statusMsg = 'تحت الدراسة';
-                                                    $string = '';
-                                                }elseif($visit->status == 'approved'){
-                                                    $statusMsg = 'معتمد';
-                                                }elseif($visit->status == 'canceled'){
-                                                    $statusMsg = 'ملغى';
-                                                }elseif($visit->status == 'visited'){
-                                                    $statusMsg = 'تم الدخول';
-                                                }elseif($visit->status == 'finish_customer'){
-                                                    $statusMsg = 'قام العميل بالتقييم';
-                                                }elseif($visit->status == 'finish_gym'){
-                                                    $statusMsg = 'قام النادي بالتقييم';
-                                                }elseif($visit->status == 'finish'){
-                                                    $statusMsg = 'تم';
-                                                }else{
-                                                    $statusMsg = '';
-                                                    $string = '';
-                                                }
-
-                                            ?>
                                             <label class="form-control_ {{ $visit->status_ }}" name="orderId">رقم الطلب: {{ $visit->id }}</label>
                                             <br>
                                             <label class="form-control_ {{ $visit->status }}" name="visit_status">{{ $statusMsg }}</label>
@@ -248,12 +229,9 @@
                                             <label style="padding-left: 10px;"> {{ $visit->gym_comment }}</label>
                                             @endif
                                         </div>
-                                        <div class="gymCardLeft">
-                                            <img src="{{ $visit->gym->image }}" alt="" width="100%" height="">
-                                        </div>
+                                        <input style="width: 100%;margin-top:5px;" type="submit" value="حفظ" class="btn btn-primary">
                                     </div>
                                     
-                                    <input type="submit" value="حفظ" class="btn btn-primary">
                                     
                                 </div>
                             </form>
@@ -264,10 +242,12 @@
                             @csrf
                             @method('PUT')
                             <div class="card">
-                                <div class="gymCardContainer">
-                                    <div class="gymCardRight">
+                                <div class="gymCardContainer2">
+                                    <div class="gymCardTop">
                                         <div class="card-header" name="gym_name">{{ $visit->gym->name }}</div>
-
+                                        <img src="{{ $visit->gym->image }}" alt="" width="100%" height="">
+                                    </div>
+                                    <div class="gymCardBelow">
                                         <input type="hidden" class="form-control" name="visit_id" value="{{ $visit->gym->id }}">
                                         <input type="hidden" class="form-control" name="visit_id" value="{{ $visit->id }}">
 
@@ -276,30 +256,7 @@
 
                                         <!-- <label class="form-control" name="gym_id">اسمتع باستخدم جميع خدمات النادي فقط بـ <span style="font-weight:900;"> {{ $visit->gym->cpd }}</span> ريال</label> -->
 
-                                        <?php
-                                            if($visit->status == 'pending'){
-                                                $statusMsg = 'تحت الدراسة';
-                                                $string = '';
-                                            }elseif($visit->status == 'approved'){
-                                                $statusMsg = 'معتمد';
-                                            }elseif($visit->status == 'canceled'){
-                                                $statusMsg = 'ملغى';
-                                            }elseif($visit->status == 'visited'){
-                                                $statusMsg = 'تم الدخول';
-                                            }elseif($visit->status == 'finish_customer'){
-                                                $statusMsg = 'قام العميل بالتقييم';
-                                            }elseif($visit->status == 'finish_gym'){
-                                                $statusMsg = 'قام النادي بالتقييم';
-                                            }elseif($visit->status == 'finish'){
-                                                $statusMsg = 'تم';
-                                            }else{
-                                                $statusMsg = '';
-                                                $string = '';
-                                            }
-
-                                                
-                                        ?>
-                                        
+                                                                
                                         <label class="form-control_ {{ $visit->status_ }}" name="orderId">رقم الطلب: {{ $visit->id }}</label>
                                         <br>
                                         <label class="form-control_ {{ $visit->status }}" name="visit_status">{{ $statusMsg }}</label>
@@ -340,9 +297,7 @@
                                         <label style="padding-left: 10px;"> {{ $visit->gym_comment }}</label>
                                         @endif
                                     </div>
-                                    <div class="gymCardLeft">
-                                        <img src="{{ $visit->gym->image }}" alt="" width="100%" height="">
-                                    </div>
+                    
                                 </div>
                                 <!-- <input type="submit" value="قبول" class="btn btn-warning"> -->
                                     
@@ -353,9 +308,12 @@
                             @csrf
                             @method('PUT')
                                 <div class="card">
-                                    <div class="gymCardContainer">
-                                        <div class="gymCardRight">
+                                    <div class="gymCardContainer2">
+                                        <div class="gymCardTop">
                                             <div class="card-header" name="gym_name">{{ $visit->gym->name }}</div>
+                                            <img src="{{ $visit->gym->image }}" alt="" width="100%" height="">
+                                        </div>
+                                        <div class="gymCardBelow">
 
                                             <input type="hidden" class="form-control" name="visit_id" value="{{ $visit->gym->id }}">
                                             <input type="hidden" class="form-control" name="visit_id" value="{{ $visit->id }}">
@@ -365,29 +323,6 @@
 
                                             <!-- <label class="form-control" name="gym_id">اسمتع باستخدم جميع خدمات النادي فقط بـ <span style="font-weight:900;"> {{ $visit->gym->cpd }}</span> ريال</label> -->
 
-                                            <?php
-                                                if($visit->status == 'pending'){
-                                                    $statusMsg = 'تحت الدراسة';
-                                                    $string = '';
-                                                }elseif($visit->status == 'approved'){
-                                                    $statusMsg = 'معتمد';
-                                                }elseif($visit->status == 'canceled'){
-                                                    $statusMsg = 'ملغى';
-                                                }elseif($visit->status == 'visited'){
-                                                    $statusMsg = 'تم الدخول';
-                                                }elseif($visit->status == 'finish_customer'){
-                                                    $statusMsg = 'قام العميل بالتقييم';
-                                                }elseif($visit->status == 'finish_gym'){
-                                                    $statusMsg = 'قام النادي بالتقييم';
-                                                }elseif($visit->status == 'finish'){
-                                                    $statusMsg = 'تم';
-                                                }else{
-                                                    $statusMsg = '';
-                                                    $string = '';
-                                                }
-
-                                                    
-                                            ?>
                                             <label class="form-control_ {{ $visit->status_ }}" name="orderId">رقم الطلب: {{ $visit->id }}</label>
                                             <br>
                                             <label class="form-control_ {{ $visit->status }}" name="visit_status">{{ $statusMsg }}</label>
@@ -427,9 +362,7 @@
                                             <label style="padding-left: 10px;"> {{ $visit->gym_comment }}</label>
                                             @endif
                                         </div>
-                                        <div class="gymCardLeft">
-                                            <img src="{{ $visit->gym->image }}" alt="" width="100%" height="">
-                                        </div>
+                                        
                                     </div>
                                         
                                 </div>

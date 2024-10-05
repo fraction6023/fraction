@@ -38,6 +38,7 @@ Route::put('/feedbackfinish', [App\Http\Controllers\CustomerController::class, '
 
 Route::get('/waitingOrders', [App\Http\Controllers\GymController::class, 'waitingOrders']);
 Route::put('/gymfeedbackVisit', [App\Http\Controllers\GymController::class, 'gymfeedbackVisit']);
+Route::get('/qrScanner', [App\Http\Controllers\GymController::class, 'qrScanner']);
 
 
 

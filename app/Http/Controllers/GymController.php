@@ -36,4 +36,9 @@ class GymController extends Controller
 
         return redirect('waitingOrders');
     }
+
+    public function qrScanner(){
+ 
+        return view('gym.qrScanner');
+    }
 }

@@ -32,9 +32,9 @@
                             <br>
                             <label class="form-control_ {{ $visit[0]->status }}" name="visit_status">{{ $statusMsg }}</label>
                             <br>
-                            <label class="form-control_ " name="visit_status">{{ $visit[0]->approveCode }}</label>
+                            <!-- <label class="form-control_ " name="visit_status">{{ $visit[0]->approveCode }}</label>
                             {!! QrCode::size(300)->generate('Embed this content into the QR Code') !!}
-                            <br>
+                            <br> -->
                             
                             @if( $visit[0]->gym->rate -1 >=0 ) <span class="fa fa-star checked"></span> @else <span class="fa fa-star"></span> @endif
                             @if( $visit[0]->gym->rate -2 >=0 ) <span class="fa fa-star checked"></span> @else <span class="fa fa-star"></span> @endif
@@ -380,6 +380,7 @@
         </div>
     </div>
 <br>
+
 <!-- <div class="card">
     <div class="card-header">test</div>
         <div class="scrollingDiv">

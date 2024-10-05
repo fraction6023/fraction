@@ -32,10 +32,16 @@
                         <!-- </a>
                     </div> -->
                     <!-- <div class="row mb-3">
+                        <a href="\customer"> -->
+                        <input type="button" value="مسح رمز الدخول QR" onclick="location.href='qrScanner';" class="btn btn-success mb-3" >
+                        <!-- </a>
+                    </div> -->
+                    <!-- <div class="row mb-3">
                         <a href="\visit"> -->
                             <!-- <input type="button" value="اشتراكي الحالي" onclick="location.href='visit';" class="btn btn-success mb-3" > -->
                         <!-- </a>
                     </div> -->
+
                     <!-- {{ __('تم تسجيل الدخول!') }} -->
             </div>
         </div>

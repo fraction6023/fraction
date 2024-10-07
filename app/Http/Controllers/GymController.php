@@ -41,4 +41,9 @@ class GymController extends Controller
  
         return view('gym.qrScanner');
     }
+
+    public function gymregister(){
+ 
+        return view('gym.gymregister');
+    }
 }

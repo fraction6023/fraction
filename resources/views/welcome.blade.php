@@ -12,6 +12,9 @@
                         </div>
                     @endif
                     <p class="">مرحبا بكم في {{ config('app.name', 'Laravel') }}</p>
+                    <br>
+                    <input type="button" value="تسجيل دخول" onclick="location.href='login';" class="btn btn-success mb-3" >
+                    <br>
                     <input type="button" value="تسجيل جديد" onclick="location.href='register';" class="btn btn-success mb-3" >
                     <br>
                     <input type="button" value="طلب انظمام النادي" onclick="location.href='gymregister';" class="btn btn-success mb-3" >

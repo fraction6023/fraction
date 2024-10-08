@@ -32,11 +32,19 @@ body {
   height: 460px;
 }
 
+.gymCardContainer3{
+  display: inline;
+  border: 2px solid #3333;
+  width: 90%;
+  margin-right: 5%;
+  /* height: 460px; */
+}
+
 .gymCardLeft{
     display: inline;
     border: 1px solid #3333;
     width: 20%;
-    height: 250px;
+    /* height: 250px; */
     text-align: center;
 }
 .gymCardRight{

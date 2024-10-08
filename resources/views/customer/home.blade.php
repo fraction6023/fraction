@@ -2,10 +2,82 @@
 
 @section('content')
 
-<div class="card">
-    <div class="card-body current-booked-gym"> 
+<div class="card_">
+    <div class="card-body current-booked-gym_"> 
         @if(count($visit))
-            <form action="{{ url('bookGym') }}" method="POST">
+
+        <form action="{{ url('bookGym') }}" method="POST">
+            @csrf
+            @method('PUT')
+            <div class="card">
+                <div class="gymCardContainer3">
+                    <div class="gymCardTop">
+                        <div class="card-header" name="gym_name">{{ $visit[0]->gym->name }}</div>
+                        <img src="{{ url('storage/images/'.$visit[0]->gym->image) }}" alt="" width="100%" height="">
+                    </div>
+                    <div class="gymCardBelow">
+                        <input type="hidden" class="form-control" name="visit_id" value="{{ $visit[0]->gym->id }}">
+                        <input type="hidden" class="form-control" name="visit_id" value="{{ $visit[0]->id }}">
+
+                        <!-- <label class="form-control" name="gym_comment">{{  $visit[0]->gym->comment }}</label> -->
+                        <input type="hidden" class="form-control" name="gym_id" value="{{  $visit[0]->gym->id }}">
+
+                        <!-- <label class="form-control" name="gym_id">اسمتع باستخدم جميع خدمات النادي فقط بـ <span style="font-weight:900;"> {{ $visit[0]->gym->cpd }}</span> ريال</label> -->
+
+                        <label class="form-control_ {{ $visit[0]->status_ }}" name="orderId">رقم الطلب: {{ $visit[0]->id }}</label>
+                        <br>
+                        <label class="form-control_ " name="visit_status">{{ $visit[0]->approveCode }}</label>
+                        
+                        <br>
+                        @if( $visit[0]->status == 'visited' || $visit[0]->status == 'finish_gym')
+                        <label style="padding-left: 10px;"> قيم زيارتك</label>
+                        <div class="rating">
+                        <!-- Notice that the stars are in reverse order -->
+
+                        <input type="radio" id="star5" name="rate" value="5">
+                        <label for="star5">&#9733;</label>
+                        <input type="radio" id="star4" name="rate" value="4">
+                        <label for="star4">&#9733;</label>
+                        <input type="radio" id="star3" name="rate" value="3">
+                        <label for="star3">&#9733;</label>
+                        <input type="radio" id="star2" name="rate" value="2">
+                        <label for="star2">&#9733;</label>
+                        <input type="radio" id="star1" name="rate" value="1">
+                        <label for="star1">&#9733;</label>
+                        </div>
+                        @endif
+                        <br>
+                        @if( $visit[0]->status == 'visited' || $visit[0]->status == 'finish_gym')
+                        <label style="padding-left: 10px;">اترك تعليق </label>
+                        <input type="textarea" name="comment"/>
+                        @endif
+                        <br>
+             
+                    </div>
+                </form>
+                    @if( $visit[0]->status == 'pending')
+                        <form action="{{ url('cancelBookGym') }}" method="POST">
+                        @csrf
+                        @method('PUT')
+                            <div class="card">
+                                <input type="submit" value="الغاء" class="btn btn-danger" >
+                                <input type="hidden" class="form-control" name="visit_id" value="{{ $visit[0]->id }}">
+                                <input type="hidden" class="form-control" name="visit_status" value="{{ $visit[0]->status }}">
+                                <input type="hidden" class="form-control" name="visit_cost" value="{{ $visit[0]->cost }}">
+                            </div>
+                        </form>
+                    @endif
+                </div>
+                
+                
+            </div>
+         <!-- -->
+
+
+
+
+
+            <!-- <form action="{{ url('bookGym') }}" method="POST">
                 @csrf
                 @method('PUT')
                 <div class="card">
@@ -17,25 +89,25 @@
                             <input type="hidden" class="form-control" name="gym_id" value="{{  $visit[0]->gym->id }}">
                             <label class="form-control" name="gym_id">استمتع باستخدم جميع خدمات النادي فقط بـ <span style="font-weight:900;"> {{ $visit[0]->gym->cpd }}</span> ريال</label>
                             <?php
-                                if($visit[0]->status == 'pending'){
-                                    $statusMsg = 'تحت الدراسة';
-                                    }elseif($visit[0]->status == 'approved'){
-                                        $statusMsg = 'معتمد';
-                                    }elseif($visit[0]->status == 'canceled'){
-                                        $statusMsg = 'ملغى';
-                                    }else{
-                                        $statusMsg = '';
-                                        $string = '';
-                                    }
+                                // if($visit[0]->status == 'pending'){
+                                //     $statusMsg = 'تحت الدراسة';
+                                //     }elseif($visit[0]->status == 'approved'){
+                                //         $statusMsg = 'معتمد';
+                                //     }elseif($visit[0]->status == 'canceled'){
+                                //         $statusMsg = 'ملغى';
+                                //     }else{
+                                //         $statusMsg = '';
+                                //         $string = '';
+                                //     }
                             ?>
                             <label class="form-control_ {{ $visit[0]->status_ }}" name="orderId">رقم الطلب: {{ $visit[0]->id }}</label>
                             <br>
-                            <label class="form-control_ {{ $visit[0]->status }}" name="visit_status">{{ $statusMsg }}</label>
-                            <br>
+                            
+                            <br> -->
                             <!-- <label class="form-control_ " name="visit_status">{{ $visit[0]->approveCode }}</label>
                             {!! QrCode::size(300)->generate('Embed this content into the QR Code') !!}
                             <br> -->
-                            
+<!--                             
                             @if( $visit[0]->gym->rate -1 >=0 ) <span class="fa fa-star checked"></span> @else <span class="fa fa-star"></span> @endif
                             @if( $visit[0]->gym->rate -2 >=0 ) <span class="fa fa-star checked"></span> @else <span class="fa fa-star"></span> @endif
                             @if( $visit[0]->gym->rate -3 >=0 ) <span class="fa fa-star checked"></span> @else <span class="fa fa-star"></span> @endif
@@ -48,9 +120,9 @@
                             <img src="{{ url('storage/images/'.$visit[0]->gym->image) }}" alt="" width="100%" height="">
                             
                         </div>
-                    </div>
+                    </div> -->
                     <!-- <input type="submit" value="احجز" class="btn btn-primary"> -->
-                </div>
+                <!-- </div>
             </form>
         
             @if( $visit[0]->status == 'pending')
@@ -75,7 +147,7 @@
         <div class="card">
             <input type="button" value="حجز تمرين اليوم" onclick="location.href='booking';" class="btn btn-success mb-3" >
         </div>
-        @endif
+        @endif -->
     </div>
 
 

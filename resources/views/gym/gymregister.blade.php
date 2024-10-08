@@ -8,7 +8,7 @@
                 <div class="card-header">{{ __('تسجيل نادي جديد') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
+                    <form action="{{ url('insertGMY') }}" enctype="multipart/form-data" method="POST">
                         @csrf
 
                         
@@ -40,11 +40,12 @@
                             </div>
                         </div>
 
-                        <!-- <div class="row mb-3">
+                        <div class="row mb-3">
                             <label for="image" class="col-md-4 col-form-label text-md-end">{{ __('صورة العرض') }}</label>
 
                             <div class="col-md-6">
-                                <input id="image" type="image" class="form-control @error('image') is-invalid @enderror" name="image"  required src="img_submit.gif">
+                                
+                                <input type="file" id="image" name="image" accept="image/*"class="form-control @error('image') is-invalid @enderror" required >
 
                                 @error('image')
                                     <span class="invalid-feedback" role="alert">
@@ -52,7 +53,7 @@
                                     </span>
                                 @enderror
                             </div>
-                        </div> -->
+                        </div>
 
                         <!-- <div class="row mb-3">
                             <label for="class" class="col-md-4 col-form-label text-md-end">{{ __('الفئة') }}</label>

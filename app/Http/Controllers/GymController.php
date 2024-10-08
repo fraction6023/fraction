@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Visit;
 use App\Models\Customer;
+use App\Models\Gym;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -45,5 +46,24 @@ class GymController extends Controller
     public function gymregister(){
  
         return view('gym.gymregister');
+    }
+
+    public function insertGMY(Request $req){
+        if($req->hasFile('image')){
+            $distination_path = 'uploadedImages';
+            $receipt = $req->file('image');
+            $image_name = $receipt->getClientOriginalName();
+            //$path = $req->file('receipt')->storeAs($distination_path , $image_name);
+        }
+        $imagePath = $req->file('image')->store('public\images');
+
+        $newGYM = new Gym;
+
+        $newGYM->name = $req->input('gymName');
+        $newGYM->image = $image_name;
+
+        $newGYM->save();
+  
+        return redirect('waitingOrders');
     }
 }

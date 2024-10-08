@@ -118,7 +118,7 @@
                                         
                                         </div>
                                         <div class="gymCardLeft">
-                                            <img src="{{ $gym->image }}" alt="" width="100%" height="">
+                                            <img src="{{ url('storage/'.$gym->image) }}" alt="" width="100%" height="">
                                         </div>
                                     </div>
                                     @if(count($visits) > 0)

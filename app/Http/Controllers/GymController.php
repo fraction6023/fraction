@@ -50,17 +50,22 @@ class GymController extends Controller
 
     public function insertGMY(Request $req){
         if($req->hasFile('image')){
-            $distination_path = 'uploadedImages';
-            $receipt = $req->file('image');
-            $image_name = $receipt->getClientOriginalName();
-            //$path = $req->file('receipt')->storeAs($distination_path , $image_name);
+            // $distination_path = 'uploadedImages';
+            // $receipt = $req->file('image');
+            // $image_name = $receipt->getClientOriginalName();
+            // //$path = $req->file('receipt')->storeAs($distination_path , $image_name);
+            $distination_path = 'public\images';
+            $gymImage = time().'.'.$req->image->extension();
+            $req->file('image')->storeAs($distination_path ,$gymImage);
         }
-        $imagePath = $req->file('image')->store('public\images');
+        //$imagePath = $req->file('image')->store('public\images');
+
+
 
         $newGYM = new Gym;
 
         $newGYM->name = $req->input('gymName');
-        $newGYM->image = $image_name;
+        $newGYM->image = $gymImage;
 
         $newGYM->save();
   

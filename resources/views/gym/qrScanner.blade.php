@@ -38,7 +38,17 @@
                     });
                     </script> -->
 
-                    
+                    <div class="container">
+                    <h1>Scan QR Codes</h1>
+                    <div class="section">
+                        <div id="my-qr-reader">
+                        </div>
+                    </div>
+                </div>
+                <script
+                    src="https://unpkg.com/html5-qrcode">
+                </script>
+                <script src="script.js"></script>
 
 
                 </div>

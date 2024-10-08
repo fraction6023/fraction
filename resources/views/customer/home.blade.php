@@ -45,7 +45,8 @@
                         
                         </div>
                         <div class="gymCardBelow">
-                            <img src="{{ $visit[0]->gym->image }}" alt="" width="100%" height="">
+                            <img src="{{ url('storage/images/'.$visit[0]->gym->image) }}" alt="" width="100%" height="">
+                            
                         </div>
                     </div>
                     <!-- <input type="submit" value="احجز" class="btn btn-primary"> -->
@@ -117,7 +118,7 @@
                                     <div class="gymCardContainer2">
                                         <div class="gymCardTop">
                                             <div class="card-header" name="gym_name">{{ $visit->gym->name }}</div>
-                                            <img src="{{ $visit->gym->image }}" alt="" width="100%" height="">
+                                            <img src="{{ url('storage/images/'.$visit->gym->image) }}" alt="" width="100%" height="">
                                         </div>
                                         <div class="gymCardBelow">
                                             <input type="hidden" class="form-control" name="visit_id" value="{{ $visit->gym->id }}">
@@ -182,7 +183,7 @@
                                     <div class="gymCardContainer2">
                                         <div class="gymCardTop">
                                             <div class="card-header" name="gym_name">{{ $visit->gym->name }}</div>
-                                            <img src="{{ $visit->gym->image }}" alt="" width="100%" height="">
+                                            <img src="{{ url('storage/images/'.$visit->gym->image) }}" alt="" width="100%" height="">
                                         </div>
                                         <div class="gymCardBelow">
                                             <input type="hidden" class="form-control" name="visit_id" value="{{ $visit->gym->id }}">
@@ -249,7 +250,7 @@
                                 <div class="gymCardContainer2">
                                     <div class="gymCardTop">
                                         <div class="card-header" name="gym_name">{{ $visit->gym->name }}</div>
-                                        <img src="{{ $visit->gym->image }}" alt="" width="100%" height="">
+                                        <img src="{{ url('storage/images/'.$visit->gym->image) }}" alt="" width="100%" height="">
                                     </div>
                                     <div class="gymCardBelow">
                                         <input type="hidden" class="form-control" name="visit_id" value="{{ $visit->gym->id }}">
@@ -315,7 +316,8 @@
                                     <div class="gymCardContainer2">
                                         <div class="gymCardTop">
                                             <div class="card-header" name="gym_name">{{ $visit->gym->name }}</div>
-                                            <img src="{{ $visit->gym->image }}" alt="" width="100%" height="">
+                                            <!-- <img src="{{ $visit->gym->image }}" alt="" width="100%" height=""> -->
+                                            <img src="{{ url('storage/images/'.$visit->gym->image) }}" alt="" width="100%" height="">
                                         </div>
                                         <div class="gymCardBelow">
 

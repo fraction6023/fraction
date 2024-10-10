@@ -13,7 +13,7 @@
                 <div class="gymCardContainer3">
                     <div class="gymCardTop">
                         <div class="card-header" name="gym_name">{{ $visit[0]->gym->name }}</div>
-                        <img src="{{ url('storage/images/'.$visit[0]->gym->image) }}" alt="" width="100%" height="">
+                        <img src="{{ url('storage/images/'.$visit[0]->gym->image) }}" class="gymImage">
                     </div>
                     <div class="gymCardBelow">
                         <input type="hidden" class="form-control" name="visit_id" value="{{ $visit[0]->gym->id }}">

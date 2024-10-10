@@ -50,25 +50,18 @@ class GymController extends Controller
 
     public function insertGMY(Request $req){
         $newGYM = new Gym;
-<<<<<<< HEAD
-=======
 
->>>>>>> e8a32a34a1b014a7b4516a2384db17979776820e
         if($req->hasFile('image')){
             $distination_path = 'public\images';
             $gymImage = time().'.'.$req->image->extension();
             $req->file('image')->storeAs($distination_path ,$gymImage);
         }else{
-<<<<<<< HEAD
+
             $gymImage='noImage.gif';
         }
 
-=======
             $gymImage = 'noImage.png';
-        }
 
-
->>>>>>> e8a32a34a1b014a7b4516a2384db17979776820e
         $newGYM->name = $req->input('gymName');
         $newGYM->cpd = $req->input('cpd');
         $newGYM->comment = $req->input('comment');

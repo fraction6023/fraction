@@ -238,7 +238,7 @@
                                             <br>
                                             <label style="padding-left: 10px;"> {{ $visit->gym_comment }}</label>
                                             @endif
-                                        <input style="width: 100%;margin-top:5px;" value="تم الدخوول" class="btn btn-primary">
+                                        <input style="width: 100%;margin-top:5px;" type="submit" value="تم الدخول" class="btn btn-primary">
                                         </div>
                                     </div>
                                         

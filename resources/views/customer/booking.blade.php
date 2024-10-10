@@ -112,9 +112,7 @@
                                     </div>
                                     @endif
 
-                                    <!-- @for($commentsCounter=0 ; $commentsCounter <= $rating_count-1 ; $commentsCounter = $commentsCounter + 1)
-                                    <span class="comment_container">{{$allComments[$commentsCounter]}}</span>
-                                    @endfor -->
+                                   
                                     
                             @if(count($visits) > 0)
                                 @if($visits[0]->status == 'pending')

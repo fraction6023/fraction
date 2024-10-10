@@ -1,7 +1,99 @@
 @extends('layouts.app')
 
 @section('content')
+
+
+<div class="card">
 <div class="container centerText">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+
+<div class="card-header ">حجز تمرين اليوم</div>
+
+                    @if (session('status'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('status') }}
+                        </div>
+                    @endif
+                    
+                    @if($gyms)
+                        <p>رصيدك الحالي {{$fund->funds}} ريال</p>
+                        @php
+                        $i = 0;
+                        $j = 0;
+                        @endphp
+
+                        @foreach($allVisits as $visit)
+                            @if($visit->customer_rate)
+                                @if($visit->user_id ==  Auth::user()->id )
+                                    @php 
+                                        $i = $i + $visit->customer_rate;
+                                        $j++;
+                                    @endphp
+                                @endif
+                            @endif
+                        @endforeach
+                    
+                        @if($i >0 )
+                    
+                            @php
+                            $j=($i / $j)
+                            @endphp
+                        
+                            @if( $j -1 >=0 ) <span class="fa fa-star checked"></span> @else <span class="fa fa-star"></span> @endif
+                            @if( $j -2 >=0 ) <span class="fa fa-star checked"></span> @else <span class="fa fa-star"></span> @endif
+                            @if( $j -3 >=0 ) <span class="fa fa-star checked"></span> @else <span class="fa fa-star"></span> @endif
+                            @if( $j -4 >=0 ) <span class="fa fa-star checked"></span> @else <span class="fa fa-star"></span> @endif
+                            @if( $j -5 >=0 ) <span class="fa fa-star checked"></span> @else <span class="fa fa-star"></span> @endif
+
+                        @endif
+                    @endif
+</div>
+
+
+    <div class="card-body_ scroll-container_ scrollingDiv_">
+                @if($gyms)
+                    @foreach($gyms as $gym)
+                            <form action="{{ url('bookGym') }}" method="POST">
+                            @csrf
+                            @method('PUT')
+                            <div class="card">
+                                <div class="gymCardContainer4">
+                                    <div class="gymCardTop">
+                                        <div class="card-header" name="gym_name">{{ $gym->name }}</div>
+                                        <img src="{{ url('storage/images/'.$gym->image) }}" alt="" width="100%" height="">
+                                    </div>
+                                    <div class="gymCardBelow">
+                                        
+                                     <p class="">تكلفة الحجز اليومي: <span style="font-weight: bold; color: #69a;">{{$gym->cpd}}</span> ريال</p>
+                                     <p class="">{{$gym->comment}}</p>
+                                    </div>
+                                </div>     
+                                                          
+                            </div>
+                            
+                        </form>
+                    
+                    @endforeach
+
+                @endif
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<br>
+
+
+
+
+
+
+
+
+
+<!-- <div class="container centerText">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -32,13 +124,13 @@
                         @endif
                     @endforeach
                     
-                    @if($i >0 )
+                    @if($i >0 ) -->
                     <!-- <p>
                     @php
                     ($i / $j) 
                     @endphp
                     </p> -->
-
+<!-- 
                     @php
                     $j=($i / $j)
                     @endphp
@@ -73,9 +165,9 @@
                                             <input type="hidden" class="form-control" name="gym_id" value="{{ $gym->id }}">
                                             <input type="hidden" class="form-control" name="cpd" value="{{ $gym->cpd }}">
 
-                                            <label class="form-control" name="gym_id">اسمتع باستخدم جميع خدمات النادي فقط بـ <span style="font-weight:900;"> {{ $gym->cpd }}</span> ريال</label>
+                                            <label class="form-control" name="gym_id">اسمتع باستخدم جميع خدمات النادي فقط بـ <span style="font-weight:900;"> {{ $gym->cpd }}</span> ريال</label> -->
                                             <!-- <label class="form-control" name="gym_id">{{ $gym->rate }}</label> -->
-                                            @php
+                                            <!-- @php
                                             $i = 0;
                                             $j = 0;
                                             $allComments=array();
@@ -140,21 +232,21 @@
                                     @endif
 
                                 </div>
-                            </form>
+                            </form> -->
                             <!-- <form action="" class="">
                                 @if($fund->funds - $gym->cpd < 0)
                                     <input type="submit" value="اشحن رصيدك لتتمكن من الحجز" class="btn btn-primary">
                                 @endif
                                 </div>
                             </form> -->
-                            <br>
-                        @endforeach
+                          <!--  <br>
+                         @endforeach
                     @endif                
                 </div>
             </div>
         </div>
     </div>
-</div>
+</div> -->
 @endsection
 
 

@@ -16,7 +16,7 @@
                             <label for="gymName" class="col-md-4 col-form-label text-md-end">{{ __('اسم النادي') }}</label>
 
                             <div class="col-md-6">
-                                <input id="gymName" type="gymName" class="form-control @error('gymName') is-invalid @enderror" name="gymName" value="{{ old('gymName') }}" required autocomplete="gymName">
+                                <input id="gymName" type="text" class="form-control @error('gymName') is-invalid @enderror" name="gymName" value="{{ old('gymName') }}" required autocomplete="gymName">
 
                                 @error('gymName')
                                     <span class="invalid-feedback" role="alert">
@@ -30,9 +30,23 @@
                             <label for="mobile" class="col-md-4 col-form-label text-md-end">{{ __('جوال النادي') }}</label>
 
                             <div class="col-md-6">
-                                <input id="mobile" type="mobile" class="form-control @error('mobile') is-invalid @enderror" name="mobile" value="{{ old('mobile') }}" required autocomplete="mobile">
+                                <input id="mobile" type="text" class="form-control @error('mobile') is-invalid @enderror" name="mobile" value="{{ old('mobile') }}" required autocomplete="mobile">
 
                                 @error('mobile')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="cpd" class="col-md-4 col-form-label text-md-end">{{ __('قيمة الحجز اليومي') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="cpd" type="text" class="form-control @error('cpd') is-invalid @enderror" name="cpd" value="{{ old('cpd') }}" required autocomplete="cpd">
+
+                                @error('cpd')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>

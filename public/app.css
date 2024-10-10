@@ -37,7 +37,15 @@ body {
   border: 2px solid #3333;
   width: 90%;
   margin-right: 5%;
-  /* height: 460px; */
+  height: 460px; 
+}
+.gymCardContainer4{
+  display: inline;
+  border: 2px solid #3333;
+  width: 50%;
+  margin-right: 25%;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .gymCardLeft{

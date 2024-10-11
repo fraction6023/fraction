@@ -40,7 +40,7 @@ class GymController extends Controller
 
     public function qrScanner(){
  
-        return view('gym.qrScanner');
+        return view('gym.qr.Index');
     }
 
     public function gymregister(){

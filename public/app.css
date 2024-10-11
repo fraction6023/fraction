@@ -35,7 +35,6 @@ body {
 .gymCardContainer3{
   display: inline;
   border: 2px solid #3333;
-<<<<<<< HEAD
   width: 90%;
   margin-right: 5%;
   height: 460px; 
@@ -47,11 +46,9 @@ body {
   margin-right: 25%;
   margin-top: 20px;
   margin-bottom: 20px;
-=======
   width: 50%;
   margin-right: 25%;
   height: 460px;
->>>>>>> e8a32a34a1b014a7b4516a2384db17979776820e
 }
 
 .gymCardLeft{

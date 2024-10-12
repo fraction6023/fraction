@@ -10,7 +10,7 @@
     <div class="container col-lg-6 py-4">
         <div class="card bg-white shadow rounded-3 p-3 border-0">
             <p style="text-align: center;">امسح الباركود للدخول</p>
-            <video id="preview"></video>
+            <video id="preview" class="video-background" autoplay loop muted playsinline></video>
         </div>
     </div>
 

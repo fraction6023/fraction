@@ -8,16 +8,19 @@
   </head>
   <body>
     <div class="container col-lg-6 py-4">
-        <div style="position: fixed" class="card bg-white shadow rounded-3 p-3 border-0">
-            <p style="text-align: center;">امسح الباركود للدخول</p>            
-            <video id="preview"></video>
+        <!-- <div style="position: fixed" class="card_ bg-white shadow rounded-3 p-3 border-0"> -->
+            <!-- <p style="text-align: center;">امسح الباركود للدخول</p>             -->
+            <!-- <video id="preview"></video> -->
             
-            <!-- <div style="position: fixed">
-                <video src="..."></video>
-            </div> -->
+            <video id="preview" style="left: 0;top: 0;height:100%;position:fixed;width: 100%;z-index: -20;" autoplay loop muted playsinline></video>
+
+
+            <div style="position: fixed">
+                <video id="preview" style="left: 0;top: 0;height:100%;position:fixed;width: 100%;z-index: -20;" autoplay loop muted playsinline></video>
+            </div>
             
             <!-- <video id="preview" class="video-background" autoplay loop muted playsinline></video> -->
-        </div>
+        <!-- </div> -->
     </div>
 
     <script type="text/javascript" src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>

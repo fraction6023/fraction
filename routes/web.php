@@ -41,7 +41,7 @@ Route::post('/insertGMY', [App\Http\Controllers\GymController::class, 'insertGMY
 
 Route::get('/waitingOrders', [App\Http\Controllers\GymController::class, 'waitingOrders']);
 Route::put('/gymfeedbackVisit', [App\Http\Controllers\GymController::class, 'gymfeedbackVisit']);
-Route::get('/qrScanner', [App\Http\Controllers\GymController::class, 'qrScanner']);
+Route::post('/qrScanner', [App\Http\Controllers\GymController::class, 'qrScanner']);
 
 
 

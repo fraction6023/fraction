@@ -38,9 +38,26 @@ class GymController extends Controller
         return redirect('waitingOrders');
     }
 
-    public function qrScanner(){
- 
-        return view('gym.qrScanner');
+    public function qrScanner(Request $req){
+        if($req->qrInfo){
+            $customer = Customer::find(Auth::id());
+            $visit = Visit::where('approveCode',$req->qrInfo)->orderBy('approveCode', 'DESC')->get()->first();
+            //$visit = Visit::find('45');
+            if($visit){
+                if( $visit->gym_id == $customer->gym_id ){
+                    //$visit->approveCode = $req->qrInfo.'Finish';//601769B46292817
+                    $visit->status = $customer->gym_id;//'visited';
+                    $visit->save();
+                return view('gym.qrScanner');//->with('grapped successfull');
+                }else{
+                    return view('gym.qrScanner');//->with('this qr not fot this gym');
+                }
+            }else{
+                return view('gym.home');//->with('wrog reading qr');;
+            }
+        }else{
+            return view('gym.qrScanner');
+        }
     }
 
     public function gymregister(){

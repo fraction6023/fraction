@@ -46,7 +46,7 @@ class GymController extends Controller
             if($visit){
                 if( $visit->gym_id == $customer->gym_id ){
                     //$visit->approveCode = $req->qrInfo.'Finish';//601769B46292817
-                    $visit->status = $customer->gym_id;//'visited';
+                    $visit->status = 'visited';//$customer->gym_id;'visited';
                     $visit->save();
                 return view('gym.qrScanner');//->with('grapped successfull');
                 }else{

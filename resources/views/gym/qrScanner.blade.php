@@ -42,23 +42,108 @@
 
     <script type="text/javascript" src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
     <script type="text/javascript">
+
+// var self;
+// isQRScannerInitialised = false;
+// function testQrCode(textBoxId,DivWidth){
+// 	self = initialiseQRScanner(DivWidth);
+	
+// 	self.scanner.addListener('scan', function (content, image) {
+// 		 if(textBoxId == $("#hiddenTextBox").val()){
+// 				audio.play();
+// 				var code = content;
+// 		        $("#"+textBoxId).val(code);
+// 		    	isQRScannerInitialised = false;
+		    	
+// 			}
+		    
+//     }, false);
+    
+// }
+
+// function initialiseQRScanner(DivWidth){
+	
+// 	self = this;
+	
+//     if(isQRScannerInitialised == false){
+    	
+//     	var tempVideo = document.getElementsByTagName("video")[0];
+//     	tempVideo.width=DivWidth;
+//     	tempVideo.height=480;
+    	
+//     	self.scanner = new Instascan.Scanner({ video: document.getElementsByTagName("video")[0],mirror:false, scanPeriod: 1});
+    	
+// 		Instascan.Camera.getCameras().then(function (cameras) {
+// 		    self.cameras = cameras;
+// 		    if (self.cameras.length > 0) {
+// 		    	 if(cameras[0].name.match(/back/) || cameras[0].name.match(/Back/)){
+// 		    		self.activeCameraId = cameras[0].id;
+// 			    	self.scanner.start(cameras[0]);
+// 		    	} else if(cameras[1].name.match(/back/) || cameras[1].name.match(/Back/)){
+// 		    		self.activeCameraId = cameras[1].id;
+// 			    	self.scanner.start(cameras[1]);
+// 		    	}
+// 		    	isQRScannerInitialised = true;
+		    	
+// 		    } else {
+		    	
+// 		    	alert('No cameras found.');
+// 		    	isQRScannerInitialised = false;
+// 		    	return;
+// 		    }
+// 		  }).catch(function (e) { 
+// 				isQRScannerInitialised = false;
+// 				alert("QR error name:-"+e.name + " & QR error message:-"+e.message); console.error(e); 
+// 			});
+		
+// 	}
+// 	return self;
+// }
+
+
+
+
       let scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
       scanner.addListener('scan', function (content) {
         console.log(content);
       });
       Instascan.Camera.getCameras().then(function (cameras) {
-        if (cameras.length > 0) {
-            console.log(cameras.length)
-        //   scanner.start(cameras[0]);
+
+        self.cameras = cameras;
+		    if (self.cameras.length > 0) {
+		    	 if(cameras[0].name.match(/back/) || cameras[0].name.match(/Back/)){
+		    		self.activeCameraId = cameras[0].id;
+			    	self.scanner.start(cameras[0]);
+		    	} else if(cameras[1].name.match(/back/) || cameras[1].name.match(/Back/)){
+		    		self.activeCameraId = cameras[1].id;
+			    	self.scanner.start(cameras[1]);
+		    	}
+		    	isQRScannerInitialised = true;
+		    	
+		    } else {
+		    	
+		    	alert('No cameras found.');
+		    	isQRScannerInitialised = false;
+		    	return;
+		    }
+
+
+        // if (cameras.length > 0) {
+        //     console.log(cameras.length)
+
+        // if(cameras[0].name.match(/back/) || cameras[0].name.match(/Back/)){
+        //     	    		activeCameraId = cameras[0].id;
+        // 	            	scanner.start(cameras[0]);
+        //scanner.start(cameras[0]);
         // }else if(cameras.length = 2) {
         //     scanner.start(cameras[1]);
         // }else if(cameras.length = 3) {
         //     scanner.start(cameras[2]);
         // }else if(cameras.length = 4) {
         //     scanner.start(cameras[3]);
-        }else {
-          console.error('No cameras found.');
-        }
+        // }else {
+        //   console.error('No cameras found.');
+        // }
       }).catch(function (e) {
         console.error(e);
       });

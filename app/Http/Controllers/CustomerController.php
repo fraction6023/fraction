@@ -118,8 +118,18 @@ class CustomerController extends Controller
         $visit = new Visit;
         $visit->gym_id = $req->input('gym_id');
         $visit->user_id = Auth::id();
-        $visit->status = 'pending';
+        $visit->status = 'approved';
         $visit->cost = $req->input('cpd');
+
+        $characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        // generate a pin based on 2 * 7 digits + a random character
+        $pin = mt_rand(1000000, 9999999)
+            . mt_rand(1000000, 9999999)
+            . $characters[rand(0, strlen($characters) - 1)];
+
+        $string = str_shuffle($pin);
+        $visit->approveCode = $string;
+
         $visit->save();
 
         //$visits = Visit::where('user_id',Auth::id());

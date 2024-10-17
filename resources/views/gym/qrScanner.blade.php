@@ -47,35 +47,40 @@
         console.log(content);
       });
       Instascan.Camera.getCameras().then(function (cameras) {
-        if (cameras.length > 0) {
-            console.log(cameras.length)
-            document.getElementById('count').innerText =cameras.length;
-            var selectedCam = cameras[0];
-            $.each(cameras, (i, c) => {
-                if (c.name.indexOf('back') != -1) {
-                    selectedCam = c;
-                    return false;
-                }
-            });
-
-            scanner.start(selectedCam);
-        } else {
-            console.error('No cameras found.');
-        }
-       
-        
         // if (cameras.length > 0) {
         //     console.log(cameras.length)
-        //     scanner.start(cameras[length]);
-        // // }else if(cameras.length = 2) {
-        // //     scanner.start(cameras[1]);
-        // // }else if(cameras.length = 3) {
-        // //     scanner.start(cameras[2]);
-        // // }else if(cameras.length = 4) {
-        // //     scanner.start(cameras[3]);
-        // }else {
-        //   console.error('No cameras found.');
+        //     var selectedCam = cameras[0];
+        //     $.each(cameras, (i, c) => {
+        //         if (c.name.indexOf('back') != -1) {
+        //             selectedCam = c;
+        //             return false;
+        //         }
+        //     });
+
+        //     scanner.start(selectedCam);
+        // } else {
+        //     console.error('No cameras found.');
         // }
+       
+        
+        if (cameras.length > 0) {
+            console.log(cameras.length)
+            scanner.start(cameras[length]);
+            for(i=0 ; i<= cameras.length ; i++){
+                
+            document.getElementById('count').innerText = document.getElementById('count').innerText
+            +' && '
+            + cameras[i].name;
+        }
+        // }else if(cameras.length = 2) {
+        //     scanner.start(cameras[1]);
+        // }else if(cameras.length = 3) {
+        //     scanner.start(cameras[2]);
+        // }else if(cameras.length = 4) {
+        //     scanner.start(cameras[3]);
+        }else {
+          console.error('No cameras found.');
+        }
       }).catch(function (e) {
         console.error(e);
       });

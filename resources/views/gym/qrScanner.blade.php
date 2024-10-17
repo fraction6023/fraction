@@ -64,14 +64,22 @@
        
         
         if (cameras.length > 0) {
-            console.log(cameras.length)
-            scanner.start(cameras[length]);
+            console.log(cameras.length);
+            var selectedCam = length;
+            
             for(i=0 ; i<= cameras.length ; i++){
+                if(cameras[i] == 'Back Camera')
+            {
+                document.getElementById('count').innerText = document.getElementById('count').innerText
+                +' && '
+                + cameras[i].name;
+                selectedCam = i;
+            }
                 
-            document.getElementById('count').innerText = document.getElementById('count').innerText
-            +' && '
-            + cameras[i].name;
-        }
+            }
+
+            scanner.start(cameras[selectedCam]);
+
         // }else if(cameras.length = 2) {
         //     scanner.start(cameras[1]);
         // }else if(cameras.length = 3) {

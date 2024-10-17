@@ -48,18 +48,18 @@
       });
       Instascan.Camera.getCameras().then(function (cameras) {
         if (cameras.length > 0) {
-                //If the user has a rear/back camera
-                if (cameras[2]) {
-                    //use that by default
-                    scanner.start(cameras[1]);
-                } else {
-                    //else use front camera
-                    scanner.start(cameras[0]);
+            var selectedCam = cameras[0];
+            $.each(cameras, (i, c) => {
+                if (c.name.indexOf('back') != -1) {
+                    selectedCam = c;
+                    return false;
                 }
-            } else {
-                //if no cameras are detected give error
-                console.error('No cameras found.');
-            }
+            });
+
+            scanner.start(selectedCam);
+        } else {
+            console.error('No cameras found.');
+        }
        
         
         // if (cameras.length > 0) {

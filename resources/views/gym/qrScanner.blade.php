@@ -49,7 +49,7 @@
       Instascan.Camera.getCameras().then(function (cameras) {
         if (cameras.length > 0) {
             console.log(cameras.length)
-            scanner.start(cameras[length-1]);
+            scanner.start(cameras[length]);
         // }else if(cameras.length = 2) {
         //     scanner.start(cameras[1]);
         // }else if(cameras.length = 3) {

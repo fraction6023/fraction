@@ -49,7 +49,7 @@
       Instascan.Camera.getCameras().then(function (cameras) {
         if (cameras.length > 0) {
                 //If the user has a rear/back camera
-                if (cameras[1]) {
+                if (cameras[2]) {
                     //use that by default
                     scanner.start(cameras[1]);
                 } else {

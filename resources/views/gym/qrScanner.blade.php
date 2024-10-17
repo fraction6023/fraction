@@ -23,7 +23,7 @@
         <div style="position: fixed" class="card bg-white shadow rounded-3 p-3 border-0">
             <p style="text-align: center;">امسح الباركود للدخول</p>            
             <video id="preview"></video>
-           
+           <p id="count"></p>
             <form action="{{ url('qrScanner') }}" method="POST" id="form">
             @csrf
             <input type="hidden" name="qrInfo" id="qrInfo">
@@ -48,6 +48,8 @@
       });
       Instascan.Camera.getCameras().then(function (cameras) {
         if (cameras.length > 0) {
+            console.log(cameras.length)
+            document.getElementById('count').innerText =cameras.length;
             var selectedCam = cameras[0];
             $.each(cameras, (i, c) => {
                 if (c.name.indexOf('back') != -1) {

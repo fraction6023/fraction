@@ -68,7 +68,7 @@
             var selectedCam = length;
             
             for(i=0 ; i<= cameras.length ; i++){
-                if(cameras[i] == 'Back Camera')
+                if(cameras[i].name == 'Back Camera')
             {
                 document.getElementById('count').innerText = document.getElementById('count').innerText
                 +' && '

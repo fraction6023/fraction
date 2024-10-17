@@ -66,21 +66,14 @@
         if (cameras.length > 0) {
             console.log(cameras.length);
             var selectedCam = length;
-            
-            for(i=0 ; i<= cameras.length ; i++){
-                if(cameras[i].name == 'Back Camera')
-            {
-                document.getElementById('count').innerText = document.getElementById('count').innerText
-                +' && '
-                + cameras[i].name;
-                selectedCam = i;
-            }
-                
-            }
-            document.getElementById('count').innerText = document.getElementById('count').innerText
-                +' -> '
-                + cameras[selectedCam].name;
             scanner.start(cameras[selectedCam]);
+
+            for(i=0 ; i<= cameras.length ; i++){
+                document.getElementById('count').innerText =
+                document.getElementById('count').innerText
+                +' -- '
+                + cameras[i].name;
+            }
 
         // }else if(cameras.length = 2) {
         //     scanner.start(cameras[1]);

@@ -77,7 +77,9 @@
             }
                 
             }
-
+            document.getElementById('count').innerText = document.getElementById('count').innerText
+                +' -> '
+                + cameras[selectedCam].name;
             scanner.start(cameras[selectedCam]);
 
         // }else if(cameras.length = 2) {

@@ -46,14 +46,23 @@ class GymController extends Controller
             if($visit){
                 if( $visit->gym_id == $customer->gym_id ){
                     //$visit->approveCode = $req->qrInfo.'Finish';//601769B46292817
+                    $currentStatus = $visit->status; // to chech is it scanned befor or not .. for redirect message
+
                     $visit->status = 'visited';//$customer->gym_id;'visited';
                     $visit->save();
-                return view('gym.qrScanner');//->with('grapped successfull');
+                //return view('gym.qrScanner');//->with('grapped successfull');
+                    if( $currentStatus == 'approved' ){
+                        return redirect()->back()->with('success', $req->qrInfo.'  تم المسح بنجاح');
+                    }else{
+                        return redirect()->back()->with('success', $req->qrInfo.'  تم المسح مسبقاً');
+                    }
                 }else{
-                    return view('gym.qrScanner');//->with('this qr not fot this gym');
+                    //return view('gym.qrScanner');//->with('this qr not fot this gym');
+                    return redirect()->back()->with('error', 'الرمز مخصص لصالة أخرى');  
                 }
             }else{
-                return view('gym.home');//->with('wrog reading qr');;
+                //return view('gym.home');//->with('wrog reading qr');
+                return redirect()->back()->with('error', 'الرمز غير صحيح');  
             }
         }else{
             return view('gym.qrScanner');

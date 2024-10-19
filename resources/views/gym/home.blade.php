@@ -18,7 +18,7 @@
                     <!-- <div class="testRed">TESTING...H2</div> -->
                     
                         <!-- <a href="\booking"> -->
-                            <input type="button" value="حجوزات بانتظار الاعتماد" onclick="location.href='waitingOrders';" class="btn btn-success mb-3" >
+                            <input type="button" value="الحجوزات" onclick="location.href='waitingOrders';" class="btn btn-success mb-3" >
                         <!-- </a> -->
                     
                     <!-- <div class="row mb-3">
@@ -28,7 +28,7 @@
                     </div> -->
                     <!-- <div class="row mb-3">
                         <a href="\customer"> -->
-                            <input type="button" value="سجل العملاء" onclick="location.href='customer';" class="btn btn-success mb-3" >
+                            <input type="button" value="تقييمات العملاء" onclick="location.href='customer';" class="btn btn-success mb-3" >
                         <!-- </a>
                     </div> -->
                     <!-- <div class="row mb-3">

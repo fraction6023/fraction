@@ -12,8 +12,11 @@ class AdminController extends Controller
 {
     public function index(){
         $users =  User::all();
+        
+        $customers =  Customer::all();
         $gyms =  Gym::all();
-        return view('admin.userManagement',['users'=>$users,'gyms'=>$gyms]);
+
+        return view('admin.userManagement',['users'=>$users,'customers'=>$customers,'gyms'=>$gyms]);
     }
     
     public function matchUserGym(Request $req){
@@ -29,6 +32,7 @@ class AdminController extends Controller
         $users =  User::all();
         $gyms =  Gym::all();
 
-        return view('admin.userManagement',['users'=>$users,'gyms'=>$gyms]);
+        return redirect('/admin'); // view('admin.userManagement',['users'=>$users,'gyms'=>$gyms]);
+        
     }
 }

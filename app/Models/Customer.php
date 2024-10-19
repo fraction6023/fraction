@@ -10,4 +10,8 @@ class Customer extends Model
     //protected $table = 'customerInfo';
 
     use HasFactory;
+
+    // public function gym(){
+    //     return $this->hasOne(Gym::class);
+    // }
 }

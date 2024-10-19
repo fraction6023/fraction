@@ -17,7 +17,7 @@
                     <br>
                     <input type="button" value="تسجيل جديد" onclick="location.href='register';" class="btn btn-success mb-3" style="width: 100%;">
                     <br>
-                    <input type="button" value="طلب انظمام النادي" onclick="location.href='gymregister';" class="btn btn-success mb-3"  style="width: 100%;">
+                    <input type="button" value="طلب انضمام نادي" onclick="location.href='gymregister';" class="btn btn-success mb-3"  style="width: 100%;">
                 </div>
             </div>
         </div>

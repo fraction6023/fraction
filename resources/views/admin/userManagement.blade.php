@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container centerText">
+<!-- <div class="container centerText">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -48,9 +48,12 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 
-    
+<div class="card">
+   <div class="card-header">
+    <h3 style="text-align: center;">ربط المستخدمين</h3>
+   </div>
 @foreach($customers as $customer)
 <div class="container">
     <div class="row justify-content-center">
@@ -58,11 +61,11 @@
             <form action="{{ url('matchUserGym') }}" method="POST">
             @csrf
             @method('PUT')
-                <div class="card">
-                    <div class="card-header">{{$customer->id}}</div>
+                <div class="card" style="text-align: center;">
+                    <div class="card-header">{{$customer->user->name}}</div>
                     <div class="card-body">
                         <select name="gym_id">
-                            <option selected={{$customer->gym_id}}>{{$customer->gym_id}}</option>
+                            <option selected={{$customer->gym_id}}>{{$customer->gym->name}}</option>
                             @foreach($gyms as $gym)
                                 <option value="{{$gym->id}}">{{$gym->name}}</option>
                             @endforeach
@@ -82,6 +85,8 @@
     </div>
 </div>
 @endforeach
+</div>
+ 
 
 @endsection
 

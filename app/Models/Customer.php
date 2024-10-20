@@ -14,4 +14,11 @@ class Customer extends Model
     // public function gym(){
     //     return $this->hasOne(Gym::class);
     // }
+    public function gym(){
+        return $this->belongsTo(Gym::class);
+    }
+
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
 }

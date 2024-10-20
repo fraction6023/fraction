@@ -39,33 +39,38 @@ class GymController extends Controller
     }
 
     public function qrScanner(Request $req){
-        if($req->qrInfo){
-            $customer = Customer::find(Auth::id());
-            $visit = Visit::where('approveCode',$req->qrInfo)->orderBy('approveCode', 'DESC')->get()->first();
-            //$visit = Visit::find('45');
-            if($visit){
-                if( $visit->gym_id == $customer->gym_id ){
-                    //$visit->approveCode = $req->qrInfo.'Finish';//601769B46292817
-                    $currentStatus = $visit->status; // to chech is it scanned befor or not .. for redirect message
+        if(Auth::id()){
+       
+            if($req->qrInfo){
+                $customer = Customer::find(Auth::id());
+                $visit = Visit::where('approveCode',$req->qrInfo)->orderBy('approveCode', 'DESC')->get()->first();
+                //$visit = Visit::find('45');
+                if($visit){
+                    if( $visit->gym_id == $customer->gym_id ){
+                        //$visit->approveCode = $req->qrInfo.'Finish';//601769B46292817
+                        $currentStatus = $visit->status; // to chech is it scanned befor or not .. for redirect message
 
-                    $visit->status = 'visited';//$customer->gym_id;'visited';
-                    $visit->save();
-                //return view('gym.qrScanner');//->with('grapped successfull');
-                    if( $currentStatus == 'approved' ){
-                        return redirect()->back()->with('success', $req->qrInfo.'  تم المسح بنجاح');
+                        $visit->status = 'visited';//$customer->gym_id;'visited';
+                        $visit->save();
+                    //return view('gym.qrScanner');//->with('grapped successfull');
+                        if( $currentStatus == 'approved' ){
+                            return redirect()->back()->with('success', $req->qrInfo.'  تم المسح بنجاح');
+                        }else{
+                            return redirect()->back()->with('success', $req->qrInfo.'  تم المسح مسبقاً');
+                        }
                     }else{
-                        return redirect()->back()->with('success', $req->qrInfo.'  تم المسح مسبقاً');
+                        //return view('gym.qrScanner');//->with('this qr not fot this gym');
+                        return redirect()->back()->with('error', 'الرمز مخصص لصالة أخرى');  
                     }
                 }else{
-                    //return view('gym.qrScanner');//->with('this qr not fot this gym');
-                    return redirect()->back()->with('error', 'الرمز مخصص لصالة أخرى');  
+                    //return view('gym.home');//->with('wrog reading qr');
+                    return redirect()->back()->with('error', 'الرمز غير صحيح');  
                 }
             }else{
-                //return view('gym.home');//->with('wrog reading qr');
-                return redirect()->back()->with('error', 'الرمز غير صحيح');  
+                return view('gym.qrScanner');
             }
         }else{
-            return view('gym.qrScanner');
+            return view('welcome');
         }
     }
 

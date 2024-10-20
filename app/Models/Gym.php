@@ -13,7 +13,7 @@ class Gym extends Model
         return $this->hasMany(Visit::class);
     }
 
-    // public function customer(){
-    //     return $this->hasMany(Customer::class);
-    // }
+    public function customer(){
+        return $this->hasMany(Customer::class);
+    }
 }

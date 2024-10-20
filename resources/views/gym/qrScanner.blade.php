@@ -21,7 +21,7 @@
         </div>
     @endif
     @if (\Session::has('error'))
-        <div class="alert alert-success">
+        <div class="alert alert-error">
             <ul>
                 <li>{!! \Session::get('error') !!}</li>
             </ul>

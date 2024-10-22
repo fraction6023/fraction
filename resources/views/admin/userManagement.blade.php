@@ -65,7 +65,7 @@
                         <select name="gym_id">
                             <option selected={{$customer->gym_id}}>{{$customer->gym->name}}</option>
                             @foreach($gyms as $gym)
-                                <option name="gym_id" id="gym_id" value="{{$gym->id}}">{{$gym->name}}</option>
+                                <option value="{{$gym->id}}">{{$gym->name}}</option>
                             @endforeach
                         </select>
                         

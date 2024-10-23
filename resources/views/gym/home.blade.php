@@ -23,12 +23,12 @@
                     
                     <!-- <div class="row mb-3">
                         <a href="\dashboard"> -->
-                            <input type="button" value="بيانات النادي" onclick="location.href='dashboard';" class="btn btn-success mb-3" >
+                            <input type="button" value="ادارة النادي" onclick="location.href='dashboard';" class="btn btn-success mb-3" >
                         <!-- </a>
                     </div> -->
                     <!-- <div class="row mb-3">
                         <a href="\customer"> -->
-                            <input type="button" value="تقييمات العملاء" onclick="location.href='customer';" class="btn btn-success mb-3" >
+                            <input type="button" value="تقييمات العملاء" onclick="location.href='gymFeedBack';" class="btn btn-success mb-3" >
                         <!-- </a>
                     </div> -->
                     <!-- <div class="row mb-3">

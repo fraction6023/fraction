@@ -35,6 +35,18 @@ class CustomerController extends Controller
         }
     }
 
+    public function customerFeedBack(){
+        if(Auth::id()){
+
+            $customerFeedBack = Visit::where('user_id',Auth::id())->orderBy('id', 'DESC')->get();
+
+            return view('customer.customerFeedBack',['customerFeedBack'=>$customerFeedBack]);
+        }else{
+        return view('welcome');
+        }
+    }
+
+
     public function dashboard(){
     if(Auth::id()){
     $customer = Customer::find(Auth::id());

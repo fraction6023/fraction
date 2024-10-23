@@ -17,6 +17,8 @@ Route::get('/home', [App\Http\Controllers\CustomerController::class, 'index']);
 
 Route::get('/customer', [App\Http\Controllers\CustomerController::class, 'index']);
 Route::put('/purchase', [App\Http\Controllers\CustomerController::class, 'purchase']);
+Route::get('/customerFeedBack', [App\Http\Controllers\CustomerController::class, 'customerFeedBack']);
+
 
 
 Route::get('/booking', [App\Http\Controllers\CustomerController::class, 'booking']);
@@ -42,6 +44,7 @@ Route::post('/insertGMY', [App\Http\Controllers\GymController::class, 'insertGMY
 Route::get('/waitingOrders', [App\Http\Controllers\GymController::class, 'waitingOrders']);
 Route::put('/gymfeedbackVisit', [App\Http\Controllers\GymController::class, 'gymfeedbackVisit']);
 Route::any('/qrScanner', [App\Http\Controllers\GymController::class, 'qrScanner']);
+Route::get('/gymFeedBack', [App\Http\Controllers\GymController::class, 'gymFeedBack']);
 
 
 

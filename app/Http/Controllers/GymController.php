@@ -102,4 +102,17 @@ class GymController extends Controller
   
         return redirect('waitingOrders');
     }
+
+    
+    public function gymFeedBack(){
+        if(Auth::id()){
+
+            $gymFeedBack = Visit::where('user_id',Auth::id())->orderBy('id', 'DESC')->get();
+
+            return view('gym.gymFeedBack',['gymFeedBack'=>$gymFeedBack]);
+        }else{
+        return view('welcome');
+        }
+    }
+
 }

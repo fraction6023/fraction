@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container centerText">
+<!-- <div class="container centerText">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -48,7 +48,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 
     
 @foreach($customers as $customer)
@@ -58,16 +58,22 @@
             <form action="{{ url('matchUserGym') }}" method="POST">
             @csrf
             @method('PUT')
-                <div class="card">
+                <div class="card center">
                     <div class="card-header">{{$customer->user->name}}</div>
                     <div class="card-body">
                         
                         <select name="gym_id">
-                            <option selected={{$customer->gym_id}}>{{$customer->gym->name}}</option>
+                            <option value="{{$gym->id}}" selected={{$customer->gym_id}}>{{$customer->gym->name}}</option>
+                            @foreach($gyms as $gym)
+                            <option value="{{$gym->id}}">{{$gym->name}}</option>
+                            @endforeach
+                        </select>
+
+                        <!-- <select name="gym_id">
                             @foreach($gyms as $gym)
                                 <option value="{{$gym->id}}">{{$gym->name}}</option>
                             @endforeach
-                        </select>
+                        </select> -->
                         
                         <select name="user_kind" id="user_kind">
                             <option selected={{$customer->user_kind}}>{{$customer->user_kind}}</option>

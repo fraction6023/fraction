@@ -111,14 +111,15 @@
                                     @if( $j -5 >=0 ) <span class="fa fa-star checked"></span> @else <span class="fa fa-star"></span> @endif
                                     </div>
                                     @endif
-
-                                   
+                                    
+                                    <input style="margin-bottom: 10px; width:100%" type="button" onclick="location.href='{{$gym->location}}';" value="موقع النادي " class="btn btn-success">
+                                    <br>
                                     
                             @if(count($visits) > 0)
                                 @if($visits[0]->status == 'pending')
-                                <input type="button" onclick="location.href='visit';" value="لديك حجز نشط حالياً" class="btn btn-primary">
+                                <input style="margin-bottom: 10px; width:100%" type="button" onclick="location.href='visit';" value="لديك حجز نشط حالياً" class="btn btn-primary">
                                 @elseif($fund->funds - $gym->cpd >= 0 )
-                                    <input type="submit" value="احجز" class="btn btn-primary">
+                                    <input style="margin-bottom: 10px; width:100%" type="submit" value="احجز" class="btn btn-primary">
                                 @elseif($fund->funds - $gym->cpd < 0 )
                                     <input type="button" onclick="location.href='customer';" value="اشحن رصيدك لتتمكن من الحجز" class="btn btn-primary">
                                 @endif

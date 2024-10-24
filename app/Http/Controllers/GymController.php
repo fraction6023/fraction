@@ -91,7 +91,7 @@ class GymController extends Controller
             $gymImage='noImage.gif';
         }
 
-            $gymImage = 'noImage.png';
+            //$gymImage = 'noImage.png';
 
         $newGYM->name = $req->input('gymName');
         $newGYM->cpd = $req->input('cpd');
@@ -107,7 +107,7 @@ class GymController extends Controller
     public function gymFeedBack(){
         if(Auth::id()){
 
-            $gymFeedBack = Visit::where('user_id',Auth::id())->orderBy('id', 'DESC')->get();
+            $gymFeedBack = Visit::where('user_id',Auth::id())->where('status','finish')->orderBy('id', 'DESC')->get();
 
             return view('gym.gymFeedBack',['gymFeedBack'=>$gymFeedBack]);
         }else{

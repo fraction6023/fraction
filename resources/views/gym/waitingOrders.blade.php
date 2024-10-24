@@ -5,7 +5,7 @@
     <div class="row_ justify-content-center">
         <div class="col-md-8_">
             <div class="card-container">
-                <div class="card"> <div class="card-header"><p class="">طلبات بانتظار الرد</p></div></div>
+                <div class="card"> <div class="card-header"><p class="">الحجوزات</p></div></div>
                 <div class="card-content_">
                     <div class="card-visit scrollingDiv">
                     @if (session('status'))
@@ -45,7 +45,7 @@
                                         <div class="gymCardContainer2">
                                             <div class="gymCardTop">
                                             <div class="card-header" name="gym_name">{{ $visit->gym->name }}</div>
-                                                <img src="{{ $visit->gym->image }}" alt="" width="100%" height="">
+                                                <img src="{{asset('storage/images/'.$visit->gym->image) }}" alt="" width="100%" height="">
                                             </div>
                                             <div class="gymCardBelow">
 
@@ -97,8 +97,7 @@
                                         
                                             <div class="gymCardTop">
                                                 <div class="card-header_" name="gym_name">{{ $visit->gym->name }}</div>
-                                                <img src="{{ $visit->gym->image }}" alt="" width="100%" height="">
-                                            </div>
+                                                <img src="{{asset('storage/images/'.$visit->gym->image) }}" alt="" width="100%" height="">                                            </div>
                                             <div class="gymCardBelow">
 
                                                 <input type="hidden" class="form-control" name="visit_id" value="{{ $visit->gym->id }}">
@@ -158,7 +157,7 @@
                                         <div class="gymCardContainer2">
                                             <div class="gymCardTop">
                                                 <div class="card-header_" name="gym_name">{{ $visit->gym->name }}</div>
-                                                <img src="{{ $visit->gym->image }}" alt="" width="100%" height="">
+                                                <img src="{{asset('storage/images/'.$visit->gym->image) }}" alt="" width="100%" height="">
                                             </div>
                                             <div class="gymCardBelow">
 
@@ -220,7 +219,7 @@
                                     <div class="gymCardContainer2">
                                         <div class="gymCardTop">
                                             <div class="card-header_" name="gym_name">{{ $visit->gym->name }}</div>
-                                            <img src="{{ $visit->gym->image }}" alt="" width="100%" height="">
+                                            <img src="{{asset('storage/images/'.$visit->gym->image) }}" alt="" width="100%" height="">
                                         </div>
                                         <div class="gymCardBelow">
 
@@ -289,7 +288,7 @@
                             <div class="gymCardContainer2">
                                 <div class="gymCardTop">
                                     <div class="card-header_" name="gym_name">{{ $visit->gym->name }}</div>
-                                    <img src="{{ $visit->gym->image }}" alt="" width="100%" height="">
+                                    <img src="{{asset('storage/images/'.$visit->gym->image) }}" alt="" width="100%" height="">
                                 </div>
                                 <div class="gymCardBelow">
                                     <label class="form-control_ {{ $visit->status_ }}" name="orderId">رقم الطلب: {{ $visit->id }}</label>
@@ -387,7 +386,7 @@
                             <div class="gymCardContainer2">
                                 <div class="gymCardTop">
                                     <div class="card-header_" name="gym_name">{{ $visit->gym->name }}</div>
-                                    <img src="{{ $visit->gym->image }}" alt="" width="100%" height="">
+                                    <img src="{{asset('storage/images/'.$visit->gym->image) }}" alt="" width="100%" height="">
                                 </div>
                                 <div class="gymCardBelow">
 

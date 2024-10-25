@@ -38,9 +38,20 @@ class CustomerController extends Controller
     public function customerFeedBack(){
         if(Auth::id()){
 
-            $customerFeedBack = Visit::where('user_id',Auth::id())->orderBy('id', 'DESC')->get();
+            $customerFeedBack = Visit::where('user_id',Auth::id())->where('status','finish')->orderBy('id', 'DESC')->get();
 
             return view('customer.customerFeedBack',['customerFeedBack'=>$customerFeedBack]);
+        }else{
+        return view('welcome');
+        }
+    }
+
+    public function showGymsOnMap(){
+        if(Auth::id()){
+
+            $gyms = Gym::all();
+
+            return view('customer.showGymsOnMap',['gyms'=>$gyms]);
         }else{
         return view('welcome');
         }

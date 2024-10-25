@@ -15,7 +15,7 @@
         </div>
         
         <div class="card-body">
-            <p class="">{{$feedback->custommer_comment}}</p>
+            <p class="">{{$feedback->customer_comment}}</p>
         </div>
 
     </div>

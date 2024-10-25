@@ -18,7 +18,7 @@ Route::get('/home', [App\Http\Controllers\CustomerController::class, 'index']);
 Route::get('/customer', [App\Http\Controllers\CustomerController::class, 'index']);
 Route::put('/purchase', [App\Http\Controllers\CustomerController::class, 'purchase']);
 Route::get('/customerFeedBack', [App\Http\Controllers\CustomerController::class, 'customerFeedBack']);
-
+Route::get('/showGymsOnMap', [App\Http\Controllers\CustomerController::class, 'showGymsOnMap']);
 
 
 Route::get('/booking', [App\Http\Controllers\CustomerController::class, 'booking']);

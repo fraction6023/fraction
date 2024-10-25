@@ -23,6 +23,8 @@
                         @php
                         $i = 0;
                         $j = 0;
+                        $rating_count=0;
+                        
                         @endphp
 
                         @foreach($allVisits as $visit)
@@ -39,9 +41,10 @@
                         @if($i >0 )
                             
                             @php
+                            $rating_count = $j;
                             $j=($i / $j)
                             @endphp
-                        
+                        <p class="">عدد مرات التقييم {{$rating_count}}</p>
                         <div class="">
                             <p class="">تقييم العميل </p>
                             @if( $j -1 >=0 ) <span class="fa fa-star checked"></span> @else <span class="fa fa-star"></span> @endif
@@ -53,6 +56,11 @@
                         
                         @endif
                     @endif
+</div>
+<div class="card">
+    <div class="card-body" style="background-color: #6ac8;padding:20px" onclick="location.href='showGymsOnMap';">
+        <p class="">استعراض الأندية على الخريطة</p>
+    </div>
 </div>
 
 

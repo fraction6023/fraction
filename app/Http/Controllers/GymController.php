@@ -115,4 +115,15 @@ class GymController extends Controller
         }
     }
 
+    public function finance(){
+        if(Auth::id()){
+
+            $visits = Visit::where('user_id',Auth::id())->where('status','finish')->orderBy('id', 'DESC')->get();
+
+            return view('gym.finance',['visits'=>$visits]);
+        }else{
+        return view('welcome');
+        }
+    }
+
 }

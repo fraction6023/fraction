@@ -45,6 +45,7 @@ Route::get('/waitingOrders', [App\Http\Controllers\GymController::class, 'waitin
 Route::put('/gymfeedbackVisit', [App\Http\Controllers\GymController::class, 'gymfeedbackVisit']);
 Route::any('/qrScanner', [App\Http\Controllers\GymController::class, 'qrScanner']);
 Route::get('/gymFeedBack', [App\Http\Controllers\GymController::class, 'gymFeedBack']);
+Route::get('/finance', [App\Http\Controllers\GymController::class, 'finance']);
 
 
 

@@ -33,6 +33,11 @@
                     </div> -->
                     <!-- <div class="row mb-3">
                         <a href="\customer"> -->
+                        <input type="button" value="الإدارة المالية" onclick="location.href='finance';" class="btn btn-success mb-3" >
+                        <!-- </a>
+                    </div> -->
+                    <!-- <div class="row mb-3">
+                        <a href="\customer"> -->
                         <input type="button" value="مسح رمز الدخول QR" onclick="location.href='qrScanner';" class="btn btn-success mb-3" >
                         <!-- </a>
                     </div> -->

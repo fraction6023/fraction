@@ -10,36 +10,44 @@ $amountCollected = 0;
     <div class="card-body">
         <table style="width: 100%;">
         <tr class="" style="font-weight:bold">
-            <td class=""><div class=""><p class="">اسم العميل</p></div></td>
-            <td class=""><div class=""><p class="">القيمة</p></div></td>
-            <td class=""><div class=""><p class="">تاريخ الزيارة</p></div></td>
-            <td class=""><div class=""><p class="">حالة الصرف</p></div></td>
+            <td style="width: 25%;" class=""><div class=""><p class="">اسم العميل</p></div></td>
+            <td style="width: 25%;" class=""><div class=""><p class="">القيمة</p></div></td>
+            <td style="width: 25%;" class=""><div class=""><p class="">تاريخ الزيارة</p></div></td>
+            <td style="width: 25%;" class=""><div class=""><p class="">حالة الصرف</p></div></td>
         </tr>
 @foreach($visits as $visit)
 
     <!-- <div class="card-header">اسم العميل: {{$visit->user->name}}</div> -->
     <!-- <div class="card-body">
         <table style="width: 100%;"> -->
-            <tr class="">
-                <td class=""><div class=""><p class="">{{$visit->user->name}}</p></div></td>
+            <tr style="width: 100%;" class="">
+                <td style="width: 25%;" class=""><div class=""><p class="">{{$visit->user->name}}</p></div></td>
                 <!-- <td class=""><div class=""><p class="">المبلغ</p></div></td> -->
-                <td class=""><div class=""><p class="">{{$visit->cost}}</p></div></td>
+                <td style="width: 25%;" class=""><div class=""><p class="">{{$visit->cost}}</p></div></td>
                 <!-- <td class=""><div class=""><p class="">وقت الزيارة</p></div></td> -->
-                <td class=""><div class=""><p class="">{{$visit->updated_at}}</p></div></td>
+                <td style="width: 25%;" class=""><div class=""><p class="">{{$visit->updated_at}}</p></div></td>
                 <!-- <td class=""><div class=""><p class="">الحالة</p></div></td> -->
                 @if($visit->status =! 'collected')
-                    <td class=""><div class=""><p class="">تم التحصيل</p></div></td>
+                    <td style="width: 25%;" class=""><div class=""><p class="">تم التحصيل</p></div></td>
+                    @php
                     $amountCollected = $amountCollected + $visit->cost;
+                    @endphp
                 @else
-                    <td class=""><div class=""><p class="">لم يتم التحصيل</p></div></td>
-                @php 
-                    $amountCollected = $amountCollected + $visit->cost;
-                @endphp
-                
+                    <td style="width: 25%;" class=""><div class=""><p class="">لم يتم التحصيل</p></div></td>
+                    @php 
+                        $amountNotCollected = $amountNotCollected + $visit->cost;
+                    @endphp
+
                 @endif
             </tr>
             <!-- @php $amount = $amountCollected + $visit->cost @endphp -->
     @endforeach
+            <!-- <tr class="" style="border: 2px solid #3333;">
+                <td style="width: 25%;" class=""><p class=""></p></td>
+                <td style="width:50%;text-align: center; padding-left:15px;font-weight:bold"><p class="">المجموع</p></td>
+                <td style="width:50%;text-align: center; padding-left:15px;font-weight:bold"><p class="">3</p></td>
+                <td style="width: 25%;" class=""><p class=""></p></td>
+            </tr> -->
         </table>
     </div>
 </div>

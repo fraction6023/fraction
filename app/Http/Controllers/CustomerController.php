@@ -46,6 +46,23 @@ class CustomerController extends Controller
         }
     }
 
+    public function finance(){
+        if(Auth::id()){
+            $customer = Customer::find(Auth::id());
+            $visits = Visit::where('user_id',Auth::id())
+                            ->where(function($query){
+                                $query->where('status','finish')
+                                        ->orWhere('status','finish_customer')
+                                        ->orWhere('status','visited')
+                                        ->orWhere('status','finish_gym');
+                            })->orderBy('id', 'DESC')->get();
+
+            return view('customer.finance',['visits'=>$visits,'customer'=>$customer]);
+        }else{
+        return view('welcome');
+        }
+    }
+
     public function showGymsOnMap(){
         if(Auth::id()){
 

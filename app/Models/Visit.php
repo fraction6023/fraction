@@ -12,4 +12,7 @@ class Visit extends Model
     public function gym(){
         return $this->belongsTo(Gym::class);
     }
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
 }

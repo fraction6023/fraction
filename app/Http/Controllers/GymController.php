@@ -117,8 +117,14 @@ class GymController extends Controller
 
     public function finance(){
         if(Auth::id()){
-
-            $visits = Visit::where('user_id',Auth::id())->where('status','finish')->orderBy('id', 'DESC')->get();
+            $gymId = Customer::where('user_id',Auth::id())->get();
+            $visits = Visit::where('gym_id',$gymId[0]->gym_id)
+                            ->where(function($query){
+                                $query->where('status','finish')
+                                        ->orWhere('status','finish_customer')
+                                        ->orWhere('status','visited')
+                                        ->orWhere('status','finish_gym');
+                            })->orderBy('id', 'DESC')->get();
 
             return view('gym.finance',['visits'=>$visits]);
         }else{

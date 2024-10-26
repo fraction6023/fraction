@@ -84,6 +84,10 @@
             <input type="button" value="استعراض التعليقات" onclick="location.href='customerFeedBack';" class="btn btn-success mb-3" >
     </div>
 
+    <div class="card">
+            <input type="button" value="المصروفات" onclick="location.href='customerFinance';" class="btn btn-success mb-3" >
+    </div>
+
 <div class="card">
     <div class="card-body_ scroll-container_ scrollingDiv">
             

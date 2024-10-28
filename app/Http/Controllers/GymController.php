@@ -106,8 +106,8 @@ class GymController extends Controller
     
     public function gymFeedBack(){
         if(Auth::id()){
-
-            $gymFeedBack = Visit::where('user_id',Auth::id())->where('status','finish')->orderBy('id', 'DESC')->get();
+            $gymId = Customer::where('user_id',Auth::id())->get();
+            $gymFeedBack = Visit::where('gym_id',$gymId[0]->gym_id)->where('status','finish')->orderBy('id', 'DESC')->get();
 
             return view('gym.gymFeedBack',['gymFeedBack'=>$gymFeedBack]);
         }else{

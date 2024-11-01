@@ -2,10 +2,17 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 
 
 // Route::get('/', function () {
 //     return view('welcome');
+// });
+
+// Route::get('/buy', function (Request $request) {
+//     $checkout = $request->user()->checkout(['pri_tshirt', 'pri_socks' => 5]);
+ 
+//     return view('customer.billing', ['checkout' => $checkout]);
 // });
 
 Auth::routes();
@@ -14,6 +21,7 @@ Auth::routes();
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/', [App\Http\Controllers\CustomerController::class, 'index']);
 Route::get('/home', [App\Http\Controllers\CustomerController::class, 'index']);
+Route::get('/pay', [App\Http\Controllers\CustomerController::class, 'pay']);
 
 Route::get('/customer', [App\Http\Controllers\CustomerController::class, 'index']);
 Route::put('/purchase', [App\Http\Controllers\CustomerController::class, 'purchase']);

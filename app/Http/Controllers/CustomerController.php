@@ -136,7 +136,7 @@ class CustomerController extends Controller
         return view('customer.dashboard',['customer'=>$customer]);
     }
 
-    public function booking(){
+    public function booking(){ 
         if(Auth::id()){
         $gyms = Gym::all();
         $fund = Customer::find(Auth::id());
@@ -148,6 +148,20 @@ class CustomerController extends Controller
         }
        
     }
+
+    public function pay(Request $req){
+        
+        $checkout = $req->user()->checkout(['pri_tshirt', 'pri_socks' => 5]);
+ 
+        return view('customer.billing', ['checkout' => $checkout]);
+
+        // $payLink = Auth::user()->charge(71 , 'Finally done!');
+
+        // return view('customer.billing',[
+        //     'payLink' => $payLink
+        // ]);
+    }
+
     
     public function bookGym(Request $req){
 

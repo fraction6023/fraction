@@ -90,7 +90,7 @@
                                                 $i=0;
                                                 $j=0; 
                                             @endphp
-                                            
+
                                             @foreach($allVisits as $visit)
                                                
 

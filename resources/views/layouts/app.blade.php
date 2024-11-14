@@ -25,7 +25,7 @@
     <!-- Scripts -->
     <link href="{{ asset('app.css') }}" rel="stylesheet">
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
-    @paddleJS
+    <!-- @paddleJS -->
 </head>
 <body style="border-right:10px solid #FFE263;border-left:10px solid #FFE263;background-color: #FFE26388;">
     <div id="app">

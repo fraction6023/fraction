@@ -6,14 +6,19 @@
 <div class="card center">
     <table style="width: 100%;">
         <tr>
-            <td style="width:50%;text-align: left; padding-left:15px;font-weight:bold">
+            <td style="width:40%;text-align: left; padding-left:15px;font-weight:bold">
                 <div class="">
                     <p class="">الرصيد </p>
                 </div>
             </td>
-            <td style="width: 50%; text-align:right;padding-right:15px">
+            <td style="width: 40%; text-align:right;padding-right:15px">
                 <div>
                     <p class="">{{$customer->funds}} ريال</p>
+                </div>
+            </td>
+            <td style="width: 20%; text-align:left;">
+                <div>
+                    <a href="charging" style="text-decoration: none;font-size:20px">شحن الرصيد</a>
                 </div>
             </td>
         </tr>

@@ -73,7 +73,56 @@ class CustomerController extends Controller
         return view('welcome');
         }
     }
+    public function charging(){
 
+        $characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $pin = mt_rand(1000000, 9999999)
+            . mt_rand(1000000, 9999999)
+            . $characters[rand(0, strlen($characters) - 1)];
+
+        $string = str_shuffle($pin);
+
+        $shaString = '';
+            
+        $requestParams = array(
+            'command' => 'AUTHORIZATION',
+            'access_code' => 'kkCup7v8OTkCnYxCcdAf',
+            'merchant_identifier' => 'fDDkIzNY',
+            'merchant_reference' => $string,
+            'amount' => 10000,
+            'currency' => 'SAR',
+            'language' => 'en',
+            'customer_email' => 'test@payfort.com',
+            'order_description' => 'charging acount'
+            );
+
+
+        ksort($requestParams);
+        foreach($requestParams as $key => $value){
+            $shaString .= "$key=$value";
+        }
+
+        $shaString = '097YS5/VQl9X9ZyQqWb1OO#@' . $shaString . '097YS5/VQl9X9ZyQqWb1OO#@';
+
+        $signature = hash('sha256',$shaString);
+
+        $requestParams['signature'] = $signature;
+
+        echo"<div style:'color:#6e9; width:100%; border: 2px solid #3333; text-align:center'>signiture key => ". $requestParams['signature']."</div>";
+
+        $redirectUrl = 'https://sbcheckout.payfort.com/FortAPI/paymentPage';
+        echo "<html xmlns='https://www.w3.org/1999/xhtml'>\n<head></head>\n<body>\n";
+        echo "<form action='$redirectUrl' method='post' name='frm'>\n";
+        header("refresh:15;url=".$redirectUrl."");
+        foreach ($requestParams as $a => $b) {
+             echo "\t<input type='hidden' name='".htmlentities($a)."' value='".htmlentities($b)."'>\n";
+         }
+        echo "\t<script type='text/javascript'>\n";
+        echo "\t\tdocument.frm.submit();\n";
+        echo "\t</script>\n";
+        echo "</form>\n</body>\n</html>";
+
+    }
 
     public function dashboard(){
     if(Auth::id()){

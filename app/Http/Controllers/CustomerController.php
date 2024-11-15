@@ -73,7 +73,12 @@ class CustomerController extends Controller
         return view('welcome');
         }
     }
+
     public function charging(){
+        return view('customer.charging');
+    }
+    
+    public function submit(Request $req){
 
         $characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
         $pin = mt_rand(1000000, 9999999)
@@ -89,7 +94,7 @@ class CustomerController extends Controller
             'access_code' => 'kkCup7v8OTkCnYxCcdAf',
             'merchant_identifier' => 'fDDkIzNY',
             'merchant_reference' => $string,
-            'amount' => 10000,
+            'amount' => $req->amount * 100,
             'currency' => 'SAR',
             'language' => 'en',
             'customer_email' => 'test@payfort.com',
@@ -108,7 +113,7 @@ class CustomerController extends Controller
 
         $requestParams['signature'] = $signature;
 
-        echo"<div style:'color:#6e9; width:100%; border: 2px solid #3333; text-align:center'>signiture key => ". $requestParams['signature']."</div>";
+        // echo"<div style:'color:#6e9; width:100%; border: 2px solid #3333; text-align:center'>signiture key => ". $requestParams['signature']."</div>";
 
         $redirectUrl = 'https://sbcheckout.payfort.com/FortAPI/paymentPage';
         echo "<html xmlns='https://www.w3.org/1999/xhtml'>\n<head></head>\n<body>\n";

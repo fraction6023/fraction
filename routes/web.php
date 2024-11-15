@@ -44,6 +44,7 @@ Route::put('/feedbackVisit', [App\Http\Controllers\CustomerController::class, 'f
 Route::put('/feedbackfinish', [App\Http\Controllers\CustomerController::class, 'feedbackfinish']);
 Route::get('/customerFinance', [App\Http\Controllers\CustomerController::class, 'finance']);
 Route::get('/charging', [App\Http\Controllers\CustomerController::class, 'charging']);
+Route::get('/submit', [App\Http\Controllers\CustomerController::class, 'submit']);
 
 //***** Gym routing *******//
 

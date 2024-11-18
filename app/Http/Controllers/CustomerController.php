@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Customer;
 use App\Models\Visit;
 use App\Models\Gym;
+use Illuminate\Support\Facades\Http;
+
 use Illuminate\Support\Facades\DB;
 
 
@@ -77,8 +79,76 @@ class CustomerController extends Controller
     public function charging(){
         return view('customer.charging');
     }
+
+    public function submit() // will charge 25 SAR .. will change to get it from hidden passed vriable 
+    {
+        // إعداد البيانات
+        $merchantIdentifier = 'fDDkIzNY';
+        $accessCode = 'kkCup7v8OTkCnYxCcdAf';
+        $shaRequestPhrase = '097YS5/VQl9X9ZyQqWb1OO#@';
+        $endpoint = 'https://sbcheckout.payfort.com/FortAPI/paymentPage';
+        $merchantReference = 'ORD-' . time(); // رقم مرجعي فريد
+        $amount = 10000; // المبلغ بالعملة الأصغر (مثال: 100 ريال = 10000 هللة)
+        $currency = 'SAR'; // العملة
+        $customerEmail = 'test@example.com';
+        $language = 'ar'; // لغة الواجهة
+        $command = 'PURCHASE'; // نوع العملية
+        $threeDs = 'true'; // تفعيل 3D Secure
+
+        // بناء التوقيع (Signature)
+        $signatureString = "$shaRequestPhrase" .
+            "access_code=$accessCode" .
+            "amount=$amount" .
+            "command=$command" .
+            "currency=$currency" .
+            "customer_email=$customerEmail" .
+            "language=$language" .
+            "merchant_identifier=$merchantIdentifier" .
+            "merchant_reference=$merchantReference" .
+            "$shaRequestPhrase";
+
+        $signature = hash('sha256', $signatureString);
+
+        // البيانات المرسلة إلى PayFort
+        $postData = [
+            'merchant_reference' => $merchantReference,
+            'access_code' => $accessCode,
+            'merchant_identifier' => $merchantIdentifier,
+            'amount' => $amount,
+            'currency' => $currency,
+            'customer_email' => $customerEmail,
+            'language' => $language,
+            'command' => $command,
+            'signature' => $signature,
+            'three_ds' => $threeDs,
+        ];
+
+        // إرسال الطلب باستخدام Laravel HTTP Client
+        $response = Http::asForm()->post($endpoint, $postData);
+
+        // معالجة الرد
+        if ($response->successful()) {
+            $fund = Customer::find(Auth::id());
+            $fund->funds = $fund->funds + 30;
+            $fund->save();
+
+
+            $responseData = $response->json();
+            // return response()->json([
+            //     'message' => 'Payment request successful',
+            //     'data' => $responseData,
+            // ]);
+
+            return redirect('customerFinance');//,['responseData' => $responseData]);
+        }
+
+        return response()->json([
+            'message' => 'Payment request failed',
+            'error' => $response->body(),
+        ], 400);
+    }
     
-    public function submit(Request $req){
+    public function redirectToSubmitPage(Request $req){ // old submit()
 
         $characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
         $pin = mt_rand(1000000, 9999999)

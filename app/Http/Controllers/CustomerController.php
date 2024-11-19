@@ -80,7 +80,7 @@ class CustomerController extends Controller
         return view('customer.charging');
     }
 
-    public function submit() // will charge 25 SAR .. will change to get it from hidden passed vriable 
+    public function submit(Request $req) 
     {
         // إعداد البيانات
         $merchantIdentifier = 'fDDkIzNY';
@@ -88,7 +88,7 @@ class CustomerController extends Controller
         $shaRequestPhrase = '097YS5/VQl9X9ZyQqWb1OO#@';
         $endpoint = 'https://sbcheckout.payfort.com/FortAPI/paymentPage';
         $merchantReference = 'ORD-' . time(); // رقم مرجعي فريد
-        $amount = 10000; // المبلغ بالعملة الأصغر (مثال: 100 ريال = 10000 هللة)
+        $amount = $req->amount;// المبلغ بالعملة الأصغر (مثال: 100 ريال = 10000 هللة)
         $currency = 'SAR'; // العملة
         $customerEmail = 'test@example.com';
         $language = 'ar'; // لغة الواجهة
@@ -129,7 +129,7 @@ class CustomerController extends Controller
         // معالجة الرد
         if ($response->successful()) {
             $fund = Customer::find(Auth::id());
-            $fund->funds = $fund->funds + 30;
+            $fund->funds = $fund->funds + $amount;
             $fund->save();
 
 

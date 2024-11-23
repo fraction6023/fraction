@@ -59,11 +59,21 @@
             @csrf
             @method('PUT')
                 <div class="card center">
+                     @if($customer->user_id == 'undefined')
+                        <option value="undefined">undefined</option>
+                    @else
                     <div class="card-header">{{$customer->user->name}}</div>
+                    @endif
                     <div class="card-body">
                         
                         <select name="gym_id">
-                            <option value="{{$gym->id}}" selected={{$customer->gym_id}}>{{$customer->gym->name}}</option>
+                            
+                            @if($customer->gym_id == 'undefined')
+                                <option value="undefined">undefined</option>
+                            @else
+                                <option value="{{$gym->id}}" selected={{$customer->gym_id}}>{{$customer->gym->name}}</option>
+                            @endif
+
                             @foreach($gyms as $gym)
                             <option value="{{$gym->id}}">{{$gym->name}}</option>
                             @endforeach

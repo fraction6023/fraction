@@ -68,7 +68,8 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         $customer = new Customer();
-        $customer->user_id = Auth::id();
+        $customer->user_id = 'undefined';
+        $customer->gym_id = 'undefined';
         $customer->save();
 
         return User::create([

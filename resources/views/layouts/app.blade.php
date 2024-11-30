@@ -1,96 +1,61 @@
 <!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}"  dir="rtl">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" dir="rtl">
+<head>
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700&display=swap" rel="stylesheet">
 
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
-    <!-- meta and scripts for google maps  -->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Scripts -->
-    <link href="{{ asset('app.css') }}" rel="stylesheet">
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
-    <!-- @paddleJS -->
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ asset('app.css') }}">
 </head>
-<body style="border-right:10px solid #FFE263;border-left:10px solid #FFE263;background-color: #FFE26388;">
+
+</head>
+<body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm l2r">
-            <a href="{{ url('/') }}"><img src="{{ asset('images/fractionLogo.png') }}" class="fractionLogo"></a>
+        <!-- Navigation Bar -->
+        <nav class="navbar navbar-expand-md navbar-light">
             <div class="container">
-                <!-- <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a> -->
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                <a href="{{ url('/') }}" class="navbar-brand">
+                    <img src="{{ asset('images/fractionLogo.png') }}" alt="Logo">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav me-auto">
-
-                    </ul>
-
-                    <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
-                        <!-- Authentication Links -->
                         @guest
                             @if (Route::has('login'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('تسجيل دخول') }}</a>
+                                    <a class="nav-link" href="{{ route('login') }}">تسجيل دخول</a>
                                 </li>
                             @endif
-
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('إنشاء حساب جديد') }}</a>
+                                    <a class="nav-link" href="{{ route('register') }}">إنشاء حساب جديد</a>
                                 </li>
                             @endif
                         @else
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    مرحبا بك {{ Auth::user()->name }}
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    مرحباً، {{ Auth::user()->name }}
                                 </a>
-
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                              
-                                    <a class="dropdown-item" href="/customer">
-                                        {{ __('اشتراكي') }}
-                                    </a>
- 
-                                    <a class="dropdown-item" href="/dashboard">
-                                        {{ __('لوحة التحكم') }}
-                                    </a>
-                                          <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                    document.getElementById('logout-form').submit();">
-                                        {{ __('خروج') }}
-                                    </a>
-                                   
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                </div>
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
+                                <div class="dropdown-menu dropdown-menu-end">
+                                    <a class="dropdown-item" href="/customer">اشتراكي</a>
+                                    <a class="dropdown-item" href="/dashboard">لوحة التحكم</a>
+                                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">خروج</a>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">@csrf</form>
                                 </div>
                             </li>
                         @endguest
@@ -99,16 +64,39 @@
             </div>
         </nav>
 
+        <!-- Hero Section -->
+        <!-- <section class="hero-section mt-4_ container_ center">
+            <h1>مرحباً بكم في {{ config('app.name', 'Laravel') }}</h1>
+            <p>تجربة فريدة ومميزة تبدأ هنا.</p>
+            <a href="#services" class="btn">ابدأ الآن</a>
+        </section> -->
+
+        <!-- Main Content -->
         <main class="py-4">
             @yield('content')
         </main>
-        <main class="">
-        @yield('showGymsOnMap')
-    </main>
+
+        <main>
+            @yield('map')
+        </main>
+
+        <main>
+            @yield('qrScanner')
+        </main>
+
+
+        <!-- Footer -->
+        <footer>
+            <p>© 2024 جميع الحقوق محفوظة</p>
+            <div>
+                <a href="#">Facebook</a>
+                <a href="#">Twitter</a>
+                <a href="#">Instagram</a>
+            </div>
+        </footer>
     </div>
-    <main class="">
-        @yield('qrScanner')
-    </main>
-    
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

@@ -71,22 +71,30 @@
                 
             </div>
          
-        @else 
-        <div class="card">
-            <input type="button" value="حجز تمرين اليوم" onclick="location.href='booking';" class="btn btn-success mb-3" >
+        @else
+        <section class="hero-section mt-4_ container_ center">
+        <div class="card_">
+       
+            <input  type="button" value="حجز تمرين اليوم" onclick="location.href='booking';" class="btn nice-btn btn-success_ mb-3_" >
+            <br>
+            <input  type="button" value="استعراض التعليقات" onclick="location.href='customerFeedBack';" class="btn nice-btn btn-success_ mb-3_" >
+            <br>
+            <input  type="button" value="المصروفات" onclick="location.href='customerFinance';" class="btn nice-btn btn-success_ mb-3_" >
+            
         </div>
+        </section>
         @endif 
         
     </div>
 
 
-    <div class="card">
+    <!-- <div class="card">
             <input type="button" value="استعراض التعليقات" onclick="location.href='customerFeedBack';" class="btn btn-success mb-3" >
-    </div>
+    </div> -->
 
-    <div class="card">
+    <!-- <div class="card">
             <input type="button" value="المصروفات" onclick="location.href='customerFinance';" class="btn btn-success mb-3" >
-    </div>
+    </div> -->
 
 <div class="card">
     <div class="card-body_ scroll-container_ scrollingDiv">

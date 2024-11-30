@@ -20,6 +20,7 @@ Auth::routes();
 //Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/', [App\Http\Controllers\CustomerController::class, 'index']);
+Route::get('/welcome', [App\Http\Controllers\CustomerController::class, 'welcome']);
 Route::get('/home', [App\Http\Controllers\CustomerController::class, 'index']);
 Route::get('/pay', [App\Http\Controllers\CustomerController::class, 'pay']);
 

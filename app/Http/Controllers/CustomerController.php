@@ -16,6 +16,13 @@ class CustomerController extends Controller
 {
     public function index(){
         if(Auth::id()){
+            return redirect('welcome');
+        }else{
+        return view('customer.welcome');
+        }
+    }
+    public function welcome(){
+        if(Auth::id()){
         $customer =  Customer::find(Auth::id());
         if( $customer->user_kind == 'customer' ){
             $visit = Visit::where('user_id',Auth::id())->where('status','pending')->orderBy('id', 'DESC')->get();

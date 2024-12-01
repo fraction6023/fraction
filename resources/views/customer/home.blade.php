@@ -99,7 +99,6 @@
 <div class="card">
     <div class="card-body_ scroll-container_ scrollingDiv">
             
-
                 @if($visits)
                     @foreach($visits as $visit)
                     <div class="scrollingItem">

@@ -52,8 +52,8 @@ Route::get('/submit', [CustomerController::class, 'submit']);
 
 //***** API *******//
 
-Route::get('/products', [FractionController::class, 'visits']);
-Route::get('/products/{id}', [FractionController::class, 'showvisit']);
+Route::get('/visits', [FractionController::class, 'visits']);
+Route::get('/visit/{id}', [FractionController::class, 'showvisit']);
 
 //***** Gym routing *******//
 

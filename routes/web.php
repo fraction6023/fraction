@@ -2,8 +2,12 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Http\Request;
+use App\Http\Controllers\Api\FractionController;
+use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\GymController;
+use App\Http\Controllers\AdminController;
 
+//use Illuminate\Http\Request;
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -19,49 +23,50 @@ Auth::routes();
 
 //Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/', [App\Http\Controllers\CustomerController::class, 'index']);
-Route::get('/welcome', [App\Http\Controllers\CustomerController::class, 'welcome']);
-Route::get('/home', [App\Http\Controllers\CustomerController::class, 'index']);
-Route::get('/pay', [App\Http\Controllers\CustomerController::class, 'pay']);
+Route::get('/', [CustomerController::class, 'index']);
+Route::get('/welcome', [CustomerController::class, 'welcome']);
+Route::get('/home', [CustomerController::class, 'index']);
+Route::get('/pay', [CustomerController::class, 'pay']);
 
-Route::get('/customer', [App\Http\Controllers\CustomerController::class, 'index']);
-Route::put('/purchase', [App\Http\Controllers\CustomerController::class, 'purchase']);
-Route::get('/customerFeedBack', [App\Http\Controllers\CustomerController::class, 'customerFeedBack']);
-Route::get('/showGymsOnMap', [App\Http\Controllers\CustomerController::class, 'showGymsOnMap']);
-
-
-Route::get('/booking', [App\Http\Controllers\CustomerController::class, 'booking']);
-Route::put('/bookGym', [App\Http\Controllers\CustomerController::class, 'bookGym']);
-Route::put('/approveVisit', [App\Http\Controllers\CustomerController::class, 'approveVisit']);
-Route::put('/cancelBookGym', [App\Http\Controllers\CustomerController::class, 'cancelBookGym']);
+Route::get('/customer', [CustomerController::class, 'index']);
+Route::put('/purchase', [CustomerController::class, 'purchase']);
+Route::get('/customerFeedBack', [CustomerController::class, 'customerFeedBack']);
+Route::get('/showGymsOnMap', [CustomerController::class, 'showGymsOnMap']);
 
 
-Route::get('/dashboard', [App\Http\Controllers\CustomerController::class, 'dashboard']);
-Route::put('/dashboardUpdate', [App\Http\Controllers\CustomerController::class, 'dashboardUpdate']);
+Route::get('/booking', [CustomerController::class, 'booking']);
+Route::put('/bookGym', [CustomerController::class, 'bookGym']);
+Route::put('/approveVisit', [CustomerController::class, 'approveVisit']);
+Route::put('/cancelBookGym', [CustomerController::class, 'cancelBookGym']);
 
-Route::get('/visit', [App\Http\Controllers\CustomerController::class, 'visit']);
-Route::get('/visits', [App\Http\Controllers\CustomerController::class, 'visits']);
-Route::put('/feedbackVisit', [App\Http\Controllers\CustomerController::class, 'feedbackVisit']);
-Route::put('/feedbackfinish', [App\Http\Controllers\CustomerController::class, 'feedbackfinish']);
-Route::get('/customerFinance', [App\Http\Controllers\CustomerController::class, 'finance']);
-Route::get('/charging', [App\Http\Controllers\CustomerController::class, 'charging']);
-Route::get('/submit', [App\Http\Controllers\CustomerController::class, 'submit']);
+Route::get('/dashboard', [CustomerController::class, 'dashboard']);
+Route::put('/dashboardUpdate', [CustomerController::class, 'dashboardUpdate']);
 
-//***** Gym routing *******//
+Route::get('/visit', [CustomerController::class, 'visit']);
+Route::get('/visits', [CustomerController::class, 'visits']);
+Route::put('/feedbackVisit', [CustomerController::class, 'feedbackVisit']);
+Route::put('/feedbackfinish', [CustomerController::class, 'feedbackfinish']);
+Route::get('/customerFinance', [CustomerController::class, 'finance']);
+Route::get('/charging', [CustomerController::class, 'charging']);
+Route::get('/submit', [CustomerController::class, 'submit']);
 
-Route::get('/gymregister', [App\Http\Controllers\GymController::class, 'gymregister']);
-Route::post('/insertGMY', [App\Http\Controllers\GymController::class, 'insertGMY']);
+//***** API *******//
 
-Route::get('/waitingOrders', [App\Http\Controllers\GymController::class, 'waitingOrders']);
-Route::put('/gymfeedbackVisit', [App\Http\Controllers\GymController::class, 'gymfeedbackVisit']);
-Route::any('/qrScanner', [App\Http\Controllers\GymController::class, 'qrScanner']);
-Route::get('/gymFeedBack', [App\Http\Controllers\GymController::class, 'gymFeedBack']);
-Route::get('/finance', [App\Http\Controllers\GymController::class, 'finance']);
-
-
-
+Route::get('/products', [FractionController::class, 'visits']);
+Route::get('/products/{id}', [FractionController::class, 'showvisit']);
 
 //***** Gym routing *******//
 
-Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index']);
-Route::put('/matchUserGym', [App\Http\Controllers\AdminController::class, 'matchUserGym']);
+Route::get('/gymregister', [GymController::class, 'gymregister']);
+Route::post('/insertGMY', [GymController::class, 'insertGMY']);
+
+Route::get('/waitingOrders', [GymController::class, 'waitingOrders']);
+Route::put('/gymfeedbackVisit', [GymController::class, 'gymfeedbackVisit']);
+Route::any('/qrScanner', [GymController::class, 'qrScanner']);
+Route::get('/gymFeedBack', [GymController::class, 'gymFeedBack']);
+Route::get('/finance', [GymController::class, 'finance']);
+
+//***** Gym routing *******//
+
+Route::get('/admin', [AdminController::class, 'index']);
+Route::put('/matchUserGym', [AdminController::class, 'matchUserGym']);

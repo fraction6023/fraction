@@ -54,6 +54,9 @@ Route::get('/submit', [CustomerController::class, 'submit']);
 
 Route::get('/visitsapi', [FractionController::class, 'visits']);
 Route::get('/visitapi/{id}', [FractionController::class, 'showvisit']);
+//Route::any('login',[FractionController::class, 'login']);
+//Route::any(uri: 'login', action: [FractionController::class, 'login']);
+
 
 //***** Gym routing *******//
 

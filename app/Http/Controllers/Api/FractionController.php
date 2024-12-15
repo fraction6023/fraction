@@ -19,7 +19,9 @@ class FractionController extends Controller
     public function visits()
     {
         // قراءة جميع المنتجات
-        $visits = Visit::all();
+        //$visits = Visit::all();
+        $visits = Visit::orderBy('created_at', 'desc')->get();
+
         return response()->json($visits);
     }
 

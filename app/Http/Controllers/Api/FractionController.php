@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers\Api;
+use Illuminate\Support\Facades\Hash;
+use App\Models\User;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -39,10 +41,10 @@ class FractionController extends Controller
 
     public function login(Request $request)
     {
-        $validationRule = [
-            'email' => 'required|string',
-            'password' => 'required|string'
-        ];
+        // $validationRule = [
+        //     'email' => 'required|string',
+        //     'password' => 'required|string'
+        // ];
 
         $credentials = request(key:['email','password']);
         if(!Auth::attempt(credentials:$credentials)){
@@ -65,6 +67,51 @@ class FractionController extends Controller
             "token" => $bearerToken
         ]);
        
+    }
+
+    public function register(Request $request)
+    {
+        // // تحقق من صحة البيانات
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:8',
+        ]);
+
+        // // إنشاء المستخدم
+        $user = User::create([
+            'name' => $validatedData['name'],
+            'email' => $validatedData['email'],
+            'password' => Hash::make($validatedData['password']), // تأكد من استخدام Hash::make
+
+        ]);
+
+        // // إنشاء التوكن (اختياري)
+        $token = $user->createToken('auth_token')->plainTextToken;
+
+        $customer = new Customer();
+        $customer->user_id = 'undefined';
+        $customer->gym_id = 'undefined';
+        $customer->save();
+        
+        // إرجاع الاستجابة
+        return response()->json([
+            'success' => true,
+            'message' => 'User registered successfully!',
+            'data' => [
+                'user' => $user,
+                'token' => $token,
+            ],
+        ], 201);
+        
+        // return response()->json([
+        //         'success' => true,
+        //         'message' => 'User registered successfully!',
+        //         'data' => [
+        //             'user' => 'user',
+        //             'token' => 'token',
+        //         ],
+        //     ]);
     }
 
 }

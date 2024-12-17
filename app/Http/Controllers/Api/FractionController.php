@@ -27,6 +27,15 @@ class FractionController extends Controller
         return response()->json($visits);
     }
 
+    public function myvisits($id)
+    {
+        // قراءة جميع المنتجات
+        //$visits = Visit::all();
+        $visits = Visit::where('user_id',$id)->orderBy('created_at', 'desc')->get();
+
+        return response()->json($visits);
+    }
+
     public function showvisit($id)
     {
         // قراءة منتج محدد
@@ -54,8 +63,12 @@ class FractionController extends Controller
             ]);
         }
 
-        $user = $request->user();
+        //$user=Auth::user();
+        
+        //$user = $request->user();
+        $user = \App\Models\User::where('email', $credentials['email'])->first();
         $bearerToken = $user->createToken('auth_token')->plainTextToken;;
+        
         
 
         //$validation = Validator::make(data: $request->all(), rules: $validationRule);
@@ -64,6 +77,7 @@ class FractionController extends Controller
             "status" => "success",
             "success" => "true",
             "user" => $user,
+            "user_id" => $user->id,
             "token" => $bearerToken
         ]);
        
@@ -93,7 +107,7 @@ class FractionController extends Controller
         $customer->user_id = 'undefined';
         $customer->gym_id = 'undefined';
         $customer->save();
-        
+
         // إرجاع الاستجابة
         return response()->json([
             'success' => true,

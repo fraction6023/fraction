@@ -7,6 +7,11 @@ use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\GymController;
 use App\Http\Controllers\AdminController;
 
+// use Illuminate\Routing\Middleware\VerifyCsrfToken;
+
+// Route::post('/updateStatus', [BookingController::class, 'updateStatus'])
+//     ->withoutMiddleware(VerifyCsrfToken::class);
+
 //use Illuminate\Http\Request;
 
 // Route::get('/', function () {
@@ -55,6 +60,8 @@ Route::get('/submit', [CustomerController::class, 'submit']);
 Route::get('/visitsapi', [FractionController::class, 'visits']);
 Route::get('/visitapi/{id}', [FractionController::class, 'showvisit']);
 Route::get('/myvisits/{id}', [FractionController::class, 'myvisits']);
+Route::any('/updateStatus', [FractionController::class, 'updateStatus']);
+
 
 //Route::any('login',[FractionController::class, 'login']);
 //Route::any(uri: 'login', action: [FractionController::class, 'login']);

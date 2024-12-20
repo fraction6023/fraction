@@ -131,15 +131,15 @@ class FractionController extends Controller
     public function updateStatus(Request $request)
     {
         // التحقق من صحة البيانات المرسلة
-        $request->validate([
-            'id' => 'required|id',
-            'status' => 'required|string',
-        ]);
+        // $request->validate([
+        //     'itemId' => 'required|id',
+        //     'status' => 'required|string',
+        // ]);
 
         try {
             // العثور على الحجز وتحديث حالته
-            $booking = Visit::findOrFail($request->id);
-            $booking->status = $request->status;
+            $booking = Visit::findOrFail($request->itemId);
+            $booking->status = 'visited';
             $booking->save();
 
             return response()->json([
@@ -155,4 +155,27 @@ class FractionController extends Controller
         }
     }
 
+    public function saveFeedback(Request $request)
+    {
+   
+        try {
+            // العثور على الحجز وتحديث حالته
+            $booking = Visit::findOrFail($request->itemId);
+            $booking->gym_comment = $request->comment;
+            $booking->gym_rate = $request->rating;
+            $booking->status = 'finish_customer';
+            $booking->save();
+
+            return response()->json([
+                'success' => true,
+                'message' => 'تم تحديث حالة الحجز بنجاح',
+            ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'message' => 'حدث خطأ أثناء تحديث الحجز',
+                'error' => $e->getMessage(),
+            ], 500);
+        }
+    }
 }

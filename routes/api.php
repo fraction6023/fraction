@@ -15,6 +15,6 @@ Route::get('/user', function (Request $request) {
 Route::any(uri: 'login', action: [FractionController::class, 'login']);
 Route::any(uri: 'register', action: [FractionController::class, 'register']);
 Route::any(uri: 'myvisits', action: [FractionController::class, 'myvisits']);
-//Route::any('/register', [FractionController::class, 'register']);
-
+Route::any(uri: 'updateStatus', action: [FractionController::class, 'updateStatus']);
+Route::any(uri: 'saveFeedback', action: [FractionController::class, 'saveFeedback']);
 

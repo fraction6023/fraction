@@ -6,6 +6,10 @@ use App\Http\Controllers\Api\FractionController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\GymController;
 use App\Http\Controllers\AdminController;
+use Illuminate\Http\Request;
+use App\Models\Visit;
+use App\Models\Gym;
+
 
 // use Illuminate\Routing\Middleware\VerifyCsrfToken;
 
@@ -62,6 +66,24 @@ Route::get('/visitapi/{id}', [FractionController::class, 'showvisit']);
 Route::get('/myvisits/{id}', [FractionController::class, 'myvisits']);
 Route::any('/updateStatus', [FractionController::class, 'updateStatus']);
 
+Route::get('/clubs', function () {
+    return Gym::all(['id', 'name']); // جلب أسماء الأندية مع معرّفها
+});
+
+// Route::post('/book-club', function (Request $request) {
+//     // $request->validate([
+//     //     'club_id' => 'required|exists:clubs,id',
+//     //     'user_id' => 'required|exists:users,id',
+//     // ]);
+
+//     Visit::create([
+//         'gym_id' => $request->club_id,
+//         'user_id' => $request->user_id,
+//         'date' => now()->toDateString(), // حجز النادي لليوم الحالي
+//     ]);
+
+//     return response()->json(['success' => true, 'message' => 'تم الحجز بنجاح']);
+// });
 
 //Route::any('login',[FractionController::class, 'login']);
 //Route::any(uri: 'login', action: [FractionController::class, 'login']);

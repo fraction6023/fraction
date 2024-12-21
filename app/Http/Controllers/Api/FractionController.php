@@ -178,4 +178,130 @@ class FractionController extends Controller
             ], 500);
         }
     }
+
+    public function book_club(Request $request)
+    {
+  
+    $visit = new Visit();
+    $visit->user_id = $request->user_id;
+    $visit->gym_id = $request->club_id;
+    $visit->status = 'approved';
+
+    $characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $pin = mt_rand(1000000, 9999999)
+        . mt_rand(1000000, 9999999)
+        . $characters[rand(0, strlen($characters) - 1)];
+
+    $string = str_shuffle($pin);
+    $visit->approveCode = $string;
+    
+    $visit->save();
+
+    return response()->json(['success' => true, 'message' => 'تم الحجز بنجاح']);
+    }
+    
+    public function user ($user_id) {
+        $user = User::find($user_id);
+        $customer = Customer::find($user_id);
+        if (!$user) {
+            return response()->json([
+                'success' => false,
+                'message' => 'المستخدم غير موجود.',
+            ], 404);
+        }
+    
+        return response()->json([
+            'success' => true,
+            'name' => $user->name,
+            'email' => $user->email,
+            'user_kind' => $customer->user_kind
+        ]);
+    }
+
+    public function get_user_kind ($user_id) {
+        $customer = Customer::find($user_id);
+        if (!$customer) {
+            return response()->json([
+                'success' => false,
+                'message' => 'المستخدم غير موجود.',
+            ], 404);
+        }
+    
+        return response()->json([
+            'success' => true,
+            'user_kind' => $customer->user_kind
+        ]);
+    }
+
+    public function update_user_info (Request $request, $user_id) {
+        $user = User::find($user_id);
+    
+        if (!$user) {
+            return response()->json([
+                'success' => false,
+                'message' => 'المستخدم غير موجود.',
+            ], 404);
+        }
+    
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:users,email,' . $user_id,
+        ]);
+    
+        $user->update($validatedData);
+    
+        return response()->json([
+            'success' => true,
+            'message' => 'تم تحديث بيانات المستخدم بنجاح.',
+            'data' => $user,
+        ]);
+    }
+
+    public function change_password (Request $request) {
+        $request->validate([
+            'user_id' => 'required|exists:users,id',
+            // 'current_password' => 'required',
+            'new_password' => 'min:8',
+        ]);
+    
+        $user = User::find($request->user_id);
+    
+        if (!Hash::check($request->current_password, $user->password)) {
+            return response()->json([
+                'success' => false,
+                'message' => 'كلمة المرور الحالية غير صحيحة.',
+            ], 400);
+        }
+    
+        $user->password = Hash::make($request->new_password);
+        $user->save();
+    
+        return response()->json([
+            'success' => true,
+            'message' => 'تم تغيير كلمة المرور بنجاح.',
+        ]);
+    }
+
+    public function pending_bookings ($user_id) {
+        // البحث عن الحجوزات القائمة بناءً على user_id
+        $gym_id = Customer::where('user_id',$user_id)->get()->first();
+        $bookings = Visit::with('user','gym')->where('gym_id', $gym_id->gym_id)->orderBy('created_at', 'desc')->get();
+        //$bookings = Visit::with('customer') // جلب بيانات العميل مع الحجوزات
+
+            //->where('status', 'approved') // التحقق من أن الحالة "pending"
+            
+    
+        if ($bookings->isEmpty()) {
+            return response()->json([
+                'success' => true,
+                'bookings' => [],
+                'message' => 'لا توجد حجوزات قائمة حالياً.',
+            ]);
+        }
+    
+        return response()->json([
+            'success' => true,
+            'bookings' => $bookings,
+        ]);
+    }
 }
